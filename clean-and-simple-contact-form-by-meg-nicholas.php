@@ -7,7 +7,7 @@
 Plugin Name: Clean and Simple Contact Form
 Plugin URI: http://megnicholas.co.uk/wordpress-plugins/clean-and-simple-contact-form
 Description: A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
-Version: 4.0.6
+Version: 4.0.7
 Author: Meghan Nicholas
 Author URI: http://megnicholas.co.uk
 License: GPLv2 or later
@@ -43,7 +43,7 @@ if (cff_PluginSettings::UseRecaptcha()) include ('recaptcha-php-1.11/recaptchali
 
 if (!defined('CFF_THEME_DIR')) define('CFF_THEME_DIR', ABSPATH . 'wp-content/themes/' . get_template());
 
-if (!defined('CFF_PLUGIN_NAME')) define('CFF_PLUGIN_NAME', 'contact-form');
+if (!defined('CFF_PLUGIN_NAME')) define('CFF_PLUGIN_NAME', 'clean-and-simple-contact-form-by-meg-nicholas');
 
 if (!defined('CFF_PLUGIN_DIR')) define('CFF_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . CFF_PLUGIN_NAME);
 
@@ -51,7 +51,7 @@ if (!defined('CFF_PLUGIN_URL')) define('CFF_PLUGIN_URL', WP_PLUGIN_URL . '/' . C
 
 if (!defined('CFF_VERSION_KEY')) define('CFF_VERSION_KEY', 'cff_version');
 
-if (!defined('CFF_VERSION_NUM')) define('CFF_VERSION_NUM', '4.0.6');
+if (!defined('CFF_VERSION_NUM')) define('CFF_VERSION_NUM', '4.0.7');
 
 if (!defined('CFF_OPTIONS_KEY')) define('CFF_OPTIONS_KEY', 'cff_options');
 

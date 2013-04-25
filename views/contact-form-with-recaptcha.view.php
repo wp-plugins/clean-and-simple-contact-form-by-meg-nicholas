@@ -62,7 +62,7 @@
 <div class="control-group<?php 
   if (isset($contact->Errors['recaptcha'])) echo ' error'; ?>">
    <div id="recaptcha_div" class="controls">
-          <?php echo recaptcha_get_html($contact->RecaptchaPublicKey); ?>
+          <?php echo recaptcha_get_html($contact->RecaptchaPublicKey,null,$_SERVER['HTTPS'] == "on"); ?>
      <span class="help-inline"><?php echo $contact->Errors['recaptcha']; ?></span> 
    </div>
 </div>	

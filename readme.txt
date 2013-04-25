@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: simple, contact, form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 4.0.6
+Stable tag: 4.0.7
 
 A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
@@ -107,7 +107,10 @@ This is a demonstration of this plugin working on the default Twenty Twelve them
 A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
 == Changelog ==
-A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
+Version 4.07
+1: Fixed a bug: Plugin name is actually clean-and-simple-contact-form-by-meg-nicholas now (not contact-form) but this new name needed to be updated in the plugin settings definitions. I also needed to rename contact-form.php to clean-and-simple-contact-form-by-meg-nicholas.php. My thanks to Jakub for finding this bug.
+2: If your webpage is ssl then recaptcha will now also use ssl mode.
+
 
 == Upgrade Notice ==
-A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
+Fixed a bug which occurred when plugin name was changed. Recaptcha will now use ssl if your webpage is ssl.
