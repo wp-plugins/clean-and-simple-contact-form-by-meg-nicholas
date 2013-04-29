@@ -3,6 +3,12 @@
 * Licence GPL2 */
 
 jQuery(document).ready(function($) {
+    
+    $('#frmContact').submit(function() {
+        return $('#frmContact').valid();
+        //alert('here');
+    });
+    
 
 	$('#frmContact').validate({ 
 	
@@ -19,5 +25,5 @@ jQuery(document).ready(function($) {
 	
 	
 	});
-
+    
 });

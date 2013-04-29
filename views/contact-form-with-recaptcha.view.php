@@ -7,7 +7,7 @@
 
 <p><?php echo $message; ?></p>
 
-<form id="contact-form" name="frmContact" method="post">
+<form id="frmContact" name="frmContact" method="post">
 
 <?php wp_nonce_field('cff_contact','cff_nonce'); ?>
 
@@ -19,13 +19,13 @@
   </div>
 
 
- <!--email address -->
+  <!--email address -->
   <div class="control-group<?php 
     if (isset($contact->Errors['Email'])) echo ' error'; ?>">
      <label class="control-label" for="cf-Email">Email Address:</label>
      <div class="controls">
        <input class="input-xlarge {email:true, required:true, messages:{required:'Please give your email address.',email:'Please enter a valid email address.'}}" type="text" id="cf-Email" name="cf-Email" value="<?php echo $contact->Email; ?>" placeholder="Your Email Address">
-       <span class="help-inline"><?php echo $contact->Errors['Email']; ?></span>
+       <span for="cf-Email" generated="true" class="help-inline" style=""><?php if (isset($contact->Errors['Email'])) echo $contact->Errors['Email']; ?></span>
      </div>
   </div>
 
@@ -34,8 +34,8 @@
     if (isset($contact->Errors['Confirm-Email'])) echo ' error'; ?>">
      <label class="control-label" for="cfconfirm-email">Confirm Email Address:</label>
      <div class="controls">
-       <input class="input-xlarge {email:true, required:true, equalTo:cfemail, messages:{equalTo:'Please repeat the email address above.', required:'Please give your email address.',email:'Please enter a valid email address.'}}" type="text" id="cfconfirm-email" name="cfconfirm-email" value="<?php echo $contact->ConfirmEmail; ?>" placeholder="Confirm Your Email Address">
-       <span class="help-inline"><?php echo $contact->Errors['Confirm-Email']; ?></span>
+       <input class="input-xlarge {email:true, equalTo:'#cf-Email', messages:{equalTo:'Please enter the same email address again.'}}" type="text" id="cfconfirm-email" name="cfconfirm-email" value="<?php echo $contact->ConfirmEmail; ?>" placeholder="Confirm Your Email Address">
+       <span for="cfconfirm-email" generated="true" class="help-inline" style=""><?php if (isset($contact->Errors['Confirm-Email'])) echo $contact->Errors['Confirm-Email']; ?></span>
      </div>
   </div>              
 
@@ -45,7 +45,7 @@
      <label class="control-label" for="cf-Name">Name:</label>
      <div class="controls">
        <input class="input-xlarge {required:true, messages:{required:'Please give your name.'}}" type="text" id="cf-Name" name="cf-Name" value="<?php echo $contact->Name; ?>" placeholder="Your Name">
-       <span class="help-inline"><?php echo $contact->Errors['Name']; ?></span> 
+       <span for="cf-Name" generated="true" class="help-inline" style=""><?php if (isset($contact->Errors['Name'])) echo $contact->Errors['Name']; ?></span>
      </div>
   </div>  
 
@@ -55,10 +55,11 @@
      <label class="control-label" for="cf-Message">Message:</label>
      <div class="controls">
        <textarea class="input-xlarge {required:true, messages:{required:'Please give a message.'}}" id="cf-Message" name="cf-Message" rows="10" placeholder="Your Message"><?php echo $contact->Message; ?></textarea>
-       <span class="help-inline"><?php echo $contact->Errors['Message']; ?></span> 
+       <span for="cf-Message" generated="true" class="help-inline" style=""><?php if (isset($contact->Errors['Message'])) echo $contact->Errors['Message']; ?></span>
      </div>
   </div>
-
+ 
+ 
 <div class="control-group<?php 
   if (isset($contact->Errors['recaptcha'])) echo ' error'; ?>">
    <div id="recaptcha_div" class="controls">
