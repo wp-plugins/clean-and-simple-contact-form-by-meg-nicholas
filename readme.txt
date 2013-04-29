@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: simple, contact, form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 4.0.7
+Stable tag: 4.0.8
 
 A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
@@ -50,7 +50,8 @@ Here’s why:
 
 *   Written by an **experienced PHP programmer** and rigorously  tested as standard practice.
 
-Hopefully this plugin will fulfil all your needs, if not get in-touch http://megnicholas.co.uk/contact-me and I will customise to your exact requirements.
+Hopefully this plugin will fulfil all your needs, if not [get in-touch](http://www.megnicholas.co.uk/contact-me "Get In Touch") and I will customise to your exact requirements.
+
 
 == Installation ==
 There are two ways to install:
@@ -85,7 +86,7 @@ Here is a list of things that you can change
 
 *   **Use client side validation (Ajax)**: When ticked the contact form will be validated on the client giving your user instant feedback if they have filled the form in incorrectly. If you wish the form to be validated only on the server then untick this option.
 
-*   **Use reCAPTCHA**: Tick this option if you wish your form to have a reCAPTCHA box. ReCAPTCHA helps to avoid spam bots using your form by checking that the form filler is actually a real person. To use reCAPTCHA you will need to get a some special keys from google. Once you have your keys enter them into the Public key and Private key boxes
+*   **Use reCAPTCHA**: Tick this option if you wish your form to have a reCAPTCHA box. ReCAPTCHA helps to avoid spam bots using your form by checking that the form filler is actually a real person. To use reCAPTCHA you will need to get a some special keys from google https://www.google.com/recaptcha/admin/create. Once you have your keys enter them into the Public key and Private key boxes
 
 *   **reCAPTCHA Public Key**: Enter the public key that you obtained from here.
 
@@ -100,17 +101,25 @@ Here is a list of things that you can change
 4. Contact Form Options Screen
 
 == Demo ==
-This is a demonstration of this plugin working on the default Twenty Twelve theme.
-[Clean and Simple Contact Form Demonstration] (http://demo.megnicholas.co.uk/wordpress-clean-and-simple-contact-form “Plugin Demonstration”)
+This is a demonstration of this plugin working on the default Twenty Twelve theme ->
+[Clean and Simple Contact Form Demonstration](http://demo.megnicholas.co.uk/wordpress-clean-and-simple-contact-form "Plugin Demonstration")
 
 == Frequently Asked Questions ==
 A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
 == Changelog ==
-Version 4.07
-1: Fixed a bug: Plugin name is actually clean-and-simple-contact-form-by-meg-nicholas now (not contact-form) but this new name needed to be updated in the plugin settings definitions. I also needed to rename contact-form.php to clean-and-simple-contact-form-by-meg-nicholas.php. My thanks to Jakub for finding this bug.
-2: If your webpage is ssl then recaptcha will now also use ssl mode.
+= 4.0.8 =
+* Fixed a bug: When using reCAPTCHA ajax did not work.
+* Fixed a bug: Ajax validation was not checking email address were equal (server side was doing it instead)
+* Improvement: Ajax now works better.
+* Documentation update: nicer links (worked how to do them in markdown!), changelog and upgrade notice sections now correctly formatted.
+= 4.0.7 =
+* Fixed a bug: Plugin name is actually clean-and-simple-contact-form-by-meg-nicholas now (not contact-form) but this new name needed to be updated in the plugin settings definitions. I also needed to rename contact-form.php to clean-and-simple-contact-form-by-meg-nicholas.php. My thanks to Jakub for finding this bug.
+* If your webpage is ssl then reCAPTCHA will now also use ssl mode.
 
 
 == Upgrade Notice ==
-Fixed a bug which occurred when plugin name was changed. Recaptcha will now use ssl if your webpage is ssl.
+= 4.0.8 =
+Ajax now works when your form has reCAPTCHA on it. Ajax validation is now cleaner.
+= 4.0.7 =
+Fixed a bug which occurred when plugin name was changed. reCAPTCHA will now use ssl if your webpage is ssl.
