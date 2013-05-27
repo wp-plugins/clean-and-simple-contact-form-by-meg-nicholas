@@ -10,6 +10,8 @@
 <form id="frmContact" name="frmContact" method="post">
 
 <?php wp_nonce_field('cff_contact','cff_nonce'); ?>
+    
+<!-- Clean and Simple Contact Form by megnicholas. Version <?php echo $version; ?> -->
 
 <!-- Clean and Simple Contact Form. Version <?php echo $version; ?> -->
   <div class="control-group">
@@ -34,7 +36,7 @@
     if (isset($contact->Errors['Confirm-Email'])) echo ' error'; ?>">
      <label class="control-label" for="cfconfirm-email">Confirm Email Address:</label>
      <div class="controls">
-       <input class="input-xlarge {email:true, equalTo:'#cf-Email', messages:{equalTo:'Please enter the same email address again.'}}" type="text" id="cfconfirm-email" name="cfconfirm-email" value="<?php echo $contact->ConfirmEmail; ?>" placeholder="Confirm Your Email Address">
+       <input class="input-xlarge {email:true, required:true, equalTo:'#cf-Email', messages:{equalTo:'Please enter the same email address again.',required:'Please enter the same email address again.'}}" type="text" id="cfconfirm-email" name="cfconfirm-email" value="<?php echo $contact->ConfirmEmail; ?>" placeholder="Confirm Your Email Address">
        <span for="cfconfirm-email" generated="true" class="help-inline" style=""><?php if (isset($contact->Errors['Confirm-Email'])) echo $contact->Errors['Confirm-Email']; ?></span>
      </div>
   </div>              
@@ -63,8 +65,8 @@
 <div class="control-group<?php 
   if (isset($contact->Errors['recaptcha'])) echo ' error'; ?>">
    <div id="recaptcha_div" class="controls">
-          <?php echo recaptcha_get_html($contact->RecaptchaPublicKey,null,$_SERVER['HTTPS'] == "on"); ?>
-     <span class="help-inline"><?php echo $contact->Errors['recaptcha']; ?></span> 
+     <?php echo recaptcha_get_html($contact->RecaptchaPublicKey,null,isset($_SERVER['HTTPS'])); ?>
+     <span class="help-inline"><?php if (isset($contact->Errors['recaptcha'])) echo $contact->Errors['recaptcha']; ?></span> 
    </div>
 </div>	
 
