@@ -3,10 +3,10 @@ Contributors: MegNicholas
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AKQM4KSBQ4H66
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: simple, contact, form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
+Tags: simple, contact, form, contact button, contact form, contact form plugin, contacts, contacts form plugin, contact me, feedback form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 4.0.8
+Stable tag: 4.0.9
 
 A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
@@ -94,20 +94,33 @@ Here is a list of things that you can change
 
 *   **reCAPTCHA Theme**: Here you can change the reCAPTCHA box theme so that it fits with the style of your website.
 
+*   **!NEW! Recipient Email**: The email address where you would like all messages to be sent. This will default to the email address you have specified under 'E-Mail Address' in your WordPress General Settings. If you want your mail sent to a different address then enter it here.
+
+*   **!NEW! Email Subject**: This is the email subject that will appear on all messages. If you would like to set it to something different then enter it here.
+
 == Screenshots ==
 1. Contact Form With reCAPTCHA
 2. Contact Form Without reCAPTCHA
 3. Message Sent
 4. Contact Form Options Screen
+5. Place this shortcode on your post or page to deploy
 
 == Demo ==
 This is a demonstration of this plugin working on the default Twenty Twelve theme ->
 [Clean and Simple Contact Form Demonstration](http://demo.megnicholas.co.uk/wordpress-clean-and-simple-contact-form "Plugin Demonstration")
 
+==About Meg Nicholas ==
+I am a freelance WordPress Developer. 
+[Hire me for all your Wordpress needs](http://www.megnicholas.co.uk "Hire Me").
+
 == Frequently Asked Questions ==
 A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
 == Changelog ==
+= 4.0.9 =
+* Switched header argument of wp_mail over to a filter to remove any potential conflicts with other emailing plugins or themes
+* The ability to set a different recipient email address. Previously all email was sent to the WordPress administrator email address.
+* Allow the email subject to be customised.
 = 4.0.8 =
 * Fixed a bug: When using reCAPTCHA ajax did not work.
 * Fixed a bug: Ajax validation was not checking email address were equal (server side was doing it instead)
@@ -119,6 +132,8 @@ A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap mark
 
 
 == Upgrade Notice ==
+= 4.0.9 =
+More customisation: recipient email address, and email subject.
 = 4.0.8 =
 Ajax now works when your form has reCAPTCHA on it. Ajax validation is now cleaner.
 = 4.0.7 =

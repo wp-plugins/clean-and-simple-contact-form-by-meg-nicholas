@@ -67,5 +67,20 @@ class cff_PluginSettings
         
         return isset($options['use_client_validation']) ? $options['use_client_validation'] : true;
     }
+    static
+    function RecipientEmail() 
+    {
+        $options = get_option('cff_options');
+        
+        return isset($options['recipient_email']) ? $options['recipient_email'] : get_bloginfo('admin_email');
+    }
+    
+    static
+    function Subject() 
+    {
+        $options = get_option('cff_options');
+        
+        return isset($options['subject']) ? $options['subject'] : get_bloginfo('name') . ' -  Web Enquiry';
+    }
 }
 
