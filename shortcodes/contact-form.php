@@ -5,12 +5,18 @@ function cff_ContactForm()
 {
     
     $contact = new cff_Contact;
+    $filters = new cff_Filters;
     
     if ($contact->IsValid()) 
     {
-        $headers = 'From: "' . $contact->Name . '" <' . $contact->Email . '>';
+        $filters->fromEmail=$contact->Email;
+        $filters->fromName=$contact->Name;
         
-        if (wp_mail(get_bloginfo('admin_email') , get_bloginfo('name') . ' -  Web Enquiry', $contact->Message, $headers)) 
+        //add filters
+        $filters->add('wp_mail_from');
+        $filters->add('wp_mail_from_name');
+       
+        if (wp_mail(cff_PluginSettings::RecipientEmail() , cff_PluginSettings::Subject(), $contact->Message)) 
         {
             $view = new CFF_View('message-sent'); 
             $view->Set('heading',cff_PluginSettings::SentMessageHeading());
@@ -20,6 +26,10 @@ function cff_ContactForm()
         {
             $view = new CFF_View('message-not-sent');
         }
+        
+        //remove filters (play nice)
+        $filters->remove('wp_mail_from');
+        $filters->remove('wp_mail_from_name');
         
         return $view->Render();
     }

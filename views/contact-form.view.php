@@ -21,7 +21,7 @@
     if (isset($contact->Errors['Confirm-Email'])) echo ' error'; ?>">
      <label class="control-label" for="cfconfirm-email">Confirm Email Address:</label>
      <div class="controls">
-       <input class="input-xlarge {email:true, equalTo:'#cf-Email', messages:{equalTo:'Please enter the same email address again.'}}" type="text" id="cfconfirm-email" name="cfconfirm-email" value="<?php echo $contact->ConfirmEmail; ?>" placeholder="Confirm Your Email Address">
+       <input class="input-xlarge {email:true, required:true, equalTo:'#cf-Email', messages:{equalTo:'Please enter the same email address again.',required:'Please enter the same email address again.'}}" type="text" id="cfconfirm-email" name="cfconfirm-email" value="<?php echo $contact->ConfirmEmail; ?>" placeholder="Confirm Your Email Address">
        <span for="cfconfirm-email" generated="true" class="help-inline" style=""><?php if (isset($contact->Errors['Confirm-Email'])) echo $contact->Errors['Confirm-Email']; ?></span>
      </div>
   </div>              
