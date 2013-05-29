@@ -49,7 +49,7 @@ class cff_settings
             . Thank you!
         </p>
 	    <form method="post" action="options.php">
-	    <?
+	    <?php
         submit_button(); 
 
         /* This prints out all hidden setting fields*/
