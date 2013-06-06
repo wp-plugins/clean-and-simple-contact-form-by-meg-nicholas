@@ -1,5 +1,5 @@
 === Clean and Simple Contact Form ===
-Contributors: MegNicholas
+Contributors: megnicholas
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AKQM4KSBQ4H66
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
