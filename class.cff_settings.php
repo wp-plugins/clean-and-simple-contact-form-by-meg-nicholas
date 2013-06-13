@@ -272,7 +272,7 @@ class cff_settings
 ?>
                 <select <?php echo $disabled; ?> id="array_key[theme]" name="array_key[theme]">
                     <option <?php echo $theme == "red" ? "selected" : ""; ?> value="red"><?php _e('Red', 'cleanandsimple'); ?></option>
-                    <option <?php echo $theme == "white" ? "selected" : ""; ?>  value="white"><?php _e('White','cleanandsimple'); ?>?></option>
+                    <option <?php echo $theme == "white" ? "selected" : ""; ?>  value="white"><?php _e('White','cleanandsimple'); ?></option>
                     <option <?php echo $theme == "blackglass" ? "selected" : ""; ?> value="blackglass"><?php _e('Blackglass', 'cleanandsimple'); ?></option>
                     <option <?php echo $theme == "clean" ? "selected" : ""; ?> value="clean"><?php _e('Clean','cleanandsimple'); ?></option>
                 </select>        
