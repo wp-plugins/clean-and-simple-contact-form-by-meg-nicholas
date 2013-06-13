@@ -1,1 +1,1 @@
-<p>Sorry, there has been a problem and your message was not sent.</p>
+<p><?php _e('Sorry, there has been a problem and your message was not sent.',CFF_TEXT_DOMAIN) ?></p>

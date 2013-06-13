@@ -117,6 +117,8 @@ I am a freelance WordPress Developer.
 A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
 == Changelog ==
+= 4.1.1 =
+* Enabled internationalisation, this plugin will now work with multiple languages
 = 4.1.0 =
 * Fixed a bug in class.cff_settings.php where php opening tag had got missed off. This problem caused the settings screen not to display correctly but only occurred with some versions of php. Please upgrade if you have this problem.
 = 4.0.9 =

@@ -37,21 +37,21 @@ class cff_PluginSettings
     {
         $options = get_option('cff_options');
         
-        return isset($options['sent_message_heading']) ? $options['sent_message_heading'] : "Message Sent";
+        return isset($options['sent_message_heading']) ? $options['sent_message_heading'] : __('Message Sent',CFF_TEXT_DOMAIN);
     }
     static 
     function SentMessageBody() 
     {
         $options = get_option('cff_options');
         
-        return isset($options['sent_message_body']) ? $options['sent_message_body'] : "Thank you for your message, we will be in touch very shortly.";
+        return isset($options['sent_message_body']) ? $options['sent_message_body'] : __('Thank you for your message, we will be in touch very shortly.',CFF_TEXT_DOMAIN);
     }
     static 
     function Message() 
     {
         $options = get_option('cff_options');
         
-        return isset($options['message']) ? $options['message'] : "Please enter your contact details and a short message below and I will try to answer your query as soon as possible.";
+        return isset($options['message']) ? $options['message'] : __('Please enter your contact details and a short message below and I will try to answer your query as soon as possible.',CFF_TEXT_DOMAIN);
     }
     static 
     function LoadStyleSheet() 
@@ -80,7 +80,7 @@ class cff_PluginSettings
     {
         $options = get_option('cff_options');
         
-        return isset($options['subject']) ? $options['subject'] : get_bloginfo('name') . ' -  Web Enquiry';
+        return isset($options['subject']) ? $options['subject'] : get_bloginfo('name') . __(' -  Web Enquiry',CFF_TEXT_DOMAIN);
     }
 }
 
