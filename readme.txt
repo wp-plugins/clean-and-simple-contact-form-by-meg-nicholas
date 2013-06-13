@@ -1,12 +1,12 @@
 === Clean and Simple Contact Form ===
-Contributors: MegNicholas
+Contributors: megnicholas
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AKQM4KSBQ4H66
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: simple, contact, form, contact button, contact form, contact form plugin, contacts, contacts form plugin, contact me, feedback form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 4.0.9
+Stable tag: 4.1.0
 
 A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
@@ -117,6 +117,10 @@ I am a freelance WordPress Developer.
 A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
 == Changelog ==
+= 4.1.1 =
+* Enabled internationalisation, this plugin will now work with multiple languages
+= 4.1.0 =
+* Fixed a bug in class.cff_settings.php where php opening tag had got missed off. This problem caused the settings screen not to display correctly but only occurred with some versions of php. Please upgrade if you have this problem.
 = 4.0.9 =
 * Switched header argument of wp_mail over to a filter to remove any potential conflicts with other emailing plugins or themes
 * The ability to set a different recipient email address. Previously all email was sent to the WordPress administrator email address.
@@ -132,6 +136,8 @@ A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap mark
 
 
 == Upgrade Notice ==
+= 4.1.0 =
+Please upgrade if your settings screen is not displaying.
 = 4.0.9 =
 More customisation: recipient email address, and email subject.
 = 4.0.8 =

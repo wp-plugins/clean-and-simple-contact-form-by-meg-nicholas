@@ -38,18 +38,18 @@ class cff_settings
 ?>
 	<div class="wrap">
 	    <?php screen_icon(); ?>
-	    <h2> Clean and Simple Contact Form Settings</h2>
+	    <h2><?php _e('Clean and Simple Contact Form Settings',CFF_TEXT_DOMAIN);?></h2>
         <hr/>
-        <p>You are using version <?php echo CFF_VERSION_NUM;?></p>
-        <p>If you find this plugin useful please consider 
+        <p><?php _e('You are using version',CFF_TEXT_DOMAIN); ?> <?php echo CFF_VERSION_NUM;?></p>
+        <p><?php _e('If you find this plugin useful please consider',CFF_TEXT_DOMAIN); ?> 
             <a  target="_blank"
                 href="http://wordpress.org/support/view/plugin-reviews/<?php echo CFF_PLUGIN_NAME; ?>">
-                leaving a review
+                <?php _e('leaving a review', CFF_TEXT_DOMAIN); ?>
                         </a>
-            . Thank you!
+            . <?php _e('Thank you!',CFF_TEXT_DOMAIN); ?>
         </p>
 	    <form method="post" action="options.php">
-	    <?
+	    <?php
         submit_button(); 
 
         /* This prints out all hidden setting fields*/
@@ -65,7 +65,7 @@ class cff_settings
     public 
     function page_init() 
     {
-        add_settings_section('section_recaptcha', '<h3>ReCAPTCHA Settings</h3>', array(
+        add_settings_section('section_recaptcha', '<h3>' . __('ReCAPTCHA Settings',CFF_TEXT_DOMAIN) . '</h3>', array(
             $this,
             'print_section_info_recaptcha'
         ) , 'contact-form-settings');
@@ -73,75 +73,75 @@ class cff_settings
             $this,
             'check_form'
         ));
-        add_settings_field('use_recaptcha', 'Use reCAPTCHA : ', array(
+        add_settings_field('use_recaptcha',__('Use reCAPTCHA :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_recaptcha', array(
             'use_recaptcha'
         ));
-        add_settings_field('theme', 'reCAPTCHA Theme : ', array(
+        add_settings_field('theme',__('reCAPTCHA Theme :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_recaptcha', array(
             'theme'
         ));
-        add_settings_field('recaptcha_public_key', 'reCAPTCHA Public Key : ', array(
+        add_settings_field('recaptcha_public_key', __('reCAPTCHA Public Key :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_recaptcha', array(
             'recaptcha_public_key'
         ));
-        add_settings_field('recaptcha_private_key', 'reCAPTCHA Private Key : ', array(
+        add_settings_field('recaptcha_private_key',__('reCAPTCHA Private Key :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_recaptcha', array(
             'recaptcha_private_key'
         ));
-        add_settings_section('section_message', '<h3>Message Settings</h3>', array(
+        add_settings_section('section_message', '<h3>'.__('Message Settings',CFF_TEXT_DOMAIN).'</h3>', array(
             $this,
             'print_section_info_message'
         ) , 'contact-form-settings');
-        add_settings_field('recipient_email', 'Recipient Email : ', array(
+        add_settings_field('recipient_email', __('Recipient Email :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_message', array(
             'recipient_email'
         ));
-        add_settings_field('subject', 'Email Subject: ', array(
+        add_settings_field('subject', __('Email Subject :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_message', array(
             'subject'
         ));
-        add_settings_field('message', 'Message : ', array(
+        add_settings_field('message', __('Message :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_message', array(
             'message'
         ));
-        add_settings_field('sent_message_heading', 'Message Sent Heading : ', array(
+        add_settings_field('sent_message_heading', __('Message Sent Heading :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_message', array(
             'sent_message_heading'
         ));
-        add_settings_field('sent_message_body', 'Message Sent Content : ', array(
+        add_settings_field('sent_message_body', __('Message Sent Content :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_message', array(
             'sent_message_body'
         ));
-        add_settings_section('section_styling', '<h3>Styling and Validation</h3>', array(
+        add_settings_section('section_styling', '<h3>'.__('Styling and Validation',CFF_TEXT_DOMAIN).'</h3>', array(
             $this,
             'print_section_info_styling'
         ) , 'contact-form-settings');
-        add_settings_field('load_stylesheet', 'Use this plugin\'s default stylesheet (un-tick to use your theme\'s style sheet instead): ', array(
+        add_settings_field('load_stylesheet', __('Use the plugin default stylesheet (un-tick to use your theme style sheet instead) :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_styling', array(
             'load_stylesheet'
         ));
-        add_settings_field('use_client_validation', 'Use client side validation (Ajax): ', array(
+        add_settings_field('use_client_validation', __('Use client side validation (AJAX) :',CFF_TEXT_DOMAIN), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_styling', array(
@@ -213,13 +213,13 @@ class cff_settings
     public 
     function print_section_info_recaptcha() 
     {
-        print 'Enter your reCAPTCHA settings below:';
-        print "<p>To use reCAPTCHA you must get an API key from <a target='_blank' href='https://www.google.com/recaptcha/admin/create'>https://www.google.com/recaptcha/admin/create</a></p>";
+        print __('Enter your reCAPTCHA settings below :',CFF_TEXT_DOMAIN);
+        print "<p>" . __('To use reCAPTCHA you must get an API key from',CFF_TEXT_DOMAIN)." <a target='_blank' href='https://www.google.com/recaptcha/admin/create'>https://www.google.com/recaptcha/admin/create</a></p>";
     }
     public 
     function print_section_info_message() 
     {
-        print 'Enter your message settings below:';
+        print __('Enter your message settings below :',CFF_TEXT_DOMAIN);
     }
     public 
     function print_section_info_styling() 
@@ -271,10 +271,10 @@ class cff_settings
             $disabled = cff_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
 ?>
                 <select <?php echo $disabled; ?> id="array_key[theme]" name="array_key[theme]">
-                    <option <?php echo $theme == "red" ? "selected" : ""; ?> value="red">Red</option>
-                    <option <?php echo $theme == "white" ? "selected" : ""; ?>  value="white">White</option>
-                    <option <?php echo $theme == "blackglass" ? "selected" : ""; ?> value="blackglass">Blackglass</option>
-                    <option <?php echo $theme == "clean" ? "selected" : ""; ?> value="clean">Clean</option>
+                    <option <?php echo $theme == "red" ? "selected" : ""; ?> value="red"><?php _e('Red', CFF_TEXT_DOMAIN); ?></option>
+                    <option <?php echo $theme == "white" ? "selected" : ""; ?>  value="white"><?php _e('White',CFF_TEXT_DOMAIN); ?>?></option>
+                    <option <?php echo $theme == "blackglass" ? "selected" : ""; ?> value="blackglass"><?php _e('Blackglass', CFF_TEXT_DOMAIN); ?></option>
+                    <option <?php echo $theme == "clean" ? "selected" : ""; ?> value="clean"><?php _e('Clean',CFF_TEXT_DOMAIN); ?></option>
                 </select>        
                 <?php
         break;

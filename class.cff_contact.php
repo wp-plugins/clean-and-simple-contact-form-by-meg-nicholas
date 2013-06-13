@@ -52,27 +52,27 @@ class cff_Contact
 
         // email and confirm email are the same
         
-        if ($this->Email != $this->ConfirmEmail) $this->Errors['Confirm-Email'] = 'Sorry the email addresses do not match.';
+        if ($this->Email != $this->ConfirmEmail) $this->Errors['Confirm-Email'] = __('Sorry the email addresses do not match.',CFF_TEXT_DOMAIN);
 
         //email
         
-        if (strlen($this->Email) == 0) $this->Errors['Email'] = "Please give your email address.";
+        if (strlen($this->Email) == 0) $this->Errors['Email'] = __('Please give your email address.',CFF_TEXT_DOMAIN);
 
-        //email
+        //confirm email
         
-        if (strlen($this->ConfirmEmail) == 0) $this->Errors['Confirm-Email'] = "Please confirm your email address.";
+        if (strlen($this->ConfirmEmail) == 0) $this->Errors['Confirm-Email'] = __('Please confirm your email address.',CFF_TEXT_DOMAIN);
 
         //name
         
-        if (strlen($this->Name) == 0) $this->Errors['Name'] = "Please give your name.";
+        if (strlen($this->Name) == 0) $this->Errors['Name'] = __('Please give your name.',CFF_TEXT_DOMAIN);
 
-        //email
+        //message
         
-        if (strlen($this->Message) == 0) $this->Errors['Message'] = "Please enter a message.";
+        if (strlen($this->Message) == 0) $this->Errors['Message'] = __('Please enter a message.',CFF_TEXT_DOMAIN);
 
         //email invalid address
         
-        if (strlen($this->Email) > 0 && !filter_var($this->Email, FILTER_VALIDATE_EMAIL)) $this->Errors['Email'] = "Please enter a valid email address.";
+        if (strlen($this->Email) > 0 && !filter_var($this->Email, FILTER_VALIDATE_EMAIL)) $this->Errors['Email'] = __('Please enter a valid email address.',CFF_TEXT_DOMAIN);
 
         //check recaptcha but only if we have keys
         
@@ -80,7 +80,7 @@ class cff_Contact
         {
             $resp = recaptcha_check_answer($this->RecaptchaPrivateKey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
             
-            if (!$resp->is_valid) $this->Errors['recaptcha'] = "Sorry the code wasn't entered correctly please try again.";
+            if (!$resp->is_valid) $this->Errors['recaptcha'] = __('Sorry the code wasn\'t entered correctly please try again.',CFF_TEXT_DOMAIN);
         }
         
         return count($this->Errors) == 0;
