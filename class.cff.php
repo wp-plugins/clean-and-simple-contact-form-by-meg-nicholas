@@ -35,7 +35,8 @@ class cff
     //load text domain
     function RegisterTextDomain()
     {    
-        $path = CFF_PLUGIN_DIR . '/languages';
+        //$path = CFF_PLUGIN_DIR . '/languages';
+        $path = '/' . CFF_PLUGIN_NAME . '/languages';
         load_plugin_textdomain('cleanandsimple', false, $path );
     }
     
