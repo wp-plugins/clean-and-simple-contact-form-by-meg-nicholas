@@ -43,7 +43,7 @@ function cff_ContactForm()
 
     //only load the stylesheet if required
     if ( cff_PluginSettings::LoadStyleSheet() == true)
-         wp_enqueue_style('bootstrap');
+         wp_enqueue_style('cff-bootstrap');
 
     //set-up the view
     if ( $contact->RecaptchaPublicKey<>'' && $contact->RecaptchaPrivateKey<>'') 

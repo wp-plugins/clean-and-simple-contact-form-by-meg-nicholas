@@ -51,7 +51,7 @@ class cff
         wp_register_script('jquery-validate-contact-form', CFF_PLUGIN_URL . '/js/jquery.validate.contact.form.js', array(
             'jquery'
         ) , '1.00', true);
-        wp_register_style('bootstrap', CFF_PLUGIN_URL . '/css/bootstrap-forms.min.css', null, '2.3.1');
+        wp_register_style('cff-bootstrap', CFF_PLUGIN_URL . '/css/bootstrap-forms.min.css', null, '2.3.1');
     }
     
     function Upgrade() 
