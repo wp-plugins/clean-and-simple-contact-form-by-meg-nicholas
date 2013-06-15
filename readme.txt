@@ -120,6 +120,7 @@ A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap mark
 = 4.1.1 =
 * Fixed potential conflicts with themes that use bootstrap
 * Enabled internationalisation, this plugin will now work with multiple languages
+* Added German translation file for my German friends, thanks to faktorzweinet for the translation
 = 4.1.0 =
 * Fixed a bug in class.cff_settings.php where php opening tag had got missed off. This problem caused the settings screen not to display correctly but only occurred with some versions of php. Please upgrade if you have this problem.
 = 4.0.9 =
@@ -137,6 +138,8 @@ A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap mark
 
 
 == Upgrade Notice ==
+= 4.1.1 =
+Internationalisation, fixed conflict with some bootstrapped themes.
 = 4.1.0 =
 Please upgrade if your settings screen is not displaying.
 = 4.0.9 =
