@@ -1,4 +1,4 @@
-=== Clean and Simple Contact Form ===
+=== Contact Form Clean and Simple ===
 Contributors: megnicholas
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AKQM4KSBQ4H66
 License: GPLv2 or later
@@ -21,7 +21,7 @@ A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap mark
 Uses **Twitter Bootstrap** classes.
 
 This is a straightforward contact form for your WordPress site. There is very minimal set-up 
-required. 
+required. Simply install, activate, and then place the short code [contact-form] on your web page.
 
 A standard set of input boxes are provided, these include Email Address, Name, Message and a nice big ‘Send Message’ button. 
 
@@ -58,7 +58,11 @@ There are two ways to install:
 
 1. Click the ‘Install Now’ link from the plugin library listing to automatically download and install.
 
-2. Download the plugin as a zip file. To install the zip file simply double click to extract it and place the ‘contact-form’ folder in your wordpress plugins folder, i.e. <wordpress>/wp-content/plugins where <wordpress> is the directory that you installed WordPress in.
+2. Download the plugin as a zip file. To install the zip file simply double click to extract it and place the whole folder in your wordpress plugins folder, e.g. [wordpress]/wp-content/plugins where [wordpress] is the directory that you installed WordPress in.
+
+Then visit the plugin page on your wordpress site and click ‘Activate’ against the ‘Clean and Simple Contact Form’ plugin listing.
+
+[More information on how to use the plugin.](http://www.megnicholas.co.uk/wordpress-plugins/clean-and-simple-contact-form/ "More Information")
 
 == How to Use ==
 Unless you want to change messages or add reCAPTCHA to your contact form then this plugin will work without any additional setup.
@@ -114,9 +118,42 @@ I am a freelance WordPress Developer.
 [Hire me for all your Wordpress needs](http://www.megnicholas.co.uk "Hire Me").
 
 == Frequently Asked Questions ==
-A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
+= Why is a different contact form displayed? =
+
+You may have a conflict with another plugin. Either deactivate the other contact form plugin if you don't need it, or use
+this alternative short code on your webpage - `[cscf-contact-form]`.
+This problem often occurs when Jetpack plugin is installed.
+
+= How do I display the contact form on my page/post? =
+To put the contact form on your page, add the text:
+`[contact-form]`
+
+To avoid conflicts with other plugins you can also use:
+`[cscf-contact-form]`
+
+The contact form will appear when you view the page.
+
+= Can I have this plugin in my own language? =
+
+Yes, I am currently building up translation files for this plugin. If your language is not yet available you are very welcome to translate it.
+If you are not sure how to go about doing this [get in touch](http://www.megnicholas.co.uk/contact-me/ "Contact Me").
+
+= How do I change the text box sizes? = 
+
+Currently it is not possible to do this.
+
+= I get a message to say that the message could not be sent =
+
+If you get this message then you have a general problem with email on your server. This plugin uses Wordpress's send mail function.
+So a problem sending mail from this plugin indicates that Wordpress as a whole cannot send email.
+Contact your web host provider for help, or use an SMTP plugin to use a third party email service.
 
 == Changelog ==
+= 4.1.2 =
+* Added alternative shortcode [cscf-contact-form] for use when conflicts could occur.
+* Updated the documentation.
+* Recaptcha form now responds to language changes
+* Fixed the recaptcha form which google screwed up by putting a privacy link in. Link has been hidden.
 = 4.1.1 =
 * Fixed potential conflicts with themes that use bootstrap
 * Enabled internationalisation, this plugin will now work with multiple languages

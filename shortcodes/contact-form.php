@@ -1,5 +1,6 @@
 <?php
 add_shortcode('contact-form', 'cff_ContactForm');
+add_shortcode('cscf-contact-form', 'cff_ContactForm');
 
 function cff_ContactForm() 
 {
