@@ -4,7 +4,7 @@
  * creates the settings page for the plugin
 */
 
-class cff_settings
+class cscf_settings
 {
     public 
     function __construct() 
@@ -40,10 +40,10 @@ class cff_settings
 	    <?php screen_icon(); ?>
 	    <h2><?php _e('Clean and Simple Contact Form Settings','cleanandsimple');?></h2>
         <hr/>
-        <p><?php _e('You are using version','cleanandsimple'); ?> <?php echo CFF_VERSION_NUM;?></p>
+        <p><?php _e('You are using version','cleanandsimple'); ?> <?php echo CSCF_VERSION_NUM;?></p>
         <p><?php _e('If you find this plugin useful please consider','cleanandsimple'); ?> 
             <a  target="_blank"
-                href="http://wordpress.org/support/view/plugin-reviews/<?php echo CFF_PLUGIN_NAME; ?>">
+                href="http://wordpress.org/support/view/plugin-reviews/<?php echo CSCF_PLUGIN_NAME; ?>">
                 <?php _e('leaving a review', 'cleanandsimple'); ?>
                         </a>
             . <?php _e('Thank you!','cleanandsimple'); ?>
@@ -151,7 +151,7 @@ class cff_settings
     public 
     function check_form($input) 
     {
-        $options = get_option(CFF_OPTIONS_KEY);
+        $options = get_option(CSCF_OPTIONS_KEY);
         
         //use_recaptcha
         if (isset($input['use_recaptcha'])) 
@@ -204,7 +204,7 @@ class cff_settings
         }
         
         //update the options
-        update_option(CFF_OPTIONS_KEY, $options);
+        update_option(CSCF_OPTIONS_KEY, $options);
             
                 
         
@@ -236,39 +236,39 @@ class cff_settings
         switch ($fieldname) 
         {
         case 'use_recaptcha':
-            $checked = cff_PluginSettings::UseRecaptcha() == true ? "checked" : "";
+            $checked = cscf_PluginSettings::UseRecaptcha() == true ? "checked" : "";
 ?><input type="checkbox" <?php echo $checked; ?>  id="use_recaptcha" name="array_key[use_recaptcha]"><?php
         break;
         case 'load_stylesheet':
-            $checked = cff_PluginSettings::LoadStyleSheet() == true ? "checked" : "";
+            $checked = cscf_PluginSettings::LoadStyleSheet() == true ? "checked" : "";
 ?><input type="checkbox" <?php echo $checked; ?>  id="load_stylesheet" name="array_key[load_stylesheet]"><?php
         break;
         case 'recaptcha_public_key':
-            $disabled = cff_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
-?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_public_key" name="array_key[recaptcha_public_key]" value="<?=cff_PluginSettings::PublicKey(); ?>" /><?php
+            $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
+?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_public_key" name="array_key[recaptcha_public_key]" value="<?=cscf_PluginSettings::PublicKey(); ?>" /><?php
         break;
         case 'recaptcha_private_key':
-            $disabled = cff_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
-?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_private_key" name="array_key[recaptcha_private_key]" value="<?=cff_PluginSettings::PrivateKey(); ?>" /><?php
+            $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
+?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_private_key" name="array_key[recaptcha_private_key]" value="<?=cscf_PluginSettings::PrivateKey(); ?>" /><?php
         break;
         case 'recipient_email':
-?><input type="text" size="60" id="recipient_email" name="array_key[recipient_email]" value="<?=cff_PluginSettings::RecipientEmail(); ?>" /><?php
+?><input type="text" size="60" id="recipient_email" name="array_key[recipient_email]" value="<?=cscf_PluginSettings::RecipientEmail(); ?>" /><?php
         break;
         case 'subject':
-?><input type="text" size="60" id="subject" name="array_key[subject]" value="<?=cff_PluginSettings::Subject(); ?>" /><?php
+?><input type="text" size="60" id="subject" name="array_key[subject]" value="<?=cscf_PluginSettings::Subject(); ?>" /><?php
         break;
         case 'sent_message_heading':
-?><input type="text" size="60" id="sent_message_heading" name="array_key[sent_message_heading]" value="<?=cff_PluginSettings::SentMessageHeading(); ?>" /><?php
+?><input type="text" size="60" id="sent_message_heading" name="array_key[sent_message_heading]" value="<?=cscf_PluginSettings::SentMessageHeading(); ?>" /><?php
         break;
         case 'sent_message_body':
-?><textarea cols="63" rows="8" name="array_key[sent_message_body]"><?=cff_PluginSettings::SentMessageBody(); ?></textarea><?php
+?><textarea cols="63" rows="8" name="array_key[sent_message_body]"><?=cscf_PluginSettings::SentMessageBody(); ?></textarea><?php
         break;
         case 'message':
-?><textarea cols="63" rows="8" name="array_key[message]"><?=cff_PluginSettings::Message(); ?></textarea><?php
+?><textarea cols="63" rows="8" name="array_key[message]"><?=cscf_PluginSettings::Message(); ?></textarea><?php
         break;
         case 'theme':
-            $theme = cff_PluginSettings::Theme();
-            $disabled = cff_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
+            $theme = cscf_PluginSettings::Theme();
+            $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
 ?>
                 <select <?php echo $disabled; ?> id="array_key[theme]" name="array_key[theme]">
                     <option <?php echo $theme == "red" ? "selected" : ""; ?> value="red"><?php _e('Red', 'cleanandsimple'); ?></option>
@@ -279,7 +279,7 @@ class cff_settings
                 <?php
         break;
         case 'use_client_validation':
-            $checked = cff_PluginSettings::UseClientValidation() == true ? "checked" : "";
+            $checked = cscf_PluginSettings::UseClientValidation() == true ? "checked" : "";
 ?><input type="checkbox" <?php echo $checked; ?>  id="use_client_validation" name="array_key[use_client_validation]"><?php
         break;
         default:

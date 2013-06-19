@@ -1,12 +1,12 @@
 <?php
-add_shortcode('contact-form', 'cff_ContactForm');
-add_shortcode('cscf-contact-form', 'cff_ContactForm');
+add_shortcode('contact-form', 'cscf_ContactForm');
+add_shortcode('cscf-contact-form', 'cscf_ContactForm');
 
-function cff_ContactForm() 
+function cscf_ContactForm() 
 {
     
-    $contact = new cff_Contact;
-    $filters = new cff_Filters;
+    $contact = new cscf_Contact;
+    $filters = new cscf_Filters;
     
     if ($contact->IsValid()) 
     {
@@ -17,15 +17,15 @@ function cff_ContactForm()
         $filters->add('wp_mail_from');
         $filters->add('wp_mail_from_name');
        
-        if (wp_mail(cff_PluginSettings::RecipientEmail() , cff_PluginSettings::Subject(), $contact->Message)) 
+        if (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), $contact->Message)) 
         {
-            $view = new CFF_View('message-sent'); 
-            $view->Set('heading',cff_PluginSettings::SentMessageHeading());
-            $view->Set('message',cff_PluginSettings::SentMessageBody());
+            $view = new CSCF_View('message-sent'); 
+            $view->Set('heading',cscf_PluginSettings::SentMessageHeading());
+            $view->Set('message',cscf_PluginSettings::SentMessageBody());
         }
         else
         {
-            $view = new CFF_View('message-not-sent');
+            $view = new CSCF_View('message-not-sent');
         }
         
         //remove filters (play nice)
@@ -36,25 +36,25 @@ function cff_ContactForm()
     }
   
     //here we need some jquery scripts and styles, so load them here
-    if ( cff_PluginSettings::UseClientValidation() == true) {
+    if ( cscf_PluginSettings::UseClientValidation() == true) {
         wp_enqueue_script('jquery-validate');
         wp_enqueue_script('jquery-meta');
         wp_enqueue_script('jquery-validate-contact-form');
     }
 
     //only load the stylesheet if required
-    if ( cff_PluginSettings::LoadStyleSheet() == true)
-         wp_enqueue_style('cff-bootstrap');
+    if ( cscf_PluginSettings::LoadStyleSheet() == true)
+         wp_enqueue_style('cscf-bootstrap');
 
     //set-up the view
     if ( $contact->RecaptchaPublicKey<>'' && $contact->RecaptchaPrivateKey<>'') 
-        $view = new CFF_View('contact-form-with-recaptcha'); 
+        $view = new CSCF_View('contact-form-with-recaptcha'); 
     else
-        $view = new CFF_View('contact-form'); 
+        $view = new CSCF_View('contact-form'); 
 
     $view->Set('contact',$contact);
-    $view->Set('message',cff_PluginSettings::Message());
-    $view->Set('version', CFF_VERSION_NUM);
+    $view->Set('message',cscf_PluginSettings::Message());
+    $view->Set('version', CSCF_VERSION_NUM);
     
     return $view->Render();
 

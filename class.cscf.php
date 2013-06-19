@@ -1,6 +1,6 @@
 <?php
 
-class cff
+class cscf
 {
     public 
     function __construct() 
@@ -28,35 +28,45 @@ class cff
             ));
 
         //create the settings page
-        $settings = new cff_settings();
+        $settings = new cscf_settings();
         
     }
     
     //load text domain
     function RegisterTextDomain()
     {    
-        //$path = CFF_PLUGIN_DIR . '/languages';
-        $path = '/' . CFF_PLUGIN_NAME . '/languages';
+        //$path = CSCF_PLUGIN_DIR . '/languages';
+        $path = '/' . CSCF_PLUGIN_NAME . '/languages';
         load_plugin_textdomain('cleanandsimple', false, $path );
     }
     
     function RegisterScripts() 
     {
-        wp_register_script('jquery-validate', CFF_PLUGIN_URL . '/js/jquery.validate.min.js', array(
+        wp_register_script('jquery-validate', CSCF_PLUGIN_URL . '/js/jquery.validate.min.js', array(
             'jquery'
         ) , '1.10.0', true);
-        wp_register_script('jquery-meta', CFF_PLUGIN_URL . '/js/jquery.metadata.js', array(
+        wp_register_script('jquery-meta', CSCF_PLUGIN_URL . '/js/jquery.metadata.js', array(
             'jquery'
         ) , '4187', true);
-        wp_register_script('jquery-validate-contact-form', CFF_PLUGIN_URL . '/js/jquery.validate.contact.form.js', array(
+        wp_register_script('jquery-validate-contact-form', CSCF_PLUGIN_URL . '/js/jquery.validate.contact.form.js', array(
             'jquery'
         ) , '1.00', true);
-        wp_register_style('cff-bootstrap', CFF_PLUGIN_URL . '/css/bootstrap-forms.min.css', null, '2.3.1');
+        wp_register_style('cscf-bootstrap', CSCF_PLUGIN_URL . '/css/bootstrap-forms.min.css', null, '2.3.1');
     }
     
     function Upgrade() 
     {
-        $options = get_option('cff_options');
+        //change namespace of options
+        if ( get_option('cff_options') !=  '') {
+            update_option('cscf_options', get_option('cff_options'));
+            delete_option('cff_options');
+        }
+        if ( get_option('cff_version') !=  '') {
+            update_option('cscf_version', get_option('cff_version'));
+            delete_option('cff_version');
+        }        
+        
+        $options = get_option('cscf_options');
         $updated = false;
         
         if (trim(get_option('recaptcha_public_key')) <> '') 
@@ -73,7 +83,7 @@ class cff
             $updated = true;
         }
         
-        if ($updated) update_option('cff_options', $option);
+        if ($updated) update_option('cscf_options', $option);
     }
 
     /*
@@ -83,7 +93,7 @@ class cff
     function SettingsLink($links, $file) 
     {
         
-        if ($file == CFF_PLUGIN_NAME . '/' . CFF_PLUGIN_NAME . '.php') 
+        if ($file == CSCF_PLUGIN_NAME . '/' . CSCF_PLUGIN_NAME . '.php') 
         {
 
             /*

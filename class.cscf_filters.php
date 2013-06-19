@@ -4,7 +4,7 @@
  * Add and remove filters as we need in order to play nicely
   */
 
-class cff_Filters {
+class cscf_Filters {
     
     var $fromEmail;
     var $fromName;

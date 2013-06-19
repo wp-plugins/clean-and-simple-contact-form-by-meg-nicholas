@@ -155,6 +155,7 @@ Contact your web host provider for help, or use an SMTP plugin to use a third pa
 * Recaptcha form now responds to language changes
 * Fixed the recaptcha form which google screwed up by putting a privacy link in. Link has been hidden.
 * Added italian translation files
+* Changed name space from cff to cscf
 = 4.1.1 =
 * Fixed potential conflicts with themes that use bootstrap
 * Enabled internationalisation, this plugin will now work with multiple languages
