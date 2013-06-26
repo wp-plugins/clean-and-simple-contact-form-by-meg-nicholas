@@ -4,13 +4,13 @@
 
 jQuery(document).ready(function($) {
     
-    $('#frmContact').submit(function() {
-        return $('#frmContact').valid();
+    $('#frmCSCF').submit(function() {
+        return $('#frmCSCF').valid();
         //alert('here');
     });
     
 
-	$('#frmContact').validate({ 
+	$('#frmCSCF').validate({ 
 	
 		errorElement: 'span',
 		errorClass: 'help-inline',

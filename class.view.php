@@ -1,6 +1,6 @@
 <?php
 
-class CFF_View
+class CSCF_View
 {
     /**
      * Path of the view to render
@@ -17,13 +17,13 @@ class CFF_View
     function __construct($view) 
     {
         
-        if (file_exists(CFF_PLUGIN_DIR . "/views/" . $view . ".view.php")) 
+        if (file_exists(CSCF_PLUGIN_DIR . "/views/" . $view . ".view.php")) 
         {
-            $this->view = CFF_PLUGIN_DIR . "/views/" . $view . ".view.php";
+            $this->view = CSCF_PLUGIN_DIR . "/views/" . $view . ".view.php";
         }
         else
         {
-            wp_die(__("View " . CFF_PLUGIN_URL . "/views/" . $view . ".view.php" . " not found"));
+            wp_die(__("View " . CSCF_PLUGIN_URL . "/views/" . $view . ".view.php" . " not found"));
         }
     }
     /**

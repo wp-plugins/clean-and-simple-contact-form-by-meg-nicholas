@@ -120,7 +120,7 @@ I am a freelance WordPress Developer.
 == Frequently Asked Questions ==
 = Why is a different contact form displayed? =
 
-You may have a conflict with another plugin. Either deactivate the other contact form plugin if you don't need it, or use
+You may have a conflict with another plugin. Either deactivate the other contact form plugin, if you don't need it, or use
 this alternative short code on your webpage - `[cscf-contact-form]`.
 This problem often occurs when Jetpack plugin is installed.
 
@@ -148,13 +148,17 @@ If you get this message then you have a general problem with email on your serve
 So a problem sending mail from this plugin indicates that Wordpress as a whole cannot send email.
 Contact your web host provider for help, or use an SMTP plugin to use a third party email service.
 
+
 == Changelog ==
 = 4.1.2 =
+* Added some FAQs
 * Added alternative shortcode [cscf-contact-form] for use when conflicts could occur.
 * Updated the documentation.
 * Recaptcha form now responds to language changes
 * Fixed the recaptcha form which google screwed up by putting a privacy link in. Link has been hidden.
-* Added italian translation files
+* Updated pot file to reflect new name space
+* Changed name space from cff to cscf
+* Settings screen: recaptcha theme and key inputs are immediately enabled/disabled as the 'Use reCAPTCHA' box is clicked. 
 = 4.1.1 =
 * Fixed potential conflicts with themes that use bootstrap
 * Enabled internationalisation, this plugin will now work with multiple languages
