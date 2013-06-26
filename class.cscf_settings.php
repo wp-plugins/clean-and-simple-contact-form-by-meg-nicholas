@@ -59,6 +59,15 @@ class cscf_settings
         submit_button();
         ?>
 	    </form>
+
+        <script>            
+                jQuery('#use_recaptcha').change(function() {
+                    jQuery('#theme').attr('disabled', ! this.checked);
+                    jQuery('#recaptcha_public_key').attr('readonly', ! this.checked);
+                    jQuery('#recaptcha_private_key').attr('readonly', ! this.checked);
+                });            
+
+        </script>
 	</div>
 	<?php
     }
@@ -244,11 +253,11 @@ class cscf_settings
 ?><input type="checkbox" <?php echo $checked; ?>  id="load_stylesheet" name="array_key[load_stylesheet]"><?php
         break;
         case 'recaptcha_public_key':
-            $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
+            $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "readonly" : "";
 ?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_public_key" name="array_key[recaptcha_public_key]" value="<?=cscf_PluginSettings::PublicKey(); ?>" /><?php
         break;
         case 'recaptcha_private_key':
-            $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
+            $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "readonly" : "";
 ?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_private_key" name="array_key[recaptcha_private_key]" value="<?=cscf_PluginSettings::PrivateKey(); ?>" /><?php
         break;
         case 'recipient_email':
@@ -270,7 +279,7 @@ class cscf_settings
             $theme = cscf_PluginSettings::Theme();
             $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
 ?>
-                <select <?php echo $disabled; ?> id="array_key[theme]" name="array_key[theme]">
+                <select <?php echo $disabled; ?> id="theme" name="array_key[theme]">
                     <option <?php echo $theme == "red" ? "selected" : ""; ?> value="red"><?php _e('Red', 'cleanandsimple'); ?></option>
                     <option <?php echo $theme == "white" ? "selected" : ""; ?>  value="white"><?php _e('White','cleanandsimple'); ?></option>
                     <option <?php echo $theme == "blackglass" ? "selected" : ""; ?> value="blackglass"><?php _e('Blackglass', 'cleanandsimple'); ?></option>
