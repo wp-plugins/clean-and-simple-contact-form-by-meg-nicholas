@@ -48,7 +48,15 @@ class cscf_settings
                         </a>
             . <?php _e('Thank you!','cleanandsimple'); ?>
         </p>
-	    <form method="post" action="options.php">
+        
+        <?php if ( cscf_PluginSettings::IsJetPackContactFormEnabled() ) { ?>
+           <p class="highlight"> 
+               <?php _e('NOTICE: You have JetPack\'s Contact Form enabled please deactivate it or use the shortcode [cscf-contact-form] instead.','cleanandsimple'); ?> 
+               &nbsp; <a target="_blank" href="http://www.megnicholas.co.uk/articles/clean-and-simple-contact-form-and-jetpack/"><?php _e('Read More');?></a>
+           </p>
+        <?php } ?>
+        
+        <form method="post" action="options.php">
 	    <?php
         submit_button(); 
 
@@ -254,26 +262,26 @@ class cscf_settings
         break;
         case 'recaptcha_public_key':
             $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "readonly" : "";
-?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_public_key" name="array_key[recaptcha_public_key]" value="<?=cscf_PluginSettings::PublicKey(); ?>" /><?php
+?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_public_key" name="array_key[recaptcha_public_key]" value="<?php echo cscf_PluginSettings::PublicKey(); ?>" /><?php
         break;
         case 'recaptcha_private_key':
             $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "readonly" : "";
-?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_private_key" name="array_key[recaptcha_private_key]" value="<?=cscf_PluginSettings::PrivateKey(); ?>" /><?php
+?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_private_key" name="array_key[recaptcha_private_key]" value="<?php echo cscf_PluginSettings::PrivateKey(); ?>" /><?php
         break;
         case 'recipient_email':
-?><input type="text" size="60" id="recipient_email" name="array_key[recipient_email]" value="<?=cscf_PluginSettings::RecipientEmail(); ?>" /><?php
+?><input type="text" size="60" id="recipient_email" name="array_key[recipient_email]" value="<?php echo cscf_PluginSettings::RecipientEmail(); ?>" /><?php
         break;
         case 'subject':
-?><input type="text" size="60" id="subject" name="array_key[subject]" value="<?=cscf_PluginSettings::Subject(); ?>" /><?php
+?><input type="text" size="60" id="subject" name="array_key[subject]" value="<?php echo cscf_PluginSettings::Subject(); ?>" /><?php
         break;
         case 'sent_message_heading':
-?><input type="text" size="60" id="sent_message_heading" name="array_key[sent_message_heading]" value="<?=cscf_PluginSettings::SentMessageHeading(); ?>" /><?php
+?><input type="text" size="60" id="sent_message_heading" name="array_key[sent_message_heading]" value="<?php echo cscf_PluginSettings::SentMessageHeading(); ?>" /><?php
         break;
         case 'sent_message_body':
-?><textarea cols="63" rows="8" name="array_key[sent_message_body]"><?=cscf_PluginSettings::SentMessageBody(); ?></textarea><?php
+?><textarea cols="63" rows="8" name="array_key[sent_message_body]"><?php echo cscf_PluginSettings::SentMessageBody(); ?></textarea><?php
         break;
         case 'message':
-?><textarea cols="63" rows="8" name="array_key[message]"><?=cscf_PluginSettings::Message(); ?></textarea><?php
+?><textarea cols="63" rows="8" name="array_key[message]"><?php echo cscf_PluginSettings::Message(); ?></textarea><?php
         break;
         case 'theme':
             $theme = cscf_PluginSettings::Theme();

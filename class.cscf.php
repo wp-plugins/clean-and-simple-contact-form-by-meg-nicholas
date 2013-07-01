@@ -52,6 +52,7 @@ class cscf
             'jquery'
         ) , '1.00', true);
         wp_register_style('cscf-bootstrap', CSCF_PLUGIN_URL . '/css/bootstrap-forms.min.css', null, '2.3.1');
+        wp_register_style('cscf-fixrecaptcha', CSCF_PLUGIN_URL . '/css/fixrecaptcha.css', null, '1.0.0');
     }
     
     function Upgrade() 

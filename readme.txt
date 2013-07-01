@@ -21,7 +21,7 @@ A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap mark
 Uses **Twitter Bootstrap** classes.
 
 This is a straightforward contact form for your WordPress site. There is very minimal set-up 
-required. Simply install, activate, and then place the short code [contact-form] on your web page.
+required. Simply install, activate, and then place the short code [cscf-contact-form] on your web page.
 
 A standard set of input boxes are provided, these include Email Address, Name, Message and a nice big ‘Send Message’ button. 
 
@@ -34,7 +34,7 @@ Granted there are many plugins of this type in existence already. Why use this o
 
 Here’s why:
 
-*   Minimal setup. Simply activate the plugin and place the shortcode [contact-form] on any post or page.
+*   Minimal setup. Simply activate the plugin and place the shortcode [cscf-contact-form] on any post or page.
 
 *   **Safe**. All input entered by your user  is stripped back to minimise as far as possible the likelihood of any malicious user attempting to inject a script into your website. You can turn on reCAPTCHA to avoid your form being abused by bots.
 
@@ -62,6 +62,8 @@ There are two ways to install:
 
 Then visit the plugin page on your wordpress site and click ‘Activate’ against the ‘Clean and Simple Contact Form’ plugin listing.
 
+To place the contact form on your page use the shortcode [cscf-contact-form]
+
 [More information on how to use the plugin.](http://www.megnicholas.co.uk/wordpress-plugins/clean-and-simple-contact-form/ "More Information")
 
 == How to Use ==
@@ -69,7 +71,11 @@ Unless you want to change messages or add reCAPTCHA to your contact form then th
 
 Important: Check that you have an email address set-up in your WordPress ‘Settings’->’General’ page. This is the address that the plugin will use to send the contents of the contact form.
 
-To add the contact form to your WordPress website simply place the shortcode [contact-form] on the post or page that you wish the form to appear on.
+To add the contact form to your WordPress website simply place the shortcode [cscf-contact-form] on the post or page that you wish the form to appear on.
+
+**If you have Jetpack plugin installed disable the contact form otherwise the wrong form will display.**
+
+Goto [other notes](http://wordpress.org/plugins/clean-and-simple-contact-form-by-meg-nicholas/other_notes/ "How To Use") for information on how to use.
 
 == Additional Settings ==
 This plugin will work as is without any additional setup. You have the option to change the default messages that are displayed to your user and to add reCAPTCHA capabilities.
@@ -126,9 +132,6 @@ This problem often occurs when Jetpack plugin is installed.
 
 = How do I display the contact form on my page/post? =
 To put the contact form on your page, add the text:
-`[contact-form]`
-
-To avoid conflicts with other plugins you can also use:
 `[cscf-contact-form]`
 
 The contact form will appear when you view the page.
@@ -155,10 +158,13 @@ Contact your web host provider for help, or use an SMTP plugin to use a third pa
 * Added alternative shortcode [cscf-contact-form] for use when conflicts could occur.
 * Updated the documentation.
 * Recaptcha form now responds to language changes
-* Fixed the recaptcha form which google screwed up by putting a privacy link in. Link has been hidden.
+* Fixed the recaptcha form which google screwed up by putting a privacy link in. Link has been hidden via a stylesheet. Note: this stylesheet is not loaded if you untick 'Use the plugin default stylesheet'.
 * Updated pot file to reflect new name space
 * Changed name space from cff to cscf
 * Settings screen: recaptcha theme and key inputs are immediately enabled/disabled as the 'Use reCAPTCHA' box is clicked. 
+* Corrected some html seen as invalid by http://validator.w3.org/
+* removed '<?=' and replaced with '<?php echo' in cscf_settings, thanks go to andrewbacon
+* Added notice to setting screen when JetPack's contact form is active
 = 4.1.1 =
 * Fixed potential conflicts with themes that use bootstrap
 * Enabled internationalisation, this plugin will now work with multiple languages
