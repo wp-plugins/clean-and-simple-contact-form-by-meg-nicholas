@@ -47,11 +47,8 @@ function cscf_ContactForm()
          wp_enqueue_style('cscf-bootstrap');
 
     //set-up the view
-    if ( $contact->RecaptchaPublicKey<>'' && $contact->RecaptchaPrivateKey<>'') {
-        if ( cscf_PluginSettings::LoadStyleSheet() == true)
-            wp_enqueue_style('cscf-fixrecaptcha');
+    if ( $contact->RecaptchaPublicKey<>'' && $contact->RecaptchaPrivateKey<>'') 
         $view = new CSCF_View('contact-form-with-recaptcha'); 
-    }
     else
         $view = new CSCF_View('contact-form'); 
 
