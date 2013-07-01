@@ -82,5 +82,18 @@ class cscf_PluginSettings
         
         return isset($options['subject']) ? $options['subject'] : get_bloginfo('name') . __(' -  Web Enquiry','cleanandsimple');
     }
+    
+    static
+    function IsJetPackContactFormEnabled() {
+        //check for jetpack plugin
+        if ( ! is_plugin_active('jetpack/jetpack.php') )
+            return false;
+        
+        //now check for contact-form module
+        if ( ! JetPack::is_module_active('contact-form') )
+            return false;
+        
+        return true;
+    }
 }
 
