@@ -89,11 +89,13 @@ class cscf_PluginSettings
         if ( ! is_plugin_active('jetpack/jetpack.php') )
             return false;
         
-        //now check for contact-form module
-        if ( ! JetPack::is_module_active('contact-form') )
+        //check we can use the jetpack method
+        if ( ! method_exists('JetPack', 'get_active_modules') ) 
             return false;
-        
-        return true;
+
+        //now check if it is in the active modules
+        return in_array( 'contact-form', JetPack::get_active_modules() );
+            
     }
 }
 
