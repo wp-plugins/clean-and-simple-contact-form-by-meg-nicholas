@@ -158,7 +158,6 @@ Contact your web host provider for help, or use an SMTP plugin to use a third pa
 * Added alternative shortcode [cscf-contact-form] for use when conflicts could occur.
 * Updated the documentation.
 * Recaptcha form now responds to language changes
-* Fixed the recaptcha form which google screwed up by putting a privacy link in. Link has been hidden via a stylesheet. Note: this stylesheet is not loaded if you untick 'Use the plugin default stylesheet'.
 * Updated pot file to reflect new name space
 * Changed name space from cff to cscf
 * Settings screen: recaptcha theme and key inputs are immediately enabled/disabled as the 'Use reCAPTCHA' box is clicked. 
@@ -186,6 +185,8 @@ Contact your web host provider for help, or use an SMTP plugin to use a third pa
 
 
 == Upgrade Notice ==
+= 4.1.2 =
+Alternative shortcode, recaptcha internationalisation, Jetpack conflict warning notice
 = 4.1.1 =
 Internationalisation, fixed conflict with some bootstrapped themes.
 = 4.1.0 =
