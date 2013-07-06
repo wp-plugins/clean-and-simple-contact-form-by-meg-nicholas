@@ -17,7 +17,8 @@ function cscf_ContactForm()
         $filters->add('wp_mail_from');
         $filters->add('wp_mail_from_name');
        
-        if (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), $contact->Message)) 
+        //send the mail and strip the slashes from the message
+        if (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), stripslashes($contact->Message))) 
         {
             $view = new CSCF_View('message-sent'); 
             $view->Set('heading',cscf_PluginSettings::SentMessageHeading());

@@ -13,8 +13,9 @@ class cscf_Filters {
         return $this->fromEmail;
     }
     
+    //strip slashes from the name
     function wp_mail_from_name () {
-        return $this->fromName;
+        return stripslashes($this->fromName);
     }
     
     function add($filter, $priority = 10, $args = 1) {
