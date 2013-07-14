@@ -12,13 +12,6 @@
     
 <!-- Clean and Simple Contact Form by megnicholas. Version <?php echo $version; ?> -->
 
-  <div class="control-group">
-      <div class="controls">
-      <p class="text-error"><?php if (isset($contact->Errors['recaptcha'])) echo $contact->Errors['recaptcha']; ?></p>
-      </div>
-  </div>
-
-
   <!--email address -->
   <div class="control-group<?php 
     if (isset($contact->Errors['email'])) echo ' error'; ?>">
@@ -34,7 +27,7 @@
     if (isset($contact->Errors['confirm-email'])) echo ' error'; ?>">
      <label class="control-label" for="cscf_confirm-email"><?php _e('Confirm Email Address:','cleanandsimple');?></label>
      <div class="controls">
-       <input class="input-xlarge {email:true, required:true, equalTo:'#cscf_email', messages:{equalTo:'<?php _e('Please enter the same email address again.','cleanandsimple');?>',required:'<?php _e('Please enter the same email address again.','cleanandsimple');?>'}}" type="text" id="cscf_confirm-email" name="cscf[confirm-email]" value="<?php echo $contact->ConfirmEmail; ?>" placeholder="<?php _e('Confirm Your Email Address','cleanandsimple');?>">
+       <input class="input-xlarge {email:true, required:true, equalTo:'#cscf_email', messages:{equalTo:'<?php _e('Please enter the same email address again.','cleanandsimple');?>',required:'<?php _e('Please enter the same email address again.','cleanandsimple');?>',email:'<?php _e('Please enter a valid email address.','cleanandsimple');?>'}}" type="text" id="cscf_confirm-email" name="cscf[confirm-email]" value="<?php echo $contact->ConfirmEmail; ?>" placeholder="<?php _e('Confirm Your Email Address','cleanandsimple');?>">
        <span class="help-inline"><?php if (isset($contact->Errors['confirm-email'])) echo $contact->Errors['confirm-email']; ?></span>
      </div>
   </div>              
@@ -58,14 +51,6 @@
        <span class="help-inline"><?php if (isset($contact->Errors['message'])) echo $contact->Errors['message']; ?></span>
      </div>
   </div>
- 
-<div class="control-group<?php 
-  if (isset($contact->Errors['recaptcha'])) echo ' error'; ?>">
-   <div id="recaptcha_div" class="controls">
-     <?php echo recaptcha_get_html($contact->RecaptchaPublicKey,null,isset($_SERVER['HTTPS'])); ?>
-     <span class="help-inline"><?php if (isset($contact->Errors['recaptcha'])) echo $contact->Errors['recaptcha']; ?></span> 
-   </div>
-</div>	
 
   <div class="control-group">
     <div class="controls">
