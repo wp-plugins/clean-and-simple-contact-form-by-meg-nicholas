@@ -36,6 +36,7 @@ class cscf_Contact
         }
     }
     
+    public
     function IsValid() 
     {
         $this->Errors = array();
@@ -82,6 +83,27 @@ class cscf_Contact
         }
         
         return count($this->Errors) == 0;
+    }
+    
+    public
+    function SendMail() {
+        
+        $filters = new cscf_Filters;
+        
+        $filters->fromEmail=$this->Email;
+        $filters->fromName=$this->Name;
+        
+        //add filters
+        $filters->add('wp_mail_from');
+        $filters->add('wp_mail_from_name');
+       
+        $result = (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), stripslashes($this->Message)));
+        
+        //remove filters (play nice)
+        $filters->remove('wp_mail_from');
+        $filters->remove('wp_mail_from_name');
+
+        return $result;
     }
 }
 

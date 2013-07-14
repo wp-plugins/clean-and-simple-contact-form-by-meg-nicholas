@@ -6,19 +6,11 @@ function cscf_ContactForm()
 {
     
     $contact = new cscf_Contact;
-    $filters = new cscf_Filters;
     
     if ($contact->IsValid()) 
     {
-        $filters->fromEmail=$contact->Email;
-        $filters->fromName=$contact->Name;
-        
-        //add filters
-        $filters->add('wp_mail_from');
-        $filters->add('wp_mail_from_name');
-       
-        //send the mail and strip the slashes from the message
-        if (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), stripslashes($contact->Message))) 
+        if ( $contact->SendMail() )
+
         {
             $view = new CSCF_View('message-sent'); 
             $view->Set('heading',cscf_PluginSettings::SentMessageHeading());
@@ -29,18 +21,13 @@ function cscf_ContactForm()
             $view = new CSCF_View('message-not-sent');
         }
         
-        //remove filters (play nice)
-        $filters->remove('wp_mail_from');
-        $filters->remove('wp_mail_from_name');
-        
         return $view->Render();
     }
   
     //here we need some jquery scripts and styles, so load them here
     if ( cscf_PluginSettings::UseClientValidation() == true) {
         wp_enqueue_script('jquery-validate');
-        wp_enqueue_script('jquery-meta');
-        wp_enqueue_script('jquery-validate-contact-form');
+        wp_enqueue_script('cscf-validate');
     }
 
     //only load the stylesheet if required
@@ -60,6 +47,5 @@ function cscf_ContactForm()
     return $view->Render();
 
 }
-
 
 

@@ -46,5 +46,5 @@ class CSCF_View
         
         return ob_get_clean();
     }
-}
+}    
 

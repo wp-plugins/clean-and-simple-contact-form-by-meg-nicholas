@@ -44,14 +44,18 @@ class cscf
     {
         wp_register_script('jquery-validate', CSCF_PLUGIN_URL . '/js/jquery.validate.min.js', array(
             'jquery'
-        ) , '1.10.0', true);
-        wp_register_script('jquery-meta', CSCF_PLUGIN_URL . '/js/jquery.metadata.js', array(
-            'jquery'
-        ) , '4187', true);
-        wp_register_script('jquery-validate-contact-form', CSCF_PLUGIN_URL . '/js/jquery.validate.contact.form.js', array(
-            'jquery'
-        ) , '1.00', true);
-        wp_register_style('cscf-bootstrap', CSCF_PLUGIN_URL . '/css/bootstrap-forms.min.css', null, '2.3.1');
+        ) , '1.11.0', true);
+        
+        wp_register_script( 'cscf-validate', CSCF_PLUGIN_URL . "/js/jquery.validate.contact.form.js", 
+            'jquery', 
+            CSCF_VERSION_NUM, true );
+        
+        wp_localize_script( 'cscf-validate', 'cscfvars', 
+            array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+
+        wp_register_style('cscf-bootstrap', CSCF_PLUGIN_URL . '/css/bootstrap-forms.min.css', 
+            null, '2.3.1');
+        
     }
     
     function Upgrade() 
