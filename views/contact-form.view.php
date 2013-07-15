@@ -16,7 +16,7 @@
      </div>
   </div>
 
-  <!--confirm email address -->
+ <!--confirm email address -->
   <div class="control-group<?php 
     if (isset($contact->Errors['confirm-email'])) echo ' error'; ?>">
      <label class="control-label" for="cscf_confirm-email"><?php _e('Confirm Email Address:','cleanandsimple');?></label>

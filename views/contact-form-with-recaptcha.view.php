@@ -12,6 +12,13 @@
     
 <!-- Clean and Simple Contact Form by megnicholas. Version <?php echo $version; ?> -->
 
+  <div class="control-group">
+      <div class="controls">
+      <p class="text-error"><?php if (isset($contact->Errors['recaptcha'])) echo $contact->Errors['recaptcha']; ?></p>
+      </div>
+  </div>
+
+
   <!--email address -->
   <div class="control-group<?php 
     if (isset($contact->Errors['email'])) echo ' error'; ?>">
@@ -51,6 +58,14 @@
        <span class="help-inline"><?php if (isset($contact->Errors['message'])) echo $contact->Errors['message']; ?></span>
      </div>
   </div>
+ 
+<div class="control-group<?php 
+  if (isset($contact->Errors['recaptcha'])) echo ' error'; ?>">
+   <div id="recaptcha_div" class="controls">
+     <?php echo recaptcha_get_html($contact->RecaptchaPublicKey,null,isset($_SERVER['HTTPS'])); ?>
+     <span class="help-inline"><?php if (isset($contact->Errors['recaptcha'])) echo $contact->Errors['recaptcha']; ?></span> 
+   </div>
+</div>	
 
   <div class="control-group">
     <div class="controls">
