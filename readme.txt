@@ -157,7 +157,7 @@ Contact your web host provider for help, or use an SMTP plugin to use a third pa
 * Fixed escaped characters.
 * Added more translation files
 * Forms now submit via ajax.
-* Upgraded jquery-validate.js to 1.11. Removed jquery metadata plugin, form validation is now built with data attributes instead of json.
+* Upgraded jquery-validate.js to 1.11. Removed jquery metadata plugin, form validation is now built with data attributes instead of json in classes.
 = 4.1.2 =
 * Added some FAQs
 * Added alternative shortcode [cscf-contact-form] for use when conflicts could occur.
