@@ -28,14 +28,15 @@ class cscf_Contact
         if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cscf']) ) 
         {
             $cscf = $_POST['cscf'];
-            $this->Name = filter_var($cscf['name'], FILTER_SANITIZE_STRING);
+            $this->Name = filter_var($cscf['name'], FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
             $this->Email = filter_var($cscf['email'], FILTER_SANITIZE_EMAIL);
             $this->ConfirmEmail = filter_var($cscf['confirm-email'], FILTER_SANITIZE_EMAIL);
-            $this->Message = filter_var($cscf['message'], FILTER_SANITIZE_STRING);
+            $this->Message = filter_var($cscf['message'], FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
             unset($_POST['cscf']);
         }
     }
     
+    public
     function IsValid() 
     {
         $this->Errors = array();
@@ -82,6 +83,27 @@ class cscf_Contact
         }
         
         return count($this->Errors) == 0;
+    }
+    
+    public
+    function SendMail() {
+        
+        $filters = new cscf_Filters;
+        
+        $filters->fromEmail=$this->Email;
+        $filters->fromName=$this->Name;
+        
+        //add filters
+        $filters->add('wp_mail_from');
+        $filters->add('wp_mail_from_name');
+       
+        $result = (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), stripslashes($this->Message)));
+        
+        //remove filters (play nice)
+        $filters->remove('wp_mail_from');
+        $filters->remove('wp_mail_from_name');
+
+        return $result;
     }
 }
 

@@ -39,6 +39,7 @@ include ('class.cscf_settings.php');
 include ('class.cscf_contact.php');
 include ('class.view.php');
 include ('class.cscf_filters.php');
+include ('ajax.php');
 
 if (cscf_PluginSettings::UseRecaptcha()) include ('recaptcha-php-1.11/recaptchalib.php');
 
@@ -52,7 +53,7 @@ if (!defined('CSCF_PLUGIN_URL')) define('CSCF_PLUGIN_URL', WP_PLUGIN_URL . '/' .
 
 if (!defined('CSCF_VERSION_KEY')) define('CSCF_VERSION_KEY', 'cscf_version');
 
-if (!defined('CSCF_VERSION_NUM')) define('CSCF_VERSION_NUM', '4.1.2');
+if (!defined('CSCF_VERSION_NUM')) define('CSCF_VERSION_NUM', '4.1.3');
 
 if (!defined('CSCF_OPTIONS_KEY')) define('CSCF_OPTIONS_KEY', 'cscf_options');
 

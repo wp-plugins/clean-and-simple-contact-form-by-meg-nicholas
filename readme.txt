@@ -153,6 +153,11 @@ Contact your web host provider for help, or use an SMTP plugin to use a third pa
 
 
 == Changelog ==
+= 4.1.3 =
+* Fixed escaped characters.
+* Added more translation files
+* Forms now submit via ajax.
+* Upgraded jquery-validate.js to 1.11. Removed jquery metadata plugin, form validation is now built with data attributes instead of json in classes.
 = 4.1.2 =
 * Added some FAQs
 * Added alternative shortcode [cscf-contact-form] for use when conflicts could occur.
@@ -164,6 +169,7 @@ Contact your web host provider for help, or use an SMTP plugin to use a third pa
 * Corrected some html seen as invalid by http://validator.w3.org/
 * removed '<?=' and replaced with '<?php echo' in cscf_settings, thanks go to andrewbacon
 * Added notice to setting screen when JetPack's contact form is active
+* Fixed problem where 'Please enter a valid email address' was not translating in the 'confirm email address' input
 = 4.1.1 =
 * Fixed potential conflicts with themes that use bootstrap
 * Enabled internationalisation, this plugin will now work with multiple languages
@@ -185,6 +191,8 @@ Contact your web host provider for help, or use an SMTP plugin to use a third pa
 
 
 == Upgrade Notice ==
+= 4.1.3 =
+Form now submits via ajax!
 = 4.1.2 =
 Alternative shortcode, recaptcha internationalisation, Jetpack conflict warning notice
 = 4.1.1 =
