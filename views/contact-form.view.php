@@ -10,6 +10,14 @@
         <p><?php echo $message; ?></p>
         <form id="frmCSCF" name="frmCSCF" method="post">
             <?php wp_nonce_field('cscf_contact','cscf_nonce'); ?>
+            
+            <?php if (isset($contact->Errors['recaptcha'])) { ?>
+                <div class="control-group">
+                    <div class="controls">
+                    <p class="text-error"><?php echo $contact->Errors['recaptcha']; ?></p>
+                    </div>
+                </div>            
+            <?php } ?>
 
             <!--email address -->
             <div class="control-group<?php if (isset($contact->Errors['email'])) echo ' error'; ?>">

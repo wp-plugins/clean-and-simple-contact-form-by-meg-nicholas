@@ -50,8 +50,12 @@ jQuery(document).ready(function($) {
                                                         if (response.sent === false ) {
                                                             $messagediv=$div.find(".cscfMessageNotSent");
                                                         }
+                                                        
                                                         $messagediv.css('display','block');
-                                                        $messagediv.focus();
+                                                        
+                                                        if ( isScrolledIntoView($div) == false) {
+                                                            scrollTo($div.selector);
+                                                        }
                                                     }
 
                                                     else { 
@@ -76,3 +80,20 @@ jQuery(document).ready(function($) {
     });         
         
 });
+
+function scrollTo(id)
+{
+  // Scroll
+  jQuery('html,body').animate({scrollTop: jQuery(id).offset().top},'slow');
+}
+
+function isScrolledIntoView(elem)
+{
+    var docViewTop = jQuery(window).scrollTop();
+    var docViewBottom = docViewTop + jQuery(window).height();
+
+    var elemTop = jQuery(elem).offset().top;
+    var elemBottom = elemTop + jQuery(elem).height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
