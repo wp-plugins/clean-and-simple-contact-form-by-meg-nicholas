@@ -8,26 +8,26 @@ Requires at least: 3.3
 Tested up to: 3.5
 Stable tag: 4.1.2
 
-A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
+A clean and simple AJAX contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
 == Description ==
 A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
 *   **Clean**: all user inputs are stripped in order to avoid cross-site scripting (XSS) vulnerabilities. 
 
-*   **Simple**: Ajax enabled validation for immediate response and guidance for your users (can be switched off). 
+*   **Simple**: AJAX enabled validation and submission for immediate response and guidance for your users (can be switched off). 
 
 *   **Stylish**: Use the included stylesheet or switch it off and use your own for seamless integration with your website. 
 Uses **Twitter Bootstrap** classes.
 
 This is a straightforward contact form for your WordPress site. There is very minimal set-up 
-required. Simply install, activate, and then place the short code [cscf-contact-form] on your web page.
+required. Simply install, activate, and then place the short code **[cscf-contact-form]** on your web page.
 
 A standard set of input boxes are provided, these include Email Address, Name, Message and a nice big ‘Send Message’ button. 
 
 When your user has completed the form an email will be sent to you containing your user’s message. To reply simply click the ‘reply’ button on your email client. The email address used is the one you have set up in WordPress under ‘Settings’ -> ‘General’, so do check this is correct. 
 
-To help prevent spam, this plugin allows you to add a ‘reCAPTCHA’. This adds a picture of a couple of words to the bottom of the form. Your user must correctly type the words before the form can be submitted, and in so doing, prove that they are human.
+To help prevent spam, this plugin allows you to add a ‘**reCAPTCHA**’. This adds a picture of a couple of words to the bottom of the form. Your user must correctly type the words before the form can be submitted, and in so doing, prove that they are human.
 
 = Why Choose This Plugin? =
 Granted there are many plugins of this type in existence already. Why use this one in-particular? 
@@ -38,7 +38,7 @@ Here’s why:
 
 *   **Safe**. All input entered by your user  is stripped back to minimise as far as possible the likelihood of any malicious user attempting to inject a script into your website. You can turn on reCAPTCHA to avoid your form being abused by bots.
 
-*   **Ajax enabled**. You have the option to turn on ajax (client-side) validation which gives your users immediate guidance when completing the form without having to wait for the page to refresh.
+*   **Ajax enabled**. You have the option to turn on AJAX (client-side) validation and submission which gives your users an immediate response when completing the form without having to wait for the page to refresh.
 
 *   The form can **integrate seamlessly into your website**. Turn off the plugin’s default css style sheet so that your theme’s style sheet can be used instead.
 
@@ -48,7 +48,7 @@ Here’s why:
 
 *   Works with the **latest version of WordPress**.
 
-*   Written by an **experienced PHP programmer** and rigorously  tested as standard practice.
+*   Written by an **experienced PHP programmer**, the code is rock solid, safe, and rigorously  tested as standard practice.
 
 Hopefully this plugin will fulfil all your needs, if not [get in-touch](http://www.megnicholas.co.uk/contact-me "Get In Touch") and I will customise to your exact requirements.
 
@@ -67,18 +67,18 @@ To place the contact form on your page use the shortcode [cscf-contact-form]
 [More information on how to use the plugin.](http://www.megnicholas.co.uk/wordpress-plugins/clean-and-simple-contact-form/ "More Information")
 
 == How to Use ==
-Unless you want to change messages or add reCAPTCHA to your contact form then this plugin will work without any additional setup.
+Unless you want to change messages or add reCAPTCHA to your contact form then this plugin will work out of the box without any additional setup.
 
 Important: Check that you have an email address set-up in your WordPress ‘Settings’->’General’ page. This is the address that the plugin will use to send the contents of the contact form.
 
 To add the contact form to your WordPress website simply place the shortcode [cscf-contact-form] on the post or page that you wish the form to appear on.
 
-**If you have Jetpack plugin installed disable the contact form otherwise the wrong form will display.**
+**If you have Jetpack plugin installed disable the contact form otherwise the wrong form might display.**
 
-Goto [other notes](http://wordpress.org/plugins/clean-and-simple-contact-form-by-meg-nicholas/other_notes/ "How To Use") for information on how to use.
+[More information on how to use the plugin.](http://www.megnicholas.co.uk/wordpress-plugins/clean-and-simple-contact-form/ "More Information")
 
 == Additional Settings ==
-This plugin will work as is without any additional setup. You have the option to change the default messages that are displayed to your user and to add reCAPTCHA capabilities.
+This plugin will work out of the box without any additional setup. You have the option to change the default messages that are displayed to your user and to add reCAPTCHA capabilities.
 
 Go to the settings screen for the contact form plugin.
 
@@ -88,13 +88,13 @@ Here is a list of things that you can change
 
 *   **Message**: The message displayed to the user at the top of the contact form.
 
-*   **Message** Sent Heading: The message heading or title displayed to the user after the message has been sent.
+*   **Message Sent Heading**: The message heading or title displayed to the user after the message has been sent.
 
 *   **Message Sent Content**: The message content or body displayed to the user after the message has been sent.
 
 *   **Use this plugin’s default stylesheet**: The plugin comes with a default style sheet to make the form look nice for your user. Untick this if you want to use your theme’s stylesheet instead. The default stylesheet will simply not be linked in.
 
-*   **Use client side validation (Ajax)**: When ticked the contact form will be validated on the client giving your user instant feedback if they have filled the form in incorrectly. If you wish the form to be validated only on the server then untick this option.
+*   **Use client side validation (Ajax)**: When ticked the contact form will be validated and submitted on the client giving your user instant feedback if they have filled the form in incorrectly. If you wish the form to be validated and submitted only to the server then untick this option.
 
 *   **Use reCAPTCHA**: Tick this option if you wish your form to have a reCAPTCHA box. ReCAPTCHA helps to avoid spam bots using your form by checking that the form filler is actually a real person. To use reCAPTCHA you will need to get a some special keys from google https://www.google.com/recaptcha/admin/create. Once you have your keys enter them into the Public key and Private key boxes
 
@@ -124,6 +124,12 @@ I am a freelance WordPress Developer.
 [Hire me for all your Wordpress needs](http://www.megnicholas.co.uk "Hire Me").
 
 == Frequently Asked Questions ==
+= I get a message to say that the message could not be sent =
+
+If you get this message then you have a general problem with email on your server. This plugin uses Wordpress's send mail function.
+So a problem sending mail from this plugin indicates that Wordpress as a whole cannot send email.
+Contact your web host provider for help, or use an SMTP plugin to use a third party email service.
+
 = Why is a different contact form displayed? =
 
 You may have a conflict with another plugin. Either deactivate the other contact form plugin, if you don't need it, or use
@@ -131,10 +137,16 @@ this alternative short code on your webpage - `[cscf-contact-form]`.
 This problem often occurs when Jetpack plugin is installed.
 
 = How do I display the contact form on my page/post? =
+
 To put the contact form on your page, add the text:
 `[cscf-contact-form]`
 
 The contact form will appear when you view the page.
+
+= When I use the style sheet that comes with the plugin my theme is effected =
+
+It is impossible to test this plugin with all themes. Styling incompatibilities can occur. In this case, switch off the default stylesheet on the settings
+screen so you can add your own styles to your theme's stylesheet.
 
 = Can I have this plugin in my own language? =
 
@@ -143,14 +155,7 @@ If you are not sure how to go about doing this [get in touch](http://www.megnich
 
 = How do I change the text box sizes? = 
 
-Currently it is not possible to do this.
-
-= I get a message to say that the message could not be sent =
-
-If you get this message then you have a general problem with email on your server. This plugin uses Wordpress's send mail function.
-So a problem sending mail from this plugin indicates that Wordpress as a whole cannot send email.
-Contact your web host provider for help, or use an SMTP plugin to use a third party email service.
-
+To do this you will need to add some css changes to your theme.
 
 == Changelog ==
 = 4.1.3 =
@@ -158,6 +163,7 @@ Contact your web host provider for help, or use an SMTP plugin to use a third pa
 * Added more translation files
 * Forms now submit via ajax.
 * Upgraded jquery-validate.js to 1.11. Removed jquery metadata plugin, form validation is now built with data attributes instead of json in classes.
+* Improved view html.
 = 4.1.2 =
 * Added some FAQs
 * Added alternative shortcode [cscf-contact-form] for use when conflicts could occur.
