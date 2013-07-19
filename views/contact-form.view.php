@@ -74,6 +74,11 @@
 
             <!-- recaptcha -->
             <?php if ( $contact->RecaptchaPublicKey<>'' && $contact->RecaptchaPrivateKey<>'') { ?>
+                <script type="text/javascript">
+                 var RecaptchaOptions = {
+                    theme : '<?php echo cscf_PluginSettings::Theme(); ?>'
+                 };
+                 </script>            
                 <div class="control-group<?php 
                     if (isset($contact->Errors['recaptcha'])) echo ' error'; ?>">
                         <div id="recaptcha_div" class="controls">
