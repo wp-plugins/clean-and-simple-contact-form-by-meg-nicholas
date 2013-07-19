@@ -1,15 +1,15 @@
 jQuery(document).ready(function($) {
     
-    var $form = $("#frmCSCF");
+    var $div = $("#cscf");
     
-    $('#recaptcha_response_field').focus(function() {
+    var $form = $div.find("#frmCSCF");
+    
+    $form.find("#recaptcha_response_field").focus(function() {
 
-    $errele = $form.find("div[for='cscf_recaptcha']");
-    $errele.html('');
+        $errele = $form.find("div[for='cscf_recaptcha']");
+        $errele.html('');
         
     });
-
-    
     
     $form.validate({ 
 
@@ -26,7 +26,10 @@ jQuery(document).ready(function($) {
 
         });
         
-    $form.submit(function (event) {
+  $form.submit(function (event) {
+      
+        $button = $(this).find("button");
+        $button.attr("disabled","disabled");
         
         event.preventDefault();
 
@@ -40,17 +43,23 @@ jQuery(document).ready(function($) {
             data : $($form).serialize() + "&action=cscf-submitform", 
             success: function(response,strText) {
                                                     if (response.valid === true) { 
-                                                        $($form).html(response.sentmsg); 
+                                                        //show sent message div
+                                                        $formdiv=$div.find(".cscfForm");
+                                                        $formdiv.css('display','none');
+                                                        $messagediv=$div.find(".cscfMessageSent");
+                                                        if (response.sent === false ) {
+                                                            $messagediv=$div.find(".cscfMessageNotSent");
+                                                        }
+                                                        $messagediv.css('display','block');
+                                                        $messagediv.focus();
                                                     }
 
                                                     else { 
-
                                                         $.each(response.errorlist, function(name, value) {
-                                                            $errele = $($form).find("div[for='cscf_" + name +"']");
+                                                            $errele = $form.find("div[for='cscf_" + name +"']");
                                                             $errele.html(value);
-                                                            $($errele).closest('.control-group').removeClass('success').addClass('error');
+                                                            $errele.closest('.control-group').removeClass('success').addClass('error');
                                                         });
-
                                                     }
                                                  },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
@@ -63,6 +72,7 @@ jQuery(document).ready(function($) {
             }); 
         
         };
-    });  
-    
+        $button.removeAttr("disabled");
+    });         
+        
 });

@@ -34,11 +34,18 @@ function cscf_ContactForm()
     if ( cscf_PluginSettings::LoadStyleSheet() == true)
          wp_enqueue_style('cscf-bootstrap');
 
+    $messageSentView = new CSCF_View('message-sent'); 
+    $messageSentView->Set('heading',cscf_PluginSettings::SentMessageHeading());
+    $messageSentView->Set('message',cscf_PluginSettings::SentMessageBody());
+    
     $view = new CSCF_View('contact-form'); 
-
     $view->Set('contact',$contact);
     $view->Set('message',cscf_PluginSettings::Message());
     $view->Set('version', CSCF_VERSION_NUM);
+
+    
+    $view->Set('messageSentView',$messageSentView);
+    $view->Set('messageNotSentView',new CSCF_View('message-not-sent'));
     
     return $view->Render();
 

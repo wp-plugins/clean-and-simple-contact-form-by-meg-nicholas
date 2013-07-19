@@ -6,29 +6,14 @@ add_action("wp_ajax_nopriv_cscf-submitform", "cscfsubmitform");
 function cscfsubmitform() {
     
     $contact = new cscf_Contact;
+    $result['sent'] = false;
     
-    if ($contact->IsValid()) 
-    {
-       
-        if ( $contact->SendMail() ) 
-        {
-            $view = new CSCF_View('message-sent'); 
-            $view->Set('heading',cscf_PluginSettings::SentMessageHeading());
-            $view->Set('message',cscf_PluginSettings::SentMessageBody());
-        }
-        else
-        {
-            $view = new CSCF_View('message-not-sent');
-        }
-        $result['valid']=true;
-        $result['sentmsg'] = $view->Render();
-        
-    }
-    else {
-        $result['valid']=false;
-        $result['errorlist'] = $contact->Errors;
-    }
+    $result['valid'] = $contact->IsValid();
+    $result['errorlist'] = $contact->Errors;
     
+    if ($result['valid']) $result['sent'] = $contact->SendMail();
+    
+    header('Content-type: application/json');
 	echo json_encode($result);
     die();
 }
