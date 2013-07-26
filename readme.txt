@@ -153,6 +153,9 @@ Contact your web host provider for help, or use an SMTP plugin to use a third pa
 
 
 == Changelog ==
+= HotFix01-4.1.2
+* Only include recaptcha library if not already included. This enables plugin to work with other
+plugins that also use the library
 = 4.1.2 =
 * Added some FAQs
 * Added alternative shortcode [cscf-contact-form] for use when conflicts could occur.
