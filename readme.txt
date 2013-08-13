@@ -164,6 +164,7 @@ To do this you will need to add some css changes to your theme.
 * Forms now submit via ajax.
 * Upgraded jquery-validate.js to 1.11. Removed jquery metadata plugin, form validation is now built with data attributes instead of json in classes.
 * Improved view html.
+* Added Dutch and Armenian translations
 = 4.1.2 =
 * Added some FAQs
 * Added alternative shortcode [cscf-contact-form] for use when conflicts could occur.
