@@ -158,6 +158,9 @@ If you are not sure how to go about doing this [get in touch](http://www.megnich
 To do this you will need to add some css changes to your theme.
 
 == Changelog ==
+= 4.1.4 = 
+* Added Slovak translation file - thanks to Peter Gašparík
+* Added Catalan translation file - thanks to Llorenç
 = 4.1.3 =
 * Fixed escaped characters.
 * Added more translation files
@@ -198,6 +201,8 @@ To do this you will need to add some css changes to your theme.
 
 
 == Upgrade Notice ==
+= 4.1.4 =
+New translations - Slovak and Catalan
 = 4.1.3 =
 Form now submits via ajax!
 = 4.1.2 =
