@@ -158,6 +158,9 @@ If you are not sure how to go about doing this [get in touch](http://www.megnich
 To do this you will need to add some css changes to your theme.
 
 == Changelog ==
+* 4.1.5
+* Removed all carriage returns from views to avoid problems with wptexturize
+* Fixed typo in Dutch translation.
 = 4.1.4 = 
 * Added Slovak translation file - thanks to Peter Gašparík
 * Added Catalan translation file - thanks to Llorenç
@@ -201,6 +204,8 @@ To do this you will need to add some css changes to your theme.
 
 
 == Upgrade Notice ==
+= 4.1.5 = 
+Works with themes that pre-process the html.
 = 4.1.4 =
 New translations - Slovak and Catalan
 = 4.1.3 =
