@@ -74,7 +74,9 @@ class cscf_settings
                     jQuery('#recaptcha_public_key').attr('readonly', ! this.checked);
                     jQuery('#recaptcha_private_key').attr('readonly', ! this.checked);
                 });            
-
+                jQuery('#override-from').change(function() {
+                    jQuery('#from-email').attr('readonly', ! this.checked);
+                });  
         </script>
 	</div>
 	<?php
@@ -124,6 +126,18 @@ class cscf_settings
         ) , 'contact-form-settings', 'section_message', array(
             'recipient_email'
         ));
+        add_settings_field('override-from', __('Override \'From\' Address :','cleanandsimple'), array(
+            $this,
+            'create_fields'
+        ) , 'contact-form-settings', 'section_message', array(
+            'override-from'
+        ));     
+        add_settings_field('from-email', __('\'From\' Email Address :','cleanandsimple'), array(
+            $this,
+            'create_fields'
+        ) , 'contact-form-settings', 'section_message', array(
+            'from-email'
+        ));          
         add_settings_field('subject', __('Email Subject :','cleanandsimple'), array(
             $this,
             'create_fields'
@@ -214,8 +228,23 @@ class cscf_settings
             $options['recipient_email']=$input['recipient_email'];
         }
         
+        //override-from
+        if (isset($input['override-from'])) 
+            $options['override-from'] = true;
+        else
+            unset($options['override-from']);
+        
+        //from
+        if (!filter_var($input['from-email'], FILTER_VALIDATE_EMAIL)) {
+            unset($options['from-email']);
+            unset($options['override-from']);
+        }
+        else {
+            $options['from-email']=$input['from-email'];
+        }        
+        
         //subject
-        $options['subject'] = trim(filter_var($input['subject'], FILTER_SANITIZE_STRING));
+            $options['subject'] = trim(filter_var($input['subject'], FILTER_SANITIZE_STRING));
         if ( empty($options['subject']) ) {
             unset($options['subject']);
         }
@@ -270,6 +299,14 @@ class cscf_settings
         break;
         case 'recipient_email':
 ?><input type="text" size="60" id="recipient_email" name="array_key[recipient_email]" value="<?php echo cscf_PluginSettings::RecipientEmail(); ?>" /><?php
+        break;
+        case 'override-from':
+            $checked = cscf_PluginSettings::OverrideFrom() == true ? "checked" : "";
+?><input type="checkbox" <?php echo $checked; ?>  id="override-from" name="array_key[override-from]"><?php
+        break;
+        case 'from-email':
+        $disabled = cscf_PluginSettings::OverrideFrom() == false ? "readonly" : "";
+?><input <?php echo $disabled; ?> type="text" size="60" id="from-email" name="array_key[from-email]" value="<?php echo cscf_PluginSettings::FromEmail(); ?>" /><?php
         break;
         case 'subject':
 ?><input type="text" size="60" id="subject" name="array_key[subject]" value="<?php echo cscf_PluginSettings::Subject(); ?>" /><?php

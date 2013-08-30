@@ -104,9 +104,11 @@ Here is a list of things that you can change
 
 *   **reCAPTCHA Theme**: Here you can change the reCAPTCHA box theme so that it fits with the style of your website.
 
-*   **!NEW! Recipient Email**: The email address where you would like all messages to be sent. This will default to the email address you have specified under 'E-Mail Address' in your WordPress General Settings. If you want your mail sent to a different address then enter it here.
+*   **Recipient Email**: The email address where you would like all messages to be sent. This will default to the email address you have specified under 'E-Mail Address' in your WordPress General Settings. If you want your mail sent to a different address then enter it here.
 
-*   **!NEW! Email Subject**: This is the email subject that will appear on all messages. If you would like to set it to something different then enter it here.
+*   **Email Subject**: This is the email subject that will appear on all messages. If you would like to set it to something different then enter it here.
+
+*   **!NEW! Override 'From' Address**: If you tick this and then fill in the 'From Address:' box then all email will be sent from the given address NOT from the email address given by the form filler.
 
 == Screenshots ==
 1. Contact Form With reCAPTCHA
@@ -129,6 +131,13 @@ I am a freelance WordPress Developer.
 If you get this message then you have a general problem with email on your server. This plugin uses Wordpress's send mail function.
 So a problem sending mail from this plugin indicates that Wordpress as a whole cannot send email.
 Contact your web host provider for help, or use an SMTP plugin to use a third party email service.
+
+= I don't receive the email =
+
+* Check the recipient email on your settings screen, is it correct?
+* Check in your spam or junk mail folder
+* For Gmail check in 'All Mail', the email might have gone straight to archive
+* Try overriding the 'From' email address in the settings screen. Use an email address you own or is from your own domain
 
 = Why is a different contact form displayed? =
 
@@ -158,7 +167,11 @@ If you are not sure how to go about doing this [get in touch](http://www.megnich
 To do this you will need to add some css changes to your theme.
 
 == Changelog ==
-* 4.1.5
+= 4.1.6 =
+* Added ability to specify a 'from' address. When supplied the email will come from that address instead of the form filler's email address.
+* Changed type of email input boxes to "email"
+* Added Turkish translation thanks to Abdullah Manaz http://manaz.net
+= 4.1.5 =
 * Removed all carriage returns from views to avoid problems with wptexturize
 * Fixed typo in Dutch translation.
 = 4.1.4 = 
@@ -204,6 +217,8 @@ To do this you will need to add some css changes to your theme.
 
 
 == Upgrade Notice ==
+= 4.1.6 =
+Ability to specify a 'From' address. This email will be used to send the mail instead of the form filler's email address.
 = 4.1.5 = 
 Works with themes that pre-process the html.
 = 4.1.4 =

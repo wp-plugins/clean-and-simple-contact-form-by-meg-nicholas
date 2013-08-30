@@ -84,6 +84,23 @@ class cscf_PluginSettings
     }
     
     static
+    function FromEmail() 
+    {
+        $options = get_option('cscf_options');
+        
+        return isset($options['from-email']) ? $options['from-email'] : "";
+    }  
+    
+    static
+    function OverrideFrom() {
+
+        $options = get_option('cscf_options');
+        
+        return isset($options['override-from']) ? true : false;
+
+    }
+    
+    static
     function IsJetPackContactFormEnabled() {
         //check for jetpack plugin
         if ( ! is_plugin_active('jetpack/jetpack.php') )
