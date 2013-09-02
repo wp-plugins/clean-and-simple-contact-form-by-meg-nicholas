@@ -190,7 +190,7 @@ msgstr "Uw Emailadres"
 #: views/contact-form-with-recaptcha.view.php:41
 #: views/contact-form.view.php:22
 msgid "Confirm Email Address:"
-msgstr "Bevestig Emailadres"
+msgstr "Bevestig Emailadres:"
 
 #: views/contact-form-with-recaptcha.view.php:43
 #: views/contact-form.view.php:24

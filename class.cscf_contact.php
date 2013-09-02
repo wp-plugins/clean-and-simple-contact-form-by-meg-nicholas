@@ -90,14 +90,24 @@ class cscf_Contact
         
         $filters = new cscf_Filters;
         
-        $filters->fromEmail=$this->Email;
+        if ( cscf_PluginSettings::OverrideFrom() ) {
+            $filters->fromEmail=cscf_PluginSettings::FromEmail();
+        }
+        else {
+            $filters->fromEmail=$this->Email;
+        }
+
         $filters->fromName=$this->Name;
         
         //add filters
         $filters->add('wp_mail_from');
         $filters->add('wp_mail_from_name');
+        
+        $message="From: " . $this->Name . "\n\n";
+        $message.="Email: " . $this->Email . "\n\n";
+        $message.="Message:\n\n" . $this->Message;
        
-        $result = (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), stripslashes($this->Message)));
+        $result = (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), stripslashes($message)));
         
         //remove filters (play nice)
         $filters->remove('wp_mail_from');

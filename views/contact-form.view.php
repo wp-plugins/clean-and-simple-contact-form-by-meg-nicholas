@@ -28,7 +28,7 @@
                     data-rule-email="true"
                     data-msg-required="<?php _e('Please give your email address.','cleanandsimple');?>"
                     data-msg-email="<?php _e('Please enter a valid email address.','cleanandsimple');?>"
-                    type="text" id="cscf_email" name="cscf[email]" 
+                    type="email" id="cscf_email" name="cscf[email]" 
                     value="<?php echo $contact->Email; ?>" 
                     placeholder="<?php _e('Your Email Address','cleanandsimple');?>"/>
                     <span class="help-inline"><?php if (isset($contact->Errors['email'])) echo $contact->Errors['email']; ?></span>
@@ -46,7 +46,7 @@
                     data-msg-required="<?php _e('Please enter the same email address again.','cleanandsimple');?>"
                     data-msg-email="<?php _e('Please enter a valid email address.','cleanandsimple');?>"
                     data-msg-equalTo="<?php _e('Please enter the same email address again.','cleanandsimple');?>"
-                    type="text" id="cscf_confirm-email" name="cscf[confirm-email]" 
+                    type="email" id="cscf_confirm-email" name="cscf[confirm-email]" 
                     value="<?php echo $contact->ConfirmEmail; ?>" 
                     placeholder="<?php _e('Confirm Your Email Address','cleanandsimple');?>"/>
                     <span class="help-inline"><?php if (isset($contact->Errors['confirm-email'])) echo $contact->Errors['confirm-email']; ?></span>

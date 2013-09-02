@@ -43,8 +43,7 @@ class CSCF_View
         extract($this->vars, EXTR_SKIP);
         ob_start();
         include $this->view;
-        
-        return ob_get_clean();
+        return str_replace(array("\n", "\r"), "", ob_get_clean());
     }
 }    
 
