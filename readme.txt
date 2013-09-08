@@ -167,6 +167,10 @@ If you are not sure how to go about doing this [get in touch](http://www.megnich
 To do this you will need to add some css changes to your theme.
 
 == Changelog ==
+* Added a note about the short code to use on the settings screen.
+* Added Estonian Translation thanks to [Marko Punnar](http://aretaja.org "Marko Punnar")
+* Added Japanese language thanks to Nikhil Khullar
+* Updated Turkish translation thanks again to Abdullah Manaz http://manaz.net
 = 4.1.6 =
 * Added ability to specify a 'from' address. When supplied the email will come from that address instead of the form filler's email address.
 * Changed type of email input boxes to "email"
@@ -217,6 +221,8 @@ To do this you will need to add some css changes to your theme.
 
 
 == Upgrade Notice ==
+= 4.1.7
+More translations. A helpful note about the short code to use has been put on the settings screen
 = 4.1.6 =
 Ability to specify a 'From' address. This email will be used to send the mail instead of the form filler's email address.
 = 4.1.5 = 
