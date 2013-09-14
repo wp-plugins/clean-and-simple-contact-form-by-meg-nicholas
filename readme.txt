@@ -5,8 +5,8 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: simple, contact, form, contact button, contact form, contact form plugin, contacts, contacts form plugin, contact me, feedback form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
-Tested up to: 3.6
-Stable tag: 4.1.6
+Tested up to: 3.6.1
+Stable tag: 4.1.7
 
 A clean and simple AJAX contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
@@ -167,6 +167,15 @@ If you are not sure how to go about doing this [get in touch](http://www.megnich
 To do this you will need to add some css changes to your theme.
 
 == Changelog ==
+= 4.1.8 =
+* Added Russian Translation thanks to Oleg
+* Correct character encoding in Estonian translation thanks to [Marko Punnar](http://aretaja.org "Marko Punnar")
+* Correct some Spanish translation errors thanks to rowanda
+= 4.1.7 = 
+* Added a note about the short code to use on the settings screen.
+* Added Estonian Translation thanks to [Marko Punnar](http://aretaja.org "Marko Punnar")
+* Added Japanese language thanks to Nikhil Khullar
+* Updated Turkish translation thanks again to Abdullah Manaz http://manaz.net
 = 4.1.6 =
 * Added ability to specify a 'from' address. When supplied the email will come from that address instead of the form filler's email address.
 * Changed type of email input boxes to "email"
@@ -217,6 +226,10 @@ To do this you will need to add some css changes to your theme.
 
 
 == Upgrade Notice ==
+= 4.1.8 =
+Added Russian translation and some modifications to Estonian and Spanish translations
+= 4.1.7
+More translations. A helpful note about the short code to use has been put on the settings screen
 = 4.1.6 =
 Ability to specify a 'From' address. This email will be used to send the mail instead of the form filler's email address.
 = 4.1.5 = 
