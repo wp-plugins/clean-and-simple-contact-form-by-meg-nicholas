@@ -167,6 +167,10 @@ If you are not sure how to go about doing this [get in touch](http://www.megnich
 To do this you will need to add some css changes to your theme.
 
 == Changelog ==
+= 4.1.9 =
+* Added support for Bootstrap 3.0.0. Plugin is still compatible with Bootstrap 2.3.2, but if your theme uses this version 
+please do not use the plugin's default style sheet (uncheck the box in the settings screen)
+[more information here](http://www.megnicholas.co.uk/articles/version-4-1-9-supports-bootstrap-3/ "more information").
 = 4.1.8 =
 * Added Russian Translation thanks to Oleg
 * Correct character encoding in Estonian translation thanks to [Marko Punnar](http://aretaja.org "Marko Punnar")
@@ -226,6 +230,8 @@ To do this you will need to add some css changes to your theme.
 
 
 == Upgrade Notice ==
+= 4.1.9 =
+Support for [Bootstrap 3](http://www.megnicholas.co.uk/articles/version-4-1-9-supports-bootstrap-3/ "More information on 4.1.9")
 = 4.1.8 =
 Added Russian translation and some modifications to Estonian and Spanish translations
 = 4.1.7

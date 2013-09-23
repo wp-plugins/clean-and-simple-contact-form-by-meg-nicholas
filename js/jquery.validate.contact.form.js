@@ -13,71 +13,72 @@ jQuery(document).ready(function($) {
     
     $form.validate({ 
 
-            errorElement: 'span',
-            errorClass: 'help-inline',
-            
-            highlight: function(element) {
-                                $(element).closest('.control-group').removeClass('success').addClass('error');
-                                },
-            success: function(element) {
-                                element.closest('.control-group').removeClass('error').addClass('success');
-            } 
+        errorElement: "span",
 
-
-        });
+        highlight: function(label, errorClass, validClass) {
+                               $(label).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+                               $(label).closest('.control-group').removeClass('success').addClass('error'); // support for bootstrap 2
+                               
+                       },
+        unhighlight: function(label, errorClass, validClass) {
+               $(label).closest('.form-group').removeClass('has-error').addClass('has-success');
+               $(label).closest('.control-group').removeClass('error').addClass('success'); // support for bootstrap 2
+        }
+     });
         
-  $form.submit(function (event) {
-      
-        $button = $(this).find("button");
-        $button.attr("disabled","disabled");
-        
-        event.preventDefault();
+    $form.submit(function (event) {
 
-        if ($form.validate().valid() ) {
-        
-            $.ajax({
-            type : "post",
-            dataType : "json",
-            cache: false,
-            url : cscfvars.ajaxurl,
-            data : $($form).serialize() + "&action=cscf-submitform", 
-            success: function(response,strText) {
-                                                    if (response.valid === true) { 
-                                                        //show sent message div
-                                                        $formdiv=$div.find(".cscfForm");
-                                                        $formdiv.css('display','none');
-                                                        $messagediv=$div.find(".cscfMessageSent");
-                                                        if (response.sent === false ) {
-                                                            $messagediv=$div.find(".cscfMessageNotSent");
-                                                        }
-                                                        
-                                                        $messagediv.css('display','block');
-                                                        
-                                                        if ( isScrolledIntoView($div) == false) {
-                                                            scrollTo($div.selector);
-                                                        }
-                                                    }
+          $button = $(this).find("button");
+          $button.attr("disabled","disabled");
 
-                                                    else { 
-                                                        $.each(response.errorlist, function(name, value) {
-                                                            $errele = $form.find("div[for='cscf_" + name +"']");
-                                                            $errele.html(value);
-                                                            $errele.closest('.control-group').removeClass('success').addClass('error');
-                                                        });
-                                                    }
-                                                 },
-            error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                    if (window.console) {
-                        console.log("Status: " + textStatus + "Error: " + errorThrown + "Response: " + XMLHttpRequest.responseText);
-                    }
-                    
-                } 													
+          event.preventDefault();
 
-            }); 
-        
-        };
-        $button.removeAttr("disabled");
-    });         
+          if ($form.validate().valid() ) {
+
+              $.ajax({
+              type : "post",
+              dataType : "json",
+              cache: false,
+              url : cscfvars.ajaxurl,
+              data : $($form).serialize() + "&action=cscf-submitform", 
+              success: function(response,strText) {
+                                                      if (response.valid === true) { 
+                                                          //show sent message div
+                                                          $formdiv=$div.find(".cscfForm");
+                                                          $formdiv.css('display','none');
+                                                          $messagediv=$div.find(".cscfMessageSent");
+                                                          if (response.sent === false ) {
+                                                              $messagediv=$div.find(".cscfMessageNotSent");
+                                                          }
+
+                                                          $messagediv.css('display','block');
+
+                                                          if ( isScrolledIntoView($div) == false) {
+                                                              scrollTo($div.selector);
+                                                          }
+                                                      }
+
+                                                      else { 
+                                                          $.each(response.errorlist, function(name, value) {
+                                                              $errele = $form.find("div[for='cscf_" + name +"']");
+                                                              $errele.html(value);
+                                                              $errele.closest('.form-group').removeClass('has-success').addClass('has-error');
+                                                              $errele.closest('.control-group').removeClass('success').addClass('error'); // support for bootstrap 2
+                                                          });
+                                                      }
+                                                   },
+              error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                      if (window.console) {
+                          console.log("Status: " + textStatus + "Error: " + errorThrown + "Response: " + XMLHttpRequest.responseText);
+                      }
+
+                  } 													
+
+              }); 
+
+          };
+          $button.removeAttr("disabled");
+      });         
         
 });
 
