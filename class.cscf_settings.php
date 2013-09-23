@@ -35,11 +35,33 @@ class cscf_settings
     public 
     function create_admin_page() 
     {
-?>
-	<div class="wrap">
-	    <?php screen_icon(); ?>
-	    <h2><?php _e('Clean and Simple Contact Form Settings','cleanandsimple');?></h2>
+?>  
+	
+        
+            
+	<?php screen_icon(); ?><h2><?php _e('Clean and Simple Contact Form Settings','cleanandsimple');?></h2>
         <hr/>
+        
+        <div style="float:right;position: relative;width:250px;">
+            
+        <div style="border:1px solid;padding:5px;margin-bottom: 8px;text-align:center;">
+                <h3><?php _e("Donate $10, $20 or $50!");?></h3>
+                <div>
+                    <p><?php _e("If you like this plugin, please donate to support development and maintenance of:"); ?></p> <h3><?php _e("Clean and Simple Contact Form!"); ?></h3>
+
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="ALAGLZ3APUZMW">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+
+                </div>					
+        </div>         
+            
+            <a title="ManageWP" href="http://managewp.com/?utm_source=clean_simple_form&utm_medium=Banner&utm_content=mwp250_2&utm_campaign=Plugins"><img alt="ManageWP - Manage all your WordPress blogs from one Dashboard"src="<?php echo CSCF_PLUGIN_URL; ?>/images/managewp.png" width="250px" height="250px"/></a>
+        </div>
+        <div style="float:left;">
         <p><?php _e('You are using version','cleanandsimple'); ?> <?php echo CSCF_VERSION_NUM;?></p>
         <p><?php _e('If you find this plugin useful please consider','cleanandsimple'); ?> 
             <a  target="_blank"
@@ -55,6 +77,8 @@ class cscf_settings
                &nbsp; <a target="_blank" href="http://www.megnicholas.co.uk/articles/clean-and-simple-contact-form-and-jetpack/"><?php _e('Read More');?></a>
            </p>
         <?php } ?>
+           
+        <p class="howto"><?php _e("Please Note: To add the contact form to your page please add the text"); ?> <code>[cscf-contact-form]</code> <?php _e("to your post or page."); ?></p>
         
         <form method="post" action="options.php">
 	    <?php
@@ -67,7 +91,7 @@ class cscf_settings
         submit_button();
         ?>
 	    </form>
-
+        </div>
         <script>            
                 jQuery('#use_recaptcha').change(function() {
                     jQuery('#theme').attr('disabled', ! this.checked);
@@ -78,7 +102,8 @@ class cscf_settings
                     jQuery('#from-email').attr('readonly', ! this.checked);
                 });  
         </script>
-	</div>
+  
+        
 	<?php
     }
     public 
