@@ -196,7 +196,8 @@ please do not use the plugin's default style sheet (uncheck the box in the setti
 * Forms now submit via ajax.
 * Upgraded jquery-validate.js to 1.11. Removed jquery metadata plugin, form validation is now built with data attributes instead of json in classes.
 * Improved view html.
-* Added Dutch and Armenian translations
+* Added translations: Dutch thanks to Daniel Tetteroo, Armenian thanks to [Artak Kolyan](http://ablog.gratun.am "Artak Kolyan"), 
+Polish thanks to Patryk Peas
 = 4.1.2 =
 * Added some FAQs
 * Added alternative shortcode [cscf-contact-form] for use when conflicts could occur.
