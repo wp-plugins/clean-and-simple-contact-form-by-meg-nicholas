@@ -27,7 +27,7 @@ class cscf_settings
     {
 
         // This page will be under "Settings"
-        add_options_page('Settings Admin', 'Contact Form', 'manage_options', 'contact-form-settings', array(
+        add_options_page(__('Contact Form Settings','cleanandsimple'), __('Contact Form','cleanandsimple'), 'manage_options', 'contact-form-settings', array(
             $this,
             'create_admin_page'
         ));
@@ -45,9 +45,9 @@ class cscf_settings
         <div style="float:right;position: relative;width:250px;">
             
         <div style="border:1px solid;padding:5px;margin-bottom: 8px;text-align:center;">
-                <h3><?php _e("Donate $10, $20 or $50!");?></h3>
+                <h3><?php _e("Donate $10, $20 or $50!","cleanandsimple");?></h3>
                 <div>
-                    <p><?php _e("If you like this plugin, please donate to support development and maintenance of:"); ?></p> <h3><?php _e("Clean and Simple Contact Form!"); ?></h3>
+                    <p><?php _e("If you like this plugin, please donate to support development and maintenance of:","cleanandsimple"); ?></p> <h3><?php _e("Clean and Simple Contact Form!","cleanandsimple"); ?></h3>
 
                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                         <input type="hidden" name="cmd" value="_s-xclick">
@@ -74,11 +74,11 @@ class cscf_settings
         <?php if ( cscf_PluginSettings::IsJetPackContactFormEnabled() ) { ?>
            <p class="highlight"> 
                <?php _e('NOTICE: You have JetPack\'s Contact Form enabled please deactivate it or use the shortcode [cscf-contact-form] instead.','cleanandsimple'); ?> 
-               &nbsp; <a target="_blank" href="http://www.megnicholas.co.uk/articles/clean-and-simple-contact-form-and-jetpack/"><?php _e('Read More');?></a>
+               &nbsp; <a target="_blank" href="http://www.megnicholas.co.uk/articles/clean-and-simple-contact-form-and-jetpack/"><?php _e('Read More','cleanandsimple');?></a>
            </p>
         <?php } ?>
            
-        <p class="howto"><?php _e("Please Note: To add the contact form to your page please add the text"); ?> <code>[cscf-contact-form]</code> <?php _e("to your post or page."); ?></p>
+        <p class="howto"><?php _e("Please Note: To add the contact form to your page please add the text","cleanandsimple"); ?> <code>[cscf-contact-form]</code> <?php _e("to your post or page.","cleanandsimple"); ?></p>
         
         <form method="post" action="options.php">
 	    <?php

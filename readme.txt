@@ -152,7 +152,7 @@ To put the contact form on your page, add the text:
 
 The contact form will appear when you view the page.
 
-= When I use the style sheet that comes with the plugin my theme is effected =
+= When I use the style sheet that comes with the plugin my theme is affected =
 
 It is impossible to test this plugin with all themes. Styling incompatibilities can occur. In this case, switch off the default stylesheet on the settings
 screen so you can add your own styles to your theme's stylesheet.
@@ -164,9 +164,24 @@ If you are not sure how to go about doing this [get in touch](http://www.megnich
 
 = How do I change the text box sizes? = 
 
-To do this you will need to add some css changes to your theme.
+The plugin now uses Bootstrap 3. The text box widths now use up 100% of the available width. 
+This makes the form responsive to all types of media. If you want to have a fixed width for the form you can put some styling around the shortcode:
+`<div style="width:600px;">[cscf-contact-form]</div>`
+
+= Can I have multiple forms? =
+
+Currently you may only have one contact form per page. You CAN however put the contact form on more than one page using the same shortcode.
+Note that making changes to the settings will affect all implementations of the plugin across your site.
 
 == Changelog ==
+= 4.2.0 =
+* Updated Turkish translations thanks again to [Abdullah Manaz](http://manaz.net "Abdullah Manaz")
+* Fixed a problem where certain texts on the settings screen were not being translated 
+thanks to [Abdullah Manaz](http://manaz.net "Abdullah Manaz") again for finding this
+* Updates to FAQ section
+* The settings link on the plugin page may now be translated
+* The text 'Contact Form' on the admin screen menu may now be translated
+* Added Greek translations thanks to Georgios Diamantopoulos
 = 4.1.9 =
 * Added support for Bootstrap 3.0.0. Plugin is still compatible with Bootstrap 2.3.2, but if your theme uses this version 
 please do not use the plugin's default style sheet (uncheck the box in the settings screen)
@@ -231,6 +246,8 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.2.0 =
+Translation and documentation updates
 = 4.1.9 =
 Support for [Bootstrap 3](http://www.megnicholas.co.uk/articles/version-4-1-9-supports-bootstrap-3/ "More information on 4.1.9")
 = 4.1.8 =

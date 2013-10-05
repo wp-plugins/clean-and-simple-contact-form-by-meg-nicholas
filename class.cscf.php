@@ -103,7 +103,7 @@ class cscf
             /*
              * Insert the link at the beginning
             */
-            $in = '<a href="options-general.php?page=contact-form-settings">' . __('Settings', 'contact-form') . '</a>';
+            $in = '<a href="options-general.php?page=contact-form-settings">' . __('Settings', 'cleanandsimple') . '</a>';
             array_unshift($links, $in);
 
             /*
