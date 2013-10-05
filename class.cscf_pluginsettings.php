@@ -114,5 +114,10 @@ class cscf_PluginSettings
         return in_array( 'contact-form', JetPack::get_active_modules() );
             
     }
+    
+    static
+    function InputIcons() {
+        return false;
+    }
 }
 

@@ -54,7 +54,7 @@ class cscf
             array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
         wp_register_style('cscf-bootstrap', CSCF_PLUGIN_URL . '/css/bootstrap-forms.min.css', 
-            null, '2.3.1');
+            null, CSCF_VERSION_NUM);
         
     }
     
@@ -87,7 +87,7 @@ class cscf
             $updated = true;
         }
         
-        if ($updated) update_option('cscf_options', $option);
+        if ($updated) update_option('cscf_options', $options);
     }
 
     /*
@@ -103,7 +103,7 @@ class cscf
             /*
              * Insert the link at the beginning
             */
-            $in = '<a href="options-general.php?page=contact-form-settings">' . __('Settings', 'contact-form') . '</a>';
+            $in = '<a href="options-general.php?page=contact-form-settings">' . __('Settings', 'cleanandsimple') . '</a>';
             array_unshift($links, $in);
 
             /*
