@@ -174,6 +174,11 @@ Currently you may only have one contact form per page. You CAN however put the c
 Note that making changes to the settings will affect all implementations of the plugin across your site.
 
 == Changelog ==
+= 4.2.1 =
+* Fixed potential conflict with other themes or plugins that use Google reCAPTCHA. reCAPTCHA library is not loaded if it already loaded by another plugin or theme.
+* Recaptcha library function is now used to generate the sign up url on the settings page. The site domain is passed into the url for convenience.
+* Options subject, message, heading, and body text are now translated when they are retrieved from the the database. Previously only the default messages were translated when no values were found in the database.
+* Improved housekeeping: generic name for settings array has been changed from 'array_key' to 'cscf-options'
 = 4.2.0 =
 * Updated Turkish translations thanks again to [Abdullah Manaz](http://manaz.net "Abdullah Manaz")
 * Fixed a problem where certain texts on the settings screen were not being translated 
@@ -246,6 +251,8 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.2.1 =
+Translation and housekeeping updates
 = 4.2.0 =
 Translation and documentation updates
 = 4.1.9 =

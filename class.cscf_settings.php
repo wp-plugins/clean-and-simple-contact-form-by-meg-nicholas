@@ -113,7 +113,7 @@ class cscf_settings
             $this,
             'print_section_info_recaptcha'
         ) , 'contact-form-settings');
-        register_setting('test_option_group', 'array_key', array(
+        register_setting('test_option_group', CSCF_OPTIONS_KEY, array(
             $this,
             'check_form'
         ));
@@ -207,77 +207,41 @@ class cscf_settings
     public 
     function check_form($input) 
     {
-        $options = get_option(CSCF_OPTIONS_KEY);
-        
-        //use_recaptcha
-        if (isset($input['use_recaptcha'])) 
-            $options['use_recaptcha'] = true;
-        else
-            unset($options['use_recaptcha']);
         
         //recaptcha theme
-        if (isset($input['theme'])) $options['theme'] = filter_var($input['theme'], FILTER_SANITIZE_STRING);
+        if (isset($input['theme'])) $input['theme'] = filter_var($input['theme'], FILTER_SANITIZE_STRING);
         
         //recaptcha_public_key
-        if (isset($input['recaptcha_public_key'])) $options['recaptcha_public_key'] = filter_var($input['recaptcha_public_key'], FILTER_SANITIZE_STRING);
+        if (isset($input['recaptcha_public_key'])) $input['recaptcha_public_key'] = filter_var($input['recaptcha_public_key'], FILTER_SANITIZE_STRING);
         
         //recaptcha_private_key
-        if (isset($input['recaptcha_private_key'])) $options['recaptcha_private_key'] = filter_var($input['recaptcha_private_key'], FILTER_SANITIZE_STRING);
+        if (isset($input['recaptcha_private_key'])) $input['recaptcha_private_key'] = filter_var($input['recaptcha_private_key'], FILTER_SANITIZE_STRING);
         
         //sent_message_heading
-        $options['sent_message_heading'] = filter_var($input['sent_message_heading'], FILTER_SANITIZE_STRING);
+        $input['sent_message_heading'] = filter_var($input['sent_message_heading'], FILTER_SANITIZE_STRING);
         
         //sent_message_body
-        $options['sent_message_body'] = filter_var($input['sent_message_body'], FILTER_SANITIZE_STRING);
+        $input['sent_message_body'] = filter_var($input['sent_message_body'], FILTER_SANITIZE_STRING);
         
         //message
-        $options['message'] = filter_var($input['message'], FILTER_SANITIZE_STRING);
-        
-        //load_stylesheet
-        if (isset($input['load_stylesheet'])) 
-            $options['load_stylesheet'] = true;
-        else 
-            $options['load_stylesheet'] = false;
-        
-        //use_client_validation
-        if (isset($input['use_client_validation'])) 
-            $options['use_client_validation'] = true;
-        else 
-            $options['use_client_validation'] = false;
+        $input['message'] = filter_var($input['message'], FILTER_SANITIZE_STRING);
         
         //recipient_email
         if (!filter_var($input['recipient_email'], FILTER_VALIDATE_EMAIL)) {
-            unset($options['recipient_email']);
+            unset($input['recipient_email']);
         }
-        else {
-            $options['recipient_email']=$input['recipient_email'];
-        }
-        
-        //override-from
-        if (isset($input['override-from'])) 
-            $options['override-from'] = true;
-        else
-            unset($options['override-from']);
         
         //from
         if (!filter_var($input['from-email'], FILTER_VALIDATE_EMAIL)) {
-            unset($options['from-email']);
-            unset($options['override-from']);
+            unset($input['override-from']);
+            unset($input['from-email']);
         }
-        else {
-            $options['from-email']=$input['from-email'];
-        }        
         
         //subject
-            $options['subject'] = trim(filter_var($input['subject'], FILTER_SANITIZE_STRING));
-        if ( empty($options['subject']) ) {
-            unset($options['subject']);
+        $input['subject'] = trim(filter_var($input['subject'], FILTER_SANITIZE_STRING));
+        if ( empty($input['subject']) ) {
+            unset($input['subject']);
         }
-        
-        //update the options
-        update_option(CSCF_OPTIONS_KEY, $options);
-            
-                
         
         return $input;
     }
@@ -285,7 +249,7 @@ class cscf_settings
     function print_section_info_recaptcha() 
     {
         print __('Enter your reCAPTCHA settings below :','cleanandsimple');
-        print "<p>" . __('To use reCAPTCHA you must get an API key from','cleanandsimple')." <a target='_blank' href='https://www.google.com/recaptcha/admin/create'>https://www.google.com/recaptcha/admin/create</a></p>";
+        print "<p>" . __('To use reCAPTCHA you must get an API key from','cleanandsimple')." <a target='_blank' href='" . recaptcha_get_signup_url($_SERVER['SERVER_NAME']). "'>Google reCAPTCHA</a></p>";
     }
     public 
     function print_section_info_message() 
@@ -308,48 +272,48 @@ class cscf_settings
         {
         case 'use_recaptcha':
             $checked = cscf_PluginSettings::UseRecaptcha() == true ? "checked" : "";
-?><input type="checkbox" <?php echo $checked; ?>  id="use_recaptcha" name="array_key[use_recaptcha]"><?php
+?><input type="checkbox" <?php echo $checked; ?>  id="use_recaptcha" name="<?php echo CSCF_OPTIONS_KEY; ?>[use_recaptcha]"><?php
         break;
         case 'load_stylesheet':
             $checked = cscf_PluginSettings::LoadStyleSheet() == true ? "checked" : "";
-?><input type="checkbox" <?php echo $checked; ?>  id="load_stylesheet" name="array_key[load_stylesheet]"><?php
+?><input type="checkbox" <?php echo $checked; ?>  id="load_stylesheet" name="<?php echo CSCF_OPTIONS_KEY; ?>[load_stylesheet]"><?php
         break;
         case 'recaptcha_public_key':
             $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "readonly" : "";
-?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_public_key" name="array_key[recaptcha_public_key]" value="<?php echo cscf_PluginSettings::PublicKey(); ?>" /><?php
+?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_public_key" name="<?php echo CSCF_OPTIONS_KEY; ?>[recaptcha_public_key]" value="<?php echo cscf_PluginSettings::PublicKey(); ?>" /><?php
         break;
         case 'recaptcha_private_key':
             $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "readonly" : "";
-?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_private_key" name="array_key[recaptcha_private_key]" value="<?php echo cscf_PluginSettings::PrivateKey(); ?>" /><?php
+?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_private_key" name="<?php echo CSCF_OPTIONS_KEY; ?>[recaptcha_private_key]" value="<?php echo cscf_PluginSettings::PrivateKey(); ?>" /><?php
         break;
         case 'recipient_email':
-?><input type="text" size="60" id="recipient_email" name="array_key[recipient_email]" value="<?php echo cscf_PluginSettings::RecipientEmail(); ?>" /><?php
+?><input type="text" size="60" id="recipient_email" name="<?php echo CSCF_OPTIONS_KEY; ?>[recipient_email]" value="<?php echo cscf_PluginSettings::RecipientEmail(); ?>" /><?php
         break;
         case 'override-from':
             $checked = cscf_PluginSettings::OverrideFrom() == true ? "checked" : "";
-?><input type="checkbox" <?php echo $checked; ?>  id="override-from" name="array_key[override-from]"><?php
+?><input type="checkbox" <?php echo $checked; ?>  id="override-from" name="<?php echo CSCF_OPTIONS_KEY; ?>[override-from]"><?php
         break;
         case 'from-email':
         $disabled = cscf_PluginSettings::OverrideFrom() == false ? "readonly" : "";
-?><input <?php echo $disabled; ?> type="text" size="60" id="from-email" name="array_key[from-email]" value="<?php echo cscf_PluginSettings::FromEmail(); ?>" /><?php
+?><input <?php echo $disabled; ?> type="text" size="60" id="from-email" name="<?php echo CSCF_OPTIONS_KEY; ?>[from-email]" value="<?php echo cscf_PluginSettings::FromEmail(); ?>" /><?php
         break;
         case 'subject':
-?><input type="text" size="60" id="subject" name="array_key[subject]" value="<?php echo cscf_PluginSettings::Subject(); ?>" /><?php
+?><input type="text" size="60" id="subject" name="<?php echo CSCF_OPTIONS_KEY; ?>[subject]" value="<?php echo cscf_PluginSettings::Subject(); ?>" /><?php
         break;
         case 'sent_message_heading':
-?><input type="text" size="60" id="sent_message_heading" name="array_key[sent_message_heading]" value="<?php echo cscf_PluginSettings::SentMessageHeading(); ?>" /><?php
+?><input type="text" size="60" id="sent_message_heading" name="<?php echo CSCF_OPTIONS_KEY; ?>[sent_message_heading]" value="<?php echo cscf_PluginSettings::SentMessageHeading(); ?>" /><?php
         break;
         case 'sent_message_body':
-?><textarea cols="63" rows="8" name="array_key[sent_message_body]"><?php echo cscf_PluginSettings::SentMessageBody(); ?></textarea><?php
+?><textarea cols="63" rows="8" name="<?php echo CSCF_OPTIONS_KEY; ?>[sent_message_body]"><?php echo cscf_PluginSettings::SentMessageBody(); ?></textarea><?php
         break;
         case 'message':
-?><textarea cols="63" rows="8" name="array_key[message]"><?php echo cscf_PluginSettings::Message(); ?></textarea><?php
+?><textarea cols="63" rows="8" name="<?php echo CSCF_OPTIONS_KEY; ?>[message]"><?php echo cscf_PluginSettings::Message(); ?></textarea><?php
         break;
         case 'theme':
             $theme = cscf_PluginSettings::Theme();
             $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
 ?>
-                <select <?php echo $disabled; ?> id="theme" name="array_key[theme]">
+                <select <?php echo $disabled; ?> id="theme" name="<?php echo CSCF_OPTIONS_KEY; ?>[theme]">
                     <option <?php echo $theme == "red" ? "selected" : ""; ?> value="red"><?php _e('Red', 'cleanandsimple'); ?></option>
                     <option <?php echo $theme == "white" ? "selected" : ""; ?>  value="white"><?php _e('White','cleanandsimple'); ?></option>
                     <option <?php echo $theme == "blackglass" ? "selected" : ""; ?> value="blackglass"><?php _e('Blackglass', 'cleanandsimple'); ?></option>
@@ -359,7 +323,7 @@ class cscf_settings
         break;
         case 'use_client_validation':
             $checked = cscf_PluginSettings::UseClientValidation() == true ? "checked" : "";
-?><input type="checkbox" <?php echo $checked; ?>  id="use_client_validation" name="array_key[use_client_validation]"><?php
+?><input type="checkbox" <?php echo $checked; ?>  id="use_client_validation" name="<?php echo CSCF_OPTIONS_KEY; ?>[use_client_validation]"><?php
         break;
         default:
         break;
