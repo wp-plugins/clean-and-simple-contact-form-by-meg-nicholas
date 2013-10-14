@@ -7,70 +7,70 @@ class cscf_PluginSettings
     {
 
         /* @var $options type array*/
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
         return isset($options['use_recaptcha']) ? true : false;
     }
     static 
     function Theme() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
         return isset($options['theme']) ? $options['theme'] : 'red';
     }
     static 
     function PublicKey() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
         return $options['recaptcha_public_key'];
     }
     static 
     function PrivateKey() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
         return $options['recaptcha_private_key'];
     }
     static 
     function SentMessageHeading() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
-        return isset($options['sent_message_heading']) ? $options['sent_message_heading'] : __('Message Sent','cleanandsimple');
+        return isset($options['sent_message_heading']) ? __($options['sent_message_heading'],'cleanandsimple') : __('Message Sent','cleanandsimple');
     }
     static 
     function SentMessageBody() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
-        return isset($options['sent_message_body']) ? $options['sent_message_body'] : __('Thank you for your message, we will be in touch very shortly.','cleanandsimple');
+        return isset($options['sent_message_body']) ? __($options['sent_message_body'],'cleanandsimple') : __('Thank you for your message, we will be in touch very shortly.','cleanandsimple');
     }
     static 
     function Message() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
-        return isset($options['message']) ? $options['message'] : __('Please enter your contact details and a short message below and I will try to answer your query as soon as possible.','cleanandsimple');
+        return isset($options['message']) ? __($options['message'],'cleanandsimple') : __('Please enter your contact details and a short message below and I will try to answer your query as soon as possible.','cleanandsimple');
     }
     static 
     function LoadStyleSheet() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
-        return isset($options['load_stylesheet']) ? $options['load_stylesheet'] : true;
+        return isset($options['load_stylesheet']) ? true : false;
     }
     static 
     function UseClientValidation() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
-        return isset($options['use_client_validation']) ? $options['use_client_validation'] : true;
+        return isset($options['use_client_validation']) ? true : false;
     }
     static
     function RecipientEmail() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
         return isset($options['recipient_email']) ? $options['recipient_email'] : get_bloginfo('admin_email');
     }
@@ -78,15 +78,15 @@ class cscf_PluginSettings
     static
     function Subject() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
-        return isset($options['subject']) ? $options['subject'] : get_bloginfo('name') . __(' -  Web Enquiry','cleanandsimple');
+        return isset($options['subject']) ? __($options['subject'],'cleanandsimple') : get_bloginfo('name') . __(' -  Web Enquiry','cleanandsimple');
     }
     
     static
     function FromEmail() 
     {
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
         return isset($options['from-email']) ? $options['from-email'] : "";
     }  
@@ -94,7 +94,7 @@ class cscf_PluginSettings
     static
     function OverrideFrom() {
 
-        $options = get_option('cscf_options');
+        $options = get_option(CSCF_OPTIONS_KEY);
         
         return isset($options['override-from']) ? true : false;
 
