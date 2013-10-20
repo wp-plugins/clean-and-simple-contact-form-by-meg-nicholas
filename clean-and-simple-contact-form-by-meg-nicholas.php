@@ -7,7 +7,7 @@
 Plugin Name: Clean and Simple Contact Form
 Plugin URI: http://www.megnicholas.co.uk/wordpress-plugins/clean-and-simple-contact-form
 Description: A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
-Version: 4.2.0
+Version: 4.2.2
 Author: Meghan Nicholas
 Author URI: http://www.megnicholas.co.uk
 License: GPLv2 or later
@@ -40,8 +40,7 @@ include ('class.cscf_contact.php');
 include ('class.view.php');
 include ('class.cscf_filters.php');
 include ('ajax.php');
-
-if (cscf_PluginSettings::UseRecaptcha()) include ('recaptcha-php-1.11/recaptchalib.php');
+include ('recaptchalib-1.11.php');
 
 if (!defined('CSCF_THEME_DIR')) define('CSCF_THEME_DIR', ABSPATH . 'wp-content/themes/' . get_template());
 
@@ -53,7 +52,7 @@ if (!defined('CSCF_PLUGIN_URL')) define('CSCF_PLUGIN_URL', WP_PLUGIN_URL . '/' .
 
 if (!defined('CSCF_VERSION_KEY')) define('CSCF_VERSION_KEY', 'cscf_version');
 
-if (!defined('CSCF_VERSION_NUM')) define('CSCF_VERSION_NUM', '4.2.0');
+if (!defined('CSCF_VERSION_NUM')) define('CSCF_VERSION_NUM', '4.2.2');
 
 if (!defined('CSCF_OPTIONS_KEY')) define('CSCF_OPTIONS_KEY', 'cscf_options');
 

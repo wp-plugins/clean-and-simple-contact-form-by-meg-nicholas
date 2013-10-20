@@ -88,6 +88,17 @@ class cscf
         }
         
         if ($updated) update_option('cscf_options', $options);
+        
+        //delete old array key array_key
+        if (get_option('array_key') != FALSE) {
+            $options = get_option('array_key');
+            
+            //check it was this plugin that created it by checking for a few values
+            if (isset($options['sent_message_heading']) && isset($options['sent_message_body'])) {
+                delete_option('array_key');
+            }
+        }
+        
     }
 
     /*

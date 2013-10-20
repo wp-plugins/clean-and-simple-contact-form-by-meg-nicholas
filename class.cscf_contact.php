@@ -77,7 +77,7 @@ class cscf_Contact
         
         if ($this->RecaptchaPublicKey <> '' && $this->RecaptchaPrivateKey <> '') 
         {
-            $resp = recaptcha_check_answer($this->RecaptchaPrivateKey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
+            $resp = cscf_recaptcha_check_answer($this->RecaptchaPrivateKey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
             
             if (!$resp->is_valid) $this->Errors['recaptcha'] = __('Sorry the code wasn\'t entered correctly please try again.','cleanandsimple');
         }
