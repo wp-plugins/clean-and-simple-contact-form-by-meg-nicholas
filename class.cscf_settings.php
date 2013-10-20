@@ -249,7 +249,7 @@ class cscf_settings
     function print_section_info_recaptcha() 
     {
         print __('Enter your reCAPTCHA settings below :','cleanandsimple');
-        print "<p>" . __('To use reCAPTCHA you must get an API key from','cleanandsimple')." <a target='_blank' href='" . recaptcha_get_signup_url($_SERVER['SERVER_NAME']). "'>Google reCAPTCHA</a></p>";
+        print "<p>" . __('To use reCAPTCHA you must get an API key from','cleanandsimple')." <a target='_blank' href='" . cscf_recaptcha_get_signup_url($_SERVER['SERVER_NAME']). "'>Google reCAPTCHA</a></p>";
     }
     public 
     function print_section_info_message() 

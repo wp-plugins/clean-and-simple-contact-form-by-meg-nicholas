@@ -112,7 +112,7 @@
                 <div class="control-group form-group<?php 
                     if (isset($contact->Errors['recaptcha'])) echo ' error'; ?>">
                         <div id="recaptcha_div">
-                            <?php echo recaptcha_get_html($contact->RecaptchaPublicKey,null,isset($_SERVER['HTTPS'])); ?>
+                            <?php echo cscf_recaptcha_get_html($contact->RecaptchaPublicKey,null,isset($_SERVER['HTTPS'])); ?>
                         <div for="cscf_recaptcha" class="help-block has-error error"><?php if (isset($contact->Errors['recaptcha'])) echo $contact->Errors['recaptcha']; ?></div> 
                      </div>	
                 </div>	
