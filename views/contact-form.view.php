@@ -1,6 +1,7 @@
-<!--Clean and Simple Contact Form by Meg Nicholas Version <?php echo $version; ?>-->
-
 <div id="cscf" class="cscfBlock">
+    <div class="cscfVersion" style="display:none;">
+       <a href="http://www.megnicholas.co.uk?version=<?php echo urlencode($version); ?>">Clean and Simple WordPress Contact Form by Meg Nicholas - WordPress Developer</a>
+    </div> 
     <div class="cscfMessageSent" style="display:none;">
         <?php echo $messageSentView->Render(); ?>
     </div>
@@ -112,7 +113,7 @@
                 <div class="control-group form-group<?php 
                     if (isset($contact->Errors['recaptcha'])) echo ' error'; ?>">
                         <div id="recaptcha_div">
-                            <?php echo recaptcha_get_html($contact->RecaptchaPublicKey,null,isset($_SERVER['HTTPS'])); ?>
+                            <?php echo cscf_recaptcha_get_html($contact->RecaptchaPublicKey,null,isset($_SERVER['HTTPS'])); ?>
                         <div for="cscf_recaptcha" class="help-block has-error error"><?php if (isset($contact->Errors['recaptcha'])) echo $contact->Errors['recaptcha']; ?></div> 
                      </div>	
                 </div>	

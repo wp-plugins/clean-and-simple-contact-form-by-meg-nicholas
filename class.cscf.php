@@ -22,6 +22,11 @@ class cscf
             'RegisterScripts'
         ));
         
+        add_action('admin_enqueue_scripts', array(
+            $this,
+            'RegisterAdminScripts'
+        ));        
+        
         add_action('plugins_loaded', array(
             $this, 
             'RegisterTextDomain'
@@ -58,6 +63,19 @@ class cscf
         
     }
     
+    function RegisterAdminScripts($hook)
+    {
+        if ( $hook != 'settings_page_contact-form-settings')
+            return;
+        
+        wp_register_script('cscf-admin-settings', CSCF_PLUGIN_URL . '/js/jquery.admin.settings.js', 
+            array(
+            'jquery-ui-sortable',
+        ) , CSCF_VERSION_NUM, false ); 
+        
+        wp_enqueue_script('cscf-admin-settings');
+    }
+    
     function Upgrade() 
     {
         //change namespace of options
@@ -88,6 +106,25 @@ class cscf
         }
         
         if ($updated) update_option('cscf_options', $options);
+        
+        //delete old array key array_key
+        if (get_option('array_key') != FALSE) {
+            $options = get_option('array_key');
+            
+            //check it was this plugin that created it by checking for a few values
+            if (isset($options['sent_message_heading']) && isset($options['sent_message_body'])) {
+                delete_option('array_key');
+            }
+        }
+        
+        //upgrade to 4.2.3 recipient_email becomes recipient_emails (array) for multiple recipients
+        $options = get_option(CSCF_OPTIONS_KEY);
+        if ( isset($options['recipient_email']) ) {
+            $options['recipient_emails']=array();
+            $options['recipient_emails'][] = $options['recipient_email'];
+            update_option(CSCF_OPTIONS_KEY,$options);
+        }
+        
     }
 
     /*
