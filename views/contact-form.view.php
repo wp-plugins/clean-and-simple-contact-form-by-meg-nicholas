@@ -1,6 +1,7 @@
-<!--Clean and Simple Contact Form by Meg Nicholas Version <?php echo $version; ?>-->
-
 <div id="cscf" class="cscfBlock">
+    <div class="cscfVersion" style="display:none;">
+       <a href="http://www.megnicholas.co.uk?version=<?php echo urlencode($version); ?>">Clean and Simple WordPress Contact Form by Meg Nicholas - WordPress Developer</a>
+    </div> 
     <div class="cscfMessageSent" style="display:none;">
         <?php echo $messageSentView->Render(); ?>
     </div>

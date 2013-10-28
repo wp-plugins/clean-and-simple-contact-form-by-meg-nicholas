@@ -68,13 +68,13 @@ class cscf_PluginSettings
         return isset($options['use_client_validation']) ? true : false;
     }
     static
-    function RecipientEmail() 
+    function RecipientEmails() 
     {
         $options = get_option(CSCF_OPTIONS_KEY);
-        
-        return isset($options['recipient_email']) ? $options['recipient_email'] : get_bloginfo('admin_email');
-    }
-    
+        if ( count($options['recipient_emails']) == 0 )
+            unset($options['recipient_emails']);
+        return isset($options['recipient_emails']) ? $options['recipient_emails'] : array(get_bloginfo('admin_email'));
+    }    
     static
     function Subject() 
     {

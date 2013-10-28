@@ -90,7 +90,7 @@ class cscf_Contact
         
         $filters = new cscf_Filters;
         
-        if ( cscf_PluginSettings::OverrideFrom() ) {
+        if ( cscf_PluginSettings::OverrideFrom() & cscf_PluginSettings::FromEmail() != "" ) {
             $filters->fromEmail=cscf_PluginSettings::FromEmail();
         }
         else {
@@ -106,8 +106,8 @@ class cscf_Contact
         $message="From: " . $this->Name . "\n\n";
         $message.="Email: " . $this->Email . "\n\n";
         $message.="Message:\n\n" . $this->Message;
-       
-        $result = (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), stripslashes($message)));
+        
+        $result = (wp_mail(cscf_PluginSettings::RecipientEmails() , cscf_PluginSettings::Subject(), stripslashes($message)));
         
         //remove filters (play nice)
         $filters->remove('wp_mail_from');

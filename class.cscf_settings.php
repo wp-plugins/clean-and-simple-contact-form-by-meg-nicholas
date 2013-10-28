@@ -37,8 +37,6 @@ class cscf_settings
     {
 ?>  
 	
-        
-            
 	<?php screen_icon(); ?><h2><?php _e('Clean and Simple Contact Form Settings','cleanandsimple');?></h2>
         <hr/>
         
@@ -81,29 +79,17 @@ class cscf_settings
         <p class="howto"><?php _e("Please Note: To add the contact form to your page please add the text","cleanandsimple"); ?> <code>[cscf-contact-form]</code> <?php _e("to your post or page.","cleanandsimple"); ?></p>
         
         <form method="post" action="options.php">
-	    <?php
-        submit_button(); 
+            <?php
+            submit_button(); 
 
-        /* This prints out all hidden setting fields*/
-        settings_fields('test_option_group');
-        do_settings_sections('contact-form-settings');
-        
-        submit_button();
-        ?>
-	    </form>
+            /* This prints out all hidden setting fields*/
+            settings_fields('test_option_group');
+            do_settings_sections('contact-form-settings');
+
+            submit_button();
+            ?>
+        </form>
         </div>
-        <script>            
-                jQuery('#use_recaptcha').change(function() {
-                    jQuery('#theme').attr('disabled', ! this.checked);
-                    jQuery('#recaptcha_public_key').attr('readonly', ! this.checked);
-                    jQuery('#recaptcha_private_key').attr('readonly', ! this.checked);
-                });            
-                jQuery('#override-from').change(function() {
-                    jQuery('#from-email').attr('readonly', ! this.checked);
-                });  
-        </script>
-  
-        
 	<?php
     }
     public 
@@ -145,11 +131,11 @@ class cscf_settings
             $this,
             'print_section_info_message'
         ) , 'contact-form-settings');
-        add_settings_field('recipient_email', __('Recipient Email :','cleanandsimple'), array(
+        add_settings_field('recipient_emails', __('Recipient Emails :','cleanandsimple'), array(
             $this,
             'create_fields'
         ) , 'contact-form-settings', 'section_message', array(
-            'recipient_email'
+            'recipient_emails'
         ));
         add_settings_field('override-from', __('Override \'From\' Address :','cleanandsimple'), array(
             $this,
@@ -226,14 +212,15 @@ class cscf_settings
         //message
         $input['message'] = filter_var($input['message'], FILTER_SANITIZE_STRING);
         
-        //recipient_email
-        if (!filter_var($input['recipient_email'], FILTER_VALIDATE_EMAIL)) {
-            unset($input['recipient_email']);
+        //recipient_emails
+        foreach ($input['recipient_emails'] as $key=>$recipient) {
+            if (!filter_var($input['recipient_emails'][$key], FILTER_VALIDATE_EMAIL)) {
+                unset($input['recipient_emails'][$key]);
+            }
         }
         
         //from
         if (!filter_var($input['from-email'], FILTER_VALIDATE_EMAIL)) {
-            unset($input['override-from']);
             unset($input['from-email']);
         }
         
@@ -242,6 +229,24 @@ class cscf_settings
         if ( empty($input['subject']) ) {
             unset($input['subject']);
         }
+        
+        if ( isset($_POST['add_recipient'])) {
+            $input['recipient_emails'][]="";
+        }
+        
+        if ( isset($_POST['remove_recipient'])) {
+            foreach ($_POST['remove_recipient'] as $key => $element) {
+                unset($input['recipient_emails'][$key]);
+            }
+        }        
+        
+        //tidy up the keys
+        $tidiedRecipients=array();
+        foreach($input['recipient_emails'] as $recipient) {
+            $tidiedRecipients[] = $recipient;
+        }
+        $input['recipient_emails'] = $tidiedRecipients;
+        
         
         return $input;
     }
@@ -286,8 +291,18 @@ class cscf_settings
             $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "readonly" : "";
 ?><input <?php echo $disabled; ?> type="text" size="60" id="recaptcha_private_key" name="<?php echo CSCF_OPTIONS_KEY; ?>[recaptcha_private_key]" value="<?php echo cscf_PluginSettings::PrivateKey(); ?>" /><?php
         break;
-        case 'recipient_email':
-?><input type="text" size="60" id="recipient_email" name="<?php echo CSCF_OPTIONS_KEY; ?>[recipient_email]" value="<?php echo cscf_PluginSettings::RecipientEmail(); ?>" /><?php
+        case 'recipient_emails':
+        ?><ul id="recipients"><?php
+        foreach(cscf_PluginSettings::RecipientEmails() as $key=>$recipientEmail) {
+            ?>
+            <li class="recipient_email" data-element="<?php echo $key; ?>">
+            <input class="enter_recipient" type="email" size="50" name="<?php echo CSCF_OPTIONS_KEY; ?>[recipient_emails][<?php echo $key ?>]" value="<?php echo $recipientEmail; ?>" />
+            <input class="add_recipient" title="Add New Recipient" type="submit" name="add_recipient"value="+">
+            <input class="remove_recipient" title="Remove This Recipient" type="submit" name="remove_recipient[<?php echo $key; ?>]" value="-">
+            </li>
+        
+        <?php }
+        ?></ul><?php
         break;
         case 'override-from':
             $checked = cscf_PluginSettings::OverrideFrom() == true ? "checked" : "";

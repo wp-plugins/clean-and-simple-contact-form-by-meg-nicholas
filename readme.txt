@@ -104,7 +104,10 @@ Here is a list of things that you can change
 
 *   **reCAPTCHA Theme**: Here you can change the reCAPTCHA box theme so that it fits with the style of your website.
 
-*   **Recipient Email**: The email address where you would like all messages to be sent. This will default to the email address you have specified under 'E-Mail Address' in your WordPress General Settings. If you want your mail sent to a different address then enter it here.
+*   **!NEW! Recipient Emails**: The email address where you would like all messages to be sent. 
+    This will default to the email address you have specified under 'E-Mail Address' in your WordPress General Settings. 
+    If you want your mail sent to a different address then enter it here.
+    You may enter multiple email addresses by clicking the '+' button.
 
 *   **Email Subject**: This is the email subject that will appear on all messages. If you would like to set it to something different then enter it here.
 
@@ -180,7 +183,10 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
-* 4.2.2
+= 4.2.3 =
+* Added ability to specify multiple recipient email addresses
+* Fix settings gui - there was a problem enabling 'From' Address option when javascript is not enabled.
+= 4.2.2 =
 * Recaptcha library has now been namespaced to 'cscf' to remove ALL possibility of conflicts with other plugins that also include this library.
 = 4.2.1 =
 * Fixed potential conflict with other themes or plugins that use Google reCAPTCHA. reCAPTCHA library is not loaded if it already loaded by another plugin or theme.
@@ -259,6 +265,8 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.2.3 =
+Multiple recipients are now possible
 = 4.2.2 =
 Remove ALL possibility of conflicts with other plugins that also include Google reCAPTCHA library
 = 4.2.1 =
