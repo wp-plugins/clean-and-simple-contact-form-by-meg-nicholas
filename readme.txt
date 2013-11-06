@@ -5,8 +5,8 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: simple, contact, form, contact button, contact form, contact form plugin, contacts, contacts form plugin, contact me, feedback form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
-Tested up to: 3.6.1
-Stable tag: 4.2.0
+Tested up to: 3.7.1
+Stable tag: 4.2.3
 
 A clean and simple AJAX contact form with Google reCAPTCHA and Twitter Bootstrap markup.
 
@@ -104,7 +104,14 @@ Here is a list of things that you can change
 
 *   **reCAPTCHA Theme**: Here you can change the reCAPTCHA box theme so that it fits with the style of your website.
 
-*   **Recipient Email**: The email address where you would like all messages to be sent. This will default to the email address you have specified under 'E-Mail Address' in your WordPress General Settings. If you want your mail sent to a different address then enter it here.
+*   **!NEW! Recipient Emails**: The email address where you would like all messages to be sent. 
+    This will default to the email address you have specified under 'E-Mail Address' in your WordPress General Settings. 
+    If you want your mail sent to a different address then enter it here.
+    You may enter multiple email addresses by clicking the '+' button.
+
+*   **!NEW! Confirm Email Address**: Email confirmation is now optional. To force your user to re-type their email address tick 'Confirm Email Address'.
+    It is recommended that you leave this option on. If you turn this option off your user will only have to enter their email address once,
+    but if they enter it incorrectly you will have no way of getting back to them!
 
 *   **Email Subject**: This is the email subject that will appear on all messages. If you would like to set it to something different then enter it here.
 
@@ -173,7 +180,27 @@ This makes the form responsive to all types of media. If you want to have a fixe
 Currently you may only have one contact form per page. You CAN however put the contact form on more than one page using the same shortcode.
 Note that making changes to the settings will affect all implementations of the plugin across your site.
 
+= Will this work with other plugins that use Google reCAPTCHA? =
+Yes it will. HOWEVER, you cannot have more than one reCAPTCHA on a page. This is a constraint created by Google.
+So for example, if your 'Contact Me' page has comments below it, 
+the reCAPTCHA for the contact form will be displayed correctly but not in the comments form below.
+The comments form will never validate due to no supplied reCAPTCHA code.
+
 == Changelog ==
+= 4.2.4 =
+* The requirement for users to confirm their email address is now optional. 
+  When turned off users only need to enter their email address once.
+* Added Arabic translation thanks to [Omar AlQabandi](http://www.PlusOmar.com "Omar AlQabandi")
+= 4.2.3 =
+* Added ability to specify multiple recipient email addresses
+* Fix settings gui - there was a problem enabling 'From' Address option when javascript is not enabled.
+= 4.2.2 =
+* Recaptcha library has now been namespaced to 'cscf' to remove ALL possibility of conflicts with other plugins that also include this library.
+= 4.2.1 =
+* Fixed potential conflict with other themes or plugins that use Google reCAPTCHA. reCAPTCHA library is not loaded if it already loaded by another plugin or theme.
+* Recaptcha library function is now used to generate the sign up url on the settings page. The site domain is passed into the url for convenience.
+* Options subject, message, heading, and body text are now translated when they are retrieved from the the database. Previously only the default messages were translated when no values were found in the database.
+* Improved housekeeping: generic name for settings array has been changed from 'array_key' to 'cscf-options'
 = 4.2.0 =
 * Updated Turkish translations thanks again to [Abdullah Manaz](http://manaz.net "Abdullah Manaz")
 * Fixed a problem where certain texts on the settings screen were not being translated 
@@ -246,6 +273,14 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.2.4 =
+'Confirm Email' can now be turned off. Arabic translation added.
+= 4.2.3 =
+Multiple recipients are now possible
+= 4.2.2 =
+Remove ALL possibility of conflicts with other plugins that also include Google reCAPTCHA library
+= 4.2.1 =
+Translation and housekeeping updates
 = 4.2.0 =
 Translation and documentation updates
 = 4.1.9 =

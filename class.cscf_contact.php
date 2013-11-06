@@ -50,16 +50,18 @@ class cscf_Contact
         return false;
 
         // email and confirm email are the same
-        
-        if ($this->Email != $this->ConfirmEmail) $this->Errors['confirm-email'] = __('Sorry the email addresses do not match.','cleanandsimple');
+        if ( cscf_PluginSettings::ConfirmEmail() ) {
+            if ($this->Email != $this->ConfirmEmail) $this->Errors['confirm-email'] = __('Sorry the email addresses do not match.','cleanandsimple');
+        }
 
         //email
         
         if (strlen($this->Email) == 0) $this->Errors['email'] = __('Please give your email address.','cleanandsimple');
 
         //confirm email
-        
-        if (strlen($this->ConfirmEmail) == 0) $this->Errors['confirm-email'] = __('Please confirm your email address.','cleanandsimple');
+        if ( cscf_PluginSettings::ConfirmEmail() ) {
+            if (strlen($this->ConfirmEmail) == 0) $this->Errors['confirm-email'] = __('Please confirm your email address.','cleanandsimple');
+        }
 
         //name
         
@@ -77,7 +79,7 @@ class cscf_Contact
         
         if ($this->RecaptchaPublicKey <> '' && $this->RecaptchaPrivateKey <> '') 
         {
-            $resp = recaptcha_check_answer($this->RecaptchaPrivateKey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
+            $resp = cscf_recaptcha_check_answer($this->RecaptchaPrivateKey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
             
             if (!$resp->is_valid) $this->Errors['recaptcha'] = __('Sorry the code wasn\'t entered correctly please try again.','cleanandsimple');
         }
@@ -90,7 +92,7 @@ class cscf_Contact
         
         $filters = new cscf_Filters;
         
-        if ( cscf_PluginSettings::OverrideFrom() ) {
+        if ( cscf_PluginSettings::OverrideFrom() & cscf_PluginSettings::FromEmail() != "" ) {
             $filters->fromEmail=cscf_PluginSettings::FromEmail();
         }
         else {
@@ -106,8 +108,8 @@ class cscf_Contact
         $message="From: " . $this->Name . "\n\n";
         $message.="Email: " . $this->Email . "\n\n";
         $message.="Message:\n\n" . $this->Message;
-       
-        $result = (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), stripslashes($message)));
+        
+        $result = (wp_mail(cscf_PluginSettings::RecipientEmails() , cscf_PluginSettings::Subject(), stripslashes($message)));
         
         //remove filters (play nice)
         $filters->remove('wp_mail_from');
