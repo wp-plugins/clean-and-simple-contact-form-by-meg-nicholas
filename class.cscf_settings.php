@@ -137,6 +137,12 @@ class cscf_settings
         ) , 'contact-form-settings', 'section_message', array(
             'recipient_emails'
         ));
+        add_settings_field('confirm-email', __('Confirm Email Address :','cleanandsimple'), array(
+            $this,
+            'create_fields'
+        ) , 'contact-form-settings', 'section_message', array(
+            'confirm-email'
+        ));     
         add_settings_field('override-from', __('Override \'From\' Address :','cleanandsimple'), array(
             $this,
             'create_fields'
@@ -303,6 +309,10 @@ class cscf_settings
         
         <?php }
         ?></ul><?php
+        break;
+        case 'confirm-email':
+            $checked = cscf_PluginSettings::ConfirmEmail() == true ? "checked" : "";
+?><input type="checkbox" <?php echo $checked; ?>  id="confirm-email" name="<?php echo CSCF_OPTIONS_KEY; ?>[confirm-email]"><?php
         break;
         case 'override-from':
             $checked = cscf_PluginSettings::OverrideFrom() == true ? "checked" : "";

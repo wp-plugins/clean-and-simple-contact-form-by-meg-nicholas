@@ -119,5 +119,11 @@ class cscf_PluginSettings
     function InputIcons() {
         return false;
     }
+    
+    static
+    function ConfirmEmail() {
+        $options = get_option(CSCF_OPTIONS_KEY);
+        return isset($options['confirm-email']) ? true : false;
+    }
 }
 

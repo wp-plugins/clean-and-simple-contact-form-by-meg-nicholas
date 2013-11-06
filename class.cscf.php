@@ -5,8 +5,6 @@ class cscf
     public 
     function __construct() 
     {
-        $this->Upgrade();
-
         //add settings link to plugins page
         add_filter("plugin_action_links", array(
             $this,
@@ -76,8 +74,16 @@ class cscf
         wp_enqueue_script('cscf-admin-settings');
     }
     
-    function Upgrade() 
+    function Upgrade($oldVersion) 
     {
+        
+        //turn on the confirm-email option
+        if ( $oldVersion <= "4.2.3" ) {
+            $options = get_option(CSCF_OPTIONS_KEY);
+            $options['confirm-email'] = true;
+            update_option(CSCF_OPTIONS_KEY, $options);
+        }
+        
         //change namespace of options
         if ( get_option('cff_options') !=  '') {
             update_option('cscf_options', get_option('cff_options'));

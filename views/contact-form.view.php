@@ -41,6 +41,7 @@
                 </span>
             </div>
 
+            <?php if ( $confirmEmail ) { ?>
             <!--confirm email address -->
             <div class="control-group form-group<?php if (isset($contact->Errors['confirm-email'])) echo ' error has-error'; ?>">
                 <label for="cscf_confirm-email"><?php _e('Confirm Email Address:','cleanandsimple');?></label>
@@ -63,7 +64,8 @@
                 <span for="cscf_confirm-email" class="help-inline help-block error" style="display:<?php echo isset($contact->Errors['confirm-email']) ? 'block' : 'none'; ?>;">
                     <?php if (isset($contact->Errors['confirm-email'])) echo $contact->Errors['confirm-email']; ?>
                 </span>
-            </div>              
+            </div> 
+            <?php } ?>
 
             <!-- name --> 
             <div class="control-group form-group<?php if (isset($contact->Errors['name'])) echo ' error has-error'; ?>">

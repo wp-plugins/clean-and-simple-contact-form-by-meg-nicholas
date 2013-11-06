@@ -5,7 +5,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: simple, contact, form, contact button, contact form, contact form plugin, contacts, contacts form plugin, contact me, feedback form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
-Tested up to: 3.6.1
+Tested up to: 3.7.1
 Stable tag: 4.2.3
 
 A clean and simple AJAX contact form with Google reCAPTCHA and Twitter Bootstrap markup.
@@ -109,6 +109,10 @@ Here is a list of things that you can change
     If you want your mail sent to a different address then enter it here.
     You may enter multiple email addresses by clicking the '+' button.
 
+*   **!NEW! Confirm Email Address**: Email confirmation is now optional. To force your user to re-type their email address tick 'Confirm Email Address'.
+    It is recommended that you leave this option on. If you turn this option off your user will only have to enter their email address once,
+    but if they enter it incorrectly you will have no way of getting back to them!
+
 *   **Email Subject**: This is the email subject that will appear on all messages. If you would like to set it to something different then enter it here.
 
 *   **!NEW! Override 'From' Address**: If you tick this and then fill in the 'From Address:' box then all email will be sent from the given address NOT from the email address given by the form filler.
@@ -183,6 +187,10 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
+= 4.2.4 =
+* The requirement for users to confirm their email address is now optional. 
+  When turned off users only need to enter their email address once.
+* Added Arabic translation thanks to [Omar AlQabandi](http://www.PlusOmar.com "Omar AlQabandi")
 = 4.2.3 =
 * Added ability to specify multiple recipient email addresses
 * Fix settings gui - there was a problem enabling 'From' Address option when javascript is not enabled.
@@ -265,6 +273,8 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.2.4 =
+'Confirm Email' can now be turned off. Arabic translation added.
 = 4.2.3 =
 Multiple recipients are now possible
 = 4.2.2 =

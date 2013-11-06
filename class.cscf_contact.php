@@ -50,16 +50,18 @@ class cscf_Contact
         return false;
 
         // email and confirm email are the same
-        
-        if ($this->Email != $this->ConfirmEmail) $this->Errors['confirm-email'] = __('Sorry the email addresses do not match.','cleanandsimple');
+        if ( cscf_PluginSettings::ConfirmEmail() ) {
+            if ($this->Email != $this->ConfirmEmail) $this->Errors['confirm-email'] = __('Sorry the email addresses do not match.','cleanandsimple');
+        }
 
         //email
         
         if (strlen($this->Email) == 0) $this->Errors['email'] = __('Please give your email address.','cleanandsimple');
 
         //confirm email
-        
-        if (strlen($this->ConfirmEmail) == 0) $this->Errors['confirm-email'] = __('Please confirm your email address.','cleanandsimple');
+        if ( cscf_PluginSettings::ConfirmEmail() ) {
+            if (strlen($this->ConfirmEmail) == 0) $this->Errors['confirm-email'] = __('Please confirm your email address.','cleanandsimple');
+        }
 
         //name
         
