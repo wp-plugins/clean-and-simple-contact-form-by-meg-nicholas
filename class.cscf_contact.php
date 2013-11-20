@@ -30,7 +30,9 @@ class cscf_Contact
             $cscf = $_POST['cscf'];
             $this->Name = filter_var($cscf['name'], FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
             $this->Email = filter_var($cscf['email'], FILTER_SANITIZE_EMAIL);
-            $this->ConfirmEmail = filter_var($cscf['confirm-email'], FILTER_SANITIZE_EMAIL);
+            if ( isset($cscf['confirm-email']) ) {
+                $this->ConfirmEmail = filter_var($cscf['confirm-email'], FILTER_SANITIZE_EMAIL);
+            }
             $this->Message = filter_var($cscf['message'], FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
             unset($_POST['cscf']);
         }

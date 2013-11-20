@@ -187,6 +187,9 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
+= 4.2.5 =
+* Fixed bug that caused a PHP notice to be generated when 'Confirm Email Message' option is switched off.
+Thanks to MarrsAttax
 = 4.2.4 =
 * The requirement for users to confirm their email address is now optional. 
   When turned off users only need to enter their email address once.
@@ -273,6 +276,8 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.2.5 =
+Small bug fix
 = 4.2.4 =
 'Confirm Email' can now be turned off. Arabic translation added.
 = 4.2.3 =
