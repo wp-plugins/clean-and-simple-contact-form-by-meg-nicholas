@@ -1,6 +1,7 @@
-<!--Clean and Simple Contact Form by Meg Nicholas Version <?php echo $version; ?>-->
-
 <div id="cscf" class="cscfBlock">
+    <div class="cscfVersion" style="display:none;">
+       <a href="http://www.megnicholas.co.uk?version=<?php echo urlencode($version); ?>">Clean and Simple WordPress Contact Form by Meg Nicholas - WordPress Developer</a>
+    </div> 
     <div class="cscfMessageSent" style="display:none;">
         <?php echo $messageSentView->Render(); ?>
     </div>
@@ -40,6 +41,7 @@
                 </span>
             </div>
 
+            <?php if ( $confirmEmail ) { ?>
             <!--confirm email address -->
             <div class="control-group form-group<?php if (isset($contact->Errors['confirm-email'])) echo ' error has-error'; ?>">
                 <label for="cscf_confirm-email"><?php _e('Confirm Email Address:','cleanandsimple');?></label>
@@ -62,7 +64,8 @@
                 <span for="cscf_confirm-email" class="help-inline help-block error" style="display:<?php echo isset($contact->Errors['confirm-email']) ? 'block' : 'none'; ?>;">
                     <?php if (isset($contact->Errors['confirm-email'])) echo $contact->Errors['confirm-email']; ?>
                 </span>
-            </div>              
+            </div> 
+            <?php } ?>
 
             <!-- name --> 
             <div class="control-group form-group<?php if (isset($contact->Errors['name'])) echo ' error has-error'; ?>">
@@ -112,7 +115,7 @@
                 <div class="control-group form-group<?php 
                     if (isset($contact->Errors['recaptcha'])) echo ' error'; ?>">
                         <div id="recaptcha_div">
-                            <?php echo recaptcha_get_html($contact->RecaptchaPublicKey,null,isset($_SERVER['HTTPS'])); ?>
+                            <?php echo cscf_recaptcha_get_html($contact->RecaptchaPublicKey,null,isset($_SERVER['HTTPS'])); ?>
                         <div for="cscf_recaptcha" class="help-block has-error error"><?php if (isset($contact->Errors['recaptcha'])) echo $contact->Errors['recaptcha']; ?></div> 
                      </div>	
                 </div>	
