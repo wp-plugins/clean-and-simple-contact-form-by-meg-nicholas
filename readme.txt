@@ -3,15 +3,15 @@ Contributors: megnicholas
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AKQM4KSBQ4H66
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: simple, contact, form, contact button, contact form, contact form plugin, contacts, contacts form plugin, contact me, feedback form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
+Tags: simple, contact, form, contact button, contact form, contact form plugin, akismet, contacts, contacts form plugin, contact me, feedback form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
-Tested up to: 3.6.1
-Stable tag: 4.2.0
+Tested up to: 3.7.1
+Stable tag: 4.2.5
 
-A clean and simple AJAX contact form with Google reCAPTCHA and Twitter Bootstrap markup.
+A clean and simple AJAX contact form with Google reCAPTCHA, Twitter Bootstrap markup and Akismet spam filtering.
 
 == Description ==
-A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap markup.
+A clean and simple AJAX contact form with Google reCAPTCHA, Twitter Bootstrap markup and Akismet spam filtering.
 
 *   **Clean**: all user inputs are stripped in order to avoid cross-site scripting (XSS) vulnerabilities. 
 
@@ -20,14 +20,25 @@ A clean and simple contact form with Google reCAPTCHA and Twitter Bootstrap mark
 *   **Stylish**: Use the included stylesheet or switch it off and use your own for seamless integration with your website. 
 Uses **Twitter Bootstrap** classes.
 
+*   **Safe**: All incoming data is scanned for spam with **Akismet**.
+
 This is a straightforward contact form for your WordPress site. There is very minimal set-up 
 required. Simply install, activate, and then place the short code **[cscf-contact-form]** on your web page.
 
 A standard set of input boxes are provided, these include Email Address, Name, Message and a nice big ‘Send Message’ button. 
 
-When your user has completed the form an email will be sent to you containing your user’s message. To reply simply click the ‘reply’ button on your email client. The email address used is the one you have set up in WordPress under ‘Settings’ -> ‘General’, so do check this is correct. 
+When your user has completed the form an email will be sent to you containing your user’s message. 
+To reply simply click the ‘reply’ button on your email client. 
+The email address used is the one you have set up in WordPress under ‘Settings’ -> ‘General’, so do check this is correct. 
 
-To help prevent spam, this plugin allows you to add a ‘**reCAPTCHA**’. This adds a picture of a couple of words to the bottom of the form. Your user must correctly type the words before the form can be submitted, and in so doing, prove that they are human.
+To help prevent spam all data is scanned via Akismet. 
+For this to work you must have the [Akismet Plugin](http://wordpress.org/plugins/akismet/ "Akismet Plugin") installed and activated.
+All spam will be placed in your 'comments' list which you can then review if you want to 
+[learn more](http://www.megnicholas.co.uk/articles/contact-form-plugin-can-detect-spam/ "Learn More").
+
+For added piece of mind this plugin also allows you to add a ‘**reCAPTCHA**’. 
+This adds a picture of a couple of words to the bottom of the contact form. 
+Your user must correctly type the words before the form can be submitted, and in so doing, prove that they are human.
 
 = Why Choose This Plugin? =
 Granted there are many plugins of this type in existence already. Why use this one in-particular? 
@@ -36,7 +47,10 @@ Here’s why:
 
 *   Minimal setup. Simply activate the plugin and place the shortcode [cscf-contact-form] on any post or page.
 
-*   **Safe**. All input entered by your user  is stripped back to minimise as far as possible the likelihood of any malicious user attempting to inject a script into your website. You can turn on reCAPTCHA to avoid your form being abused by bots.
+*   **Safe**. All input entered by your user  is stripped back to minimise as far as possible the likelihood of any 
+malicious user attempting to inject a script into your website. 
+If the Akismet plugin is activated all form data will be scanned for spam.
+You can turn on reCAPTCHA to avoid your form being abused by bots.
 
 *   **Ajax enabled**. You have the option to turn on AJAX (client-side) validation and submission which gives your users an immediate response when completing the form without having to wait for the page to refresh.
 
@@ -48,7 +62,7 @@ Here’s why:
 
 *   Works with the **latest version of WordPress**.
 
-*   Written by an **experienced PHP programmer**, the code is rock solid, safe, and rigorously  tested as standard practice.
+*   Written by an **experienced PHP programmer**, the code is rock solid, safe, and rigorously tested as standard practice.
 
 Hopefully this plugin will fulfil all your needs, if not [get in-touch](http://www.megnicholas.co.uk/contact-me "Get In Touch") and I will customise to your exact requirements.
 
@@ -104,7 +118,14 @@ Here is a list of things that you can change
 
 *   **reCAPTCHA Theme**: Here you can change the reCAPTCHA box theme so that it fits with the style of your website.
 
-*   **Recipient Email**: The email address where you would like all messages to be sent. This will default to the email address you have specified under 'E-Mail Address' in your WordPress General Settings. If you want your mail sent to a different address then enter it here.
+*   **!NEW! Recipient Emails**: The email address where you would like all messages to be sent. 
+    This will default to the email address you have specified under 'E-Mail Address' in your WordPress General Settings. 
+    If you want your mail sent to a different address then enter it here.
+    You may enter multiple email addresses by clicking the '+' button.
+
+*   **!NEW! Confirm Email Address**: Email confirmation is now optional. To force your user to re-type their email address tick 'Confirm Email Address'.
+    It is recommended that you leave this option on. If you turn this option off your user will only have to enter their email address once,
+    but if they enter it incorrectly you will have no way of getting back to them!
 
 *   **Email Subject**: This is the email subject that will appear on all messages. If you would like to set it to something different then enter it here.
 
@@ -173,7 +194,33 @@ This makes the form responsive to all types of media. If you want to have a fixe
 Currently you may only have one contact form per page. You CAN however put the contact form on more than one page using the same shortcode.
 Note that making changes to the settings will affect all implementations of the plugin across your site.
 
+= Will this work with other plugins that use Google reCAPTCHA? =
+Yes it will. HOWEVER, you cannot have more than one reCAPTCHA on a page. This is a constraint created by Google.
+So for example, if your 'Contact Me' page has comments below it, 
+the reCAPTCHA for the contact form will be displayed correctly but not in the comments form below.
+The comments form will never validate due to no supplied reCAPTCHA code.
+
 == Changelog ==
+= 4.3.0 =
+* Contact form is now filtered for spam when the Akismet plugin is present.
+[Learn more](http://www.megnicholas.co.uk/articles/contact-form-plugin-can-detect-spam/ "Learn More").
+= 4.2.5 =
+* Fixed bug that caused a PHP notice to be generated when 'Confirm Email Message' option is switched off.
+Thanks to MarrsAttax
+= 4.2.4 =
+* The requirement for users to confirm their email address is now optional. 
+  When turned off users only need to enter their email address once.
+* Added Arabic translation thanks to [Omar AlQabandi](http://www.PlusOmar.com "Omar AlQabandi")
+= 4.2.3 =
+* Added ability to specify multiple recipient email addresses
+* Fix settings gui - there was a problem enabling 'From' Address option when javascript is not enabled.
+= 4.2.2 =
+* Recaptcha library has now been namespaced to 'cscf' to remove ALL possibility of conflicts with other plugins that also include this library.
+= 4.2.1 =
+* Fixed potential conflict with other themes or plugins that use Google reCAPTCHA. reCAPTCHA library is not loaded if it already loaded by another plugin or theme.
+* Recaptcha library function is now used to generate the sign up url on the settings page. The site domain is passed into the url for convenience.
+* Options subject, message, heading, and body text are now translated when they are retrieved from the the database. Previously only the default messages were translated when no values were found in the database.
+* Improved housekeeping: generic name for settings array has been changed from 'array_key' to 'cscf-options'
 = 4.2.0 =
 * Updated Turkish translations thanks again to [Abdullah Manaz](http://manaz.net "Abdullah Manaz")
 * Fixed a problem where certain texts on the settings screen were not being translated 
@@ -246,6 +293,19 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.3.0 =
+Contact form is now filtered for spam when the Akismet plugin is present.
+[Learn more](http://www.megnicholas.co.uk/articles/contact-form-plugin-can-detect-spam/ "Learn More").
+= 4.2.5 =
+Small bug fix
+= 4.2.4 =
+'Confirm Email' can now be turned off. Arabic translation added.
+= 4.2.3 =
+Multiple recipients are now possible
+= 4.2.2 =
+Remove ALL possibility of conflicts with other plugins that also include Google reCAPTCHA library
+= 4.2.1 =
+Translation and housekeeping updates
 = 4.2.0 =
 Translation and documentation updates
 = 4.1.9 =

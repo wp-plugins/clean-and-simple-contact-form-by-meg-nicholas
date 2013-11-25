@@ -14,6 +14,8 @@ class cscf_Contact
     var $RecaptchaPublicKey;
     var $RecaptchaPrivateKey;
     var $Errors;
+    var $PostID;
+    var $IsSpam;
     
     function __construct() 
     {
@@ -30,10 +32,17 @@ class cscf_Contact
             $cscf = $_POST['cscf'];
             $this->Name = filter_var($cscf['name'], FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
             $this->Email = filter_var($cscf['email'], FILTER_SANITIZE_EMAIL);
-            $this->ConfirmEmail = filter_var($cscf['confirm-email'], FILTER_SANITIZE_EMAIL);
+            if ( isset($cscf['confirm-email']) ) {
+                $this->ConfirmEmail = filter_var($cscf['confirm-email'], FILTER_SANITIZE_EMAIL);
+            }
             $this->Message = filter_var($cscf['message'], FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
+            if (isset($_POST['post-id'])) {
+                $this->PostID = $_POST['post-id'];
+            }
             unset($_POST['cscf']);
         }
+        
+        $this->IsSpam = false;
     }
     
     public
@@ -50,16 +59,18 @@ class cscf_Contact
         return false;
 
         // email and confirm email are the same
-        
-        if ($this->Email != $this->ConfirmEmail) $this->Errors['confirm-email'] = __('Sorry the email addresses do not match.','cleanandsimple');
+        if ( cscf_PluginSettings::ConfirmEmail() ) {
+            if ($this->Email != $this->ConfirmEmail) $this->Errors['confirm-email'] = __('Sorry the email addresses do not match.','cleanandsimple');
+        }
 
         //email
         
         if (strlen($this->Email) == 0) $this->Errors['email'] = __('Please give your email address.','cleanandsimple');
 
         //confirm email
-        
-        if (strlen($this->ConfirmEmail) == 0) $this->Errors['confirm-email'] = __('Please confirm your email address.','cleanandsimple');
+        if ( cscf_PluginSettings::ConfirmEmail() ) {
+            if (strlen($this->ConfirmEmail) == 0) $this->Errors['confirm-email'] = __('Please confirm your email address.','cleanandsimple');
+        }
 
         //name
         
@@ -77,20 +88,25 @@ class cscf_Contact
         
         if ($this->RecaptchaPublicKey <> '' && $this->RecaptchaPrivateKey <> '') 
         {
-            $resp = recaptcha_check_answer($this->RecaptchaPrivateKey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
+            $resp = cscf_recaptcha_check_answer($this->RecaptchaPrivateKey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
             
             if (!$resp->is_valid) $this->Errors['recaptcha'] = __('Sorry the code wasn\'t entered correctly please try again.','cleanandsimple');
         }
         
         return count($this->Errors) == 0;
     }
-    
+
     public
     function SendMail() {
+        apply_filters('cscf_spamfilter',$this);
+        
+        if ( $this->IsSpam === true ) {
+            return true;
+        }
         
         $filters = new cscf_Filters;
         
-        if ( cscf_PluginSettings::OverrideFrom() ) {
+        if ( cscf_PluginSettings::OverrideFrom() & cscf_PluginSettings::FromEmail() != "" ) {
             $filters->fromEmail=cscf_PluginSettings::FromEmail();
         }
         else {
@@ -106,8 +122,8 @@ class cscf_Contact
         $message="From: " . $this->Name . "\n\n";
         $message.="Email: " . $this->Email . "\n\n";
         $message.="Message:\n\n" . $this->Message;
-       
-        $result = (wp_mail(cscf_PluginSettings::RecipientEmail() , cscf_PluginSettings::Subject(), stripslashes($message)));
+        
+        $result = (wp_mail(cscf_PluginSettings::RecipientEmails() , cscf_PluginSettings::Subject(), stripslashes($message)));
         
         //remove filters (play nice)
         $filters->remove('wp_mail_from');
@@ -116,4 +132,3 @@ class cscf_Contact
         return $result;
     }
 }
-
