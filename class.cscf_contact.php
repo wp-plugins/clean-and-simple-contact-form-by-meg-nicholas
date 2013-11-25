@@ -14,6 +14,8 @@ class cscf_Contact
     var $RecaptchaPublicKey;
     var $RecaptchaPrivateKey;
     var $Errors;
+    var $PostID;
+    var $IsSpam;
     
     function __construct() 
     {
@@ -34,8 +36,13 @@ class cscf_Contact
                 $this->ConfirmEmail = filter_var($cscf['confirm-email'], FILTER_SANITIZE_EMAIL);
             }
             $this->Message = filter_var($cscf['message'], FILTER_SANITIZE_STRING,FILTER_FLAG_NO_ENCODE_QUOTES);
+            if (isset($_POST['post-id'])) {
+                $this->PostID = $_POST['post-id'];
+            }
             unset($_POST['cscf']);
         }
+        
+        $this->IsSpam = false;
     }
     
     public
@@ -88,9 +95,14 @@ class cscf_Contact
         
         return count($this->Errors) == 0;
     }
-    
+
     public
     function SendMail() {
+        apply_filters('cscf_spamfilter',$this);
+        
+        if ( $this->IsSpam === true ) {
+            return true;
+        }
         
         $filters = new cscf_Filters;
         
@@ -120,4 +132,3 @@ class cscf_Contact
         return $result;
     }
 }
-

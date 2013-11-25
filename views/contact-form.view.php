@@ -12,6 +12,7 @@
         <p><?php echo $message; ?></p>
         <form role="form" id="frmCSCF" name="frmCSCF" method="post">
             <?php wp_nonce_field('cscf_contact','cscf_nonce'); ?>
+            <input type="hidden" name="post-id" value="<?php echo $postID; ?>">
             
             <?php if (isset($contact->Errors['recaptcha'])) { ?>
                 <div class="control-group form-group">

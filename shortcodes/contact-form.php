@@ -43,6 +43,7 @@ function cscf_ContactForm()
     $view->Set('message',cscf_PluginSettings::Message());
     $view->Set('version', CSCF_VERSION_NUM);
     $view->Set('confirmEmail',  cscf_PluginSettings::ConfirmEmail());
+    $view->Set('postID', get_the_ID());
 
     
     $view->Set('messageSentView',$messageSentView);

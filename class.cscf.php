@@ -30,6 +30,8 @@ class cscf
             'RegisterTextDomain'
             ));
 
+        add_filter('cscf_spamfilter',array($this,'SpamFilter'));
+        
         //create the settings page
         $settings = new cscf_settings();
         
@@ -176,5 +178,33 @@ class cscf
             }
         }
     }
+    
+    /*
+    *This is all we need to do to weed out the spam.
+    *If akismet plugin is enabled then it will be hooked into these filters.
+    */
+    public 
+    function SpamFilter($contact) {
+        
+        $commentData = apply_filters('preprocess_comment', array(
+                                        'comment_post_ID' => $contact->PostID,
+                                        'comment_author' => $contact->Name,
+                                        'comment_author_email' => $contact->Email,
+                                        'comment_content' => $contact->Message,
+                                        'comment_type' => 'contact-form',
+                                        ));
+
+        $commentData['comment_approved'] = apply_filters( 'pre_comment_approved', 0 , $commentData );
+
+        //If it is spam then log as a comment
+        if ( $commentData['comment_approved'] === 'spam' ) {
+            wp_insert_comment($commentData);   
+            $contact->IsSpam = true;
+        }
+        else {
+            $contact->IsSpam = false;
+        }
+        return $contact;
+    }    
 }
 
