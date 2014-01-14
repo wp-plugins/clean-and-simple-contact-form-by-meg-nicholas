@@ -201,6 +201,9 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
+= 4.3.2 =
+* Added Norwegian Bokmål translation thanks to Jann Vestby
+* Added Brazilian Portugese translation originally a Portugese translation by Ricardo Santos aka BogasoBogolha
 = 4.3.1 =
 * Polish translation has been updated thanks to Arkadiusz Baron
 * Updated Turkish translations thanks again to [Abdullah Manaz](http://manaz.net "Abdullah Manaz")
@@ -299,6 +302,8 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.3.2 =
+Added Norwegian and Brazilian Portugese Translations
 = 4.3.1 =
 Checked compatibility with WP 3.8 and TwentyFourteen theme, translation updates, defaults for new installations
 = 4.3.0 =
