@@ -201,6 +201,12 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
+= 4.3.3 =
+* Before overriding the from address, check that another plugin has not done it first. 
+Any plugin that overrides 'from email address' and 'from name' such as wp-mail-smtp plugin will take precedence over the settings in this plugin.
+* Added 'reply-to' to the email header
+* Moved the Name field before Email field
+* Added Hebrew translation thanks to Shay Cohen
 = 4.3.2 =
 * Added Norwegian Bokmål translation thanks to Jann Vestby
 * Added Brazilian Portugese translation originally a Portugese translation by Ricardo Santos aka BogasoBogolha
@@ -302,6 +308,8 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.3.3 =
+Hebrew Language added, name field moved to top of form, added 'reply-to'
 = 4.3.2 =
 Added Norwegian and Brazilian Portugese Translations
 = 4.3.1 =
