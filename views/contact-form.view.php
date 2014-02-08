@@ -20,6 +20,27 @@
                 </div>            
             <?php } ?>
 
+            <!-- name --> 
+            <div class="control-group form-group<?php if (isset($contact->Errors['name'])) echo ' error has-error'; ?>">
+                <label for="cscf_name"><?php _e('Name:','cleanandsimple');?></label>
+                <div class="<?php echo cscf_PluginSettings::InputIcons() ? "input-group" : ""; ?>">
+                    <?php if ( cscf_PluginSettings::InputIcons() == true ) { ?>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <?php } ?>
+                    <input class="form-control input-xlarge"
+                       data-rule-required="true"
+                       data-msg-required="<?php _e('Please give your name.','cleanandsimple');?>"
+                       type="text" id="cscf_name" name="cscf[name]" 
+                       value="<?php echo $contact->Name; ?>" 
+                       placeholder="<?php _e('Your Name','cleanandsimple');?>"
+                    />
+                </div>
+                <span for="cscf_name" class="help-inline help-block error" style="display:<?php echo isset($contact->Errors['name']) ? 'block' : 'none'; ?>;">
+                    <?php if (isset($contact->Errors['name'])) echo $contact->Errors['name']; ?>
+                </span>
+            </div>  
+
+            
             <!--email address-->
             <div class="control-group form-group<?php if (isset($contact->Errors['email'])) echo ' error has-error'; ?>">
                 <label for="cscf_email"><?php _e('Email Address:','cleanandsimple');?></label>
@@ -68,25 +89,6 @@
             </div> 
             <?php } ?>
 
-            <!-- name --> 
-            <div class="control-group form-group<?php if (isset($contact->Errors['name'])) echo ' error has-error'; ?>">
-                <label for="cscf_name"><?php _e('Name:','cleanandsimple');?></label>
-                <div class="<?php echo cscf_PluginSettings::InputIcons() ? "input-group" : ""; ?>">
-                    <?php if ( cscf_PluginSettings::InputIcons() == true ) { ?>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                    <?php } ?>
-                    <input class="form-control input-xlarge"
-                       data-rule-required="true"
-                       data-msg-required="<?php _e('Please give your name.','cleanandsimple');?>"
-                       type="text" id="cscf_name" name="cscf[name]" 
-                       value="<?php echo $contact->Name; ?>" 
-                       placeholder="<?php _e('Your Name','cleanandsimple');?>"
-                    />
-                </div>
-                <span for="cscf_name" class="help-inline help-block error" style="display:<?php echo isset($contact->Errors['name']) ? 'block' : 'none'; ?>;">
-                    <?php if (isset($contact->Errors['name'])) echo $contact->Errors['name']; ?>
-                </span>
-            </div>  
 
             <!-- message -->
             <div class="control-group form-group<?php if (isset($contact->Errors['message'])) echo ' error has-error'; ?>">

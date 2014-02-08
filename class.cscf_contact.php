@@ -119,11 +119,15 @@ class cscf_Contact
         $filters->add('wp_mail_from');
         $filters->add('wp_mail_from_name');
         
+        //headers
+        $header="Reply-To: " .$this->Email. "\r\n";
+        
+        //message
         $message="From: " . $this->Name . "\n\n";
         $message.="Email: " . $this->Email . "\n\n";
         $message.="Message:\n\n" . $this->Message;
         
-        $result = (wp_mail(cscf_PluginSettings::RecipientEmails() , cscf_PluginSettings::Subject(), stripslashes($message)));
+        $result = (wp_mail(cscf_PluginSettings::RecipientEmails() , cscf_PluginSettings::Subject(), stripslashes($message), $header));
         
         //remove filters (play nice)
         $filters->remove('wp_mail_from');
