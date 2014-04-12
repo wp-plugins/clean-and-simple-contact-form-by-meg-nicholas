@@ -125,6 +125,7 @@ class cscf_Contact
         //message
         $message="From: " . $this->Name . "\n\n";
         $message.="Email: " . $this->Email . "\n\n";
+        $message.="Page URL: " . get_permalink($this->PostID) . "\n\n";
         $message.="Message:\n\n" . $this->Message;
         
         $result = (wp_mail(cscf_PluginSettings::RecipientEmails() , cscf_PluginSettings::Subject(), stripslashes($message), $header));

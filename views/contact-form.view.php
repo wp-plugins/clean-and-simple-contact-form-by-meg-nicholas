@@ -1,7 +1,7 @@
 <div id="cscf" class="cscfBlock">
     <div class="cscfVersion" style="display:none;">
-       <a href="http://www.megnicholas.co.uk?version=<?php echo urlencode($version); ?>">Clean and Simple WordPress Contact Form by Meg Nicholas - WordPress Developer</a>
-    </div> 
+       Clean and Simple WordPress Contact Form by Meg Nicholas - WordPress Developer. Version <?php echo $version; ?>
+    </div>
     <div class="cscfMessageSent" style="display:none;">
         <?php echo $messageSentView->Render(); ?>
     </div>
