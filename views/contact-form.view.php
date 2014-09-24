@@ -108,6 +108,22 @@
                 </span>
             </div>
 
+            <?php if ( cscf_PluginSettings::EmailToSender() ) { ?>
+                <!-- email to sender -->
+                <div class="control-group form-group<?php if (isset($contact->Errors['email-sender'])) echo ' error has-error'; ?>">
+                    <label for="cscf_email-sender"><?php _e('Send me a copy:','cleanandsimple');?></label>
+                    <div class="<?php echo cscf_PluginSettings::InputIcons() ? "input-group" : ""; ?>">
+                        <?php if ( cscf_PluginSettings::InputIcons() == true ) { ?>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span></span>
+                        <?php } ?>
+                        <input <?php echo $contact->EmailToSender==true ? 'checked' : ''; ?> type="checkbox" id="cscf_email-sender" name="cscf[email-sender]">
+                    </div>
+                    <span for="cscf_email-sender" class="help-inline help-block error" style="display:<?php echo isset($contact->Errors['email-sender']) ? 'block' : 'none'; ?>;">
+                        <?php if (isset($contact->Errors['email-sender'])) echo $contact->Errors['email-sender']; ?>
+                    </span>
+                </div>
+            <?php } ?>
+
             <!-- recaptcha -->
             <?php if ( $contact->RecaptchaPublicKey<>'' && $contact->RecaptchaPrivateKey<>'') { ?>
                 <script type="text/javascript">
