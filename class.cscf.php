@@ -192,13 +192,14 @@ class cscf
                                         'comment_author_email' => $contact->Email,
                                         'comment_content' => $contact->Message,
                                         'comment_type' => 'contact-form',
+                                        'comment_author_url' => '',
                                         ));
 
-        $commentData['comment_approved'] = apply_filters( 'pre_comment_approved', 0 , $commentData );
 
         //If it is spam then log as a comment
-        if ( $commentData['comment_approved'] === 'spam' ) {
-            wp_insert_comment($commentData);   
+        if ( $commentData['akismet_result'] === 'true' ) {
+            $commentData['comment_approved'] = 'spam';
+            wp_insert_comment($commentData);
             $contact->IsSpam = true;
         }
         else {

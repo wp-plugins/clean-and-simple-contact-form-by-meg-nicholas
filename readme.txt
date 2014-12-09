@@ -203,6 +203,10 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
+= 4.4.2 =
+* Akismet tweak only log as spam if akismet_result = 'true'
+* Updated Turkish translations thanks again to [Abdullah Manaz](http://manaz.net "Abdullah Manaz")
+* Added Indonesian translations thanks to Beny Hirmansyah
 = 4.4.0 =
 * Fixed XSS issue
 = 4.4.1 =
@@ -318,6 +322,8 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.4.2 =
+Akismet tweak and translation updates
 = 4.4.1 =
 Fixed XSS issue
 = 4.4.0 =
