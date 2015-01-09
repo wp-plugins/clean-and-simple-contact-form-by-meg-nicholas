@@ -1,7 +1,4 @@
 <div id="cscf" class="cscfBlock">
-    <div class="cscfVersion" style="display:none;">
-       Clean and Simple WordPress Contact Form by Meg Nicholas - WordPress Developer. Version <?php echo $version; ?>
-    </div>
     <div class="cscfMessageSent" style="display:none;">
         <?php echo $messageSentView->Render(); ?>
     </div>
