@@ -1,7 +1,4 @@
 <div id="cscf" class="cscfBlock">
-    <div class="cscfVersion" style="display:none;">
-       Clean and Simple WordPress Contact Form by Meg Nicholas - WordPress Developer. Version <?php echo $version; ?>
-    </div>
     <div class="cscfMessageSent" style="display:none;">
         <?php echo $messageSentView->Render(); ?>
     </div>
@@ -31,7 +28,7 @@
                        data-rule-required="true"
                        data-msg-required="<?php _e('Please give your name.','cleanandsimple');?>"
                        type="text" id="cscf_name" name="cscf[name]" 
-                       value="<?php echo $contact->Name; ?>" 
+                       value="<?php echo esc_attr($contact->Name); ?>"
                        placeholder="<?php _e('Your Name','cleanandsimple');?>"
                     />
                 </div>
@@ -54,7 +51,7 @@
                         data-msg-required="<?php _e('Please give your email address.','cleanandsimple');?>"
                         data-msg-email="<?php _e('Please enter a valid email address.','cleanandsimple');?>"
                         type="email" id="cscf_email" name="cscf[email]" 
-                        value="<?php echo $contact->Email; ?>" 
+                        value="<?php echo esc_attr($contact->Email); ?>"
                         placeholder="<?php _e('Your Email Address','cleanandsimple');?>"
                     />
                 </div>
@@ -79,7 +76,7 @@
                         data-msg-email="<?php _e('Please enter a valid email address.','cleanandsimple');?>"
                         data-msg-equalTo="<?php _e('Please enter the same email address again.','cleanandsimple');?>"
                         type="email" id="cscf_confirm-email" name="cscf[confirm-email]" 
-                        value="<?php echo $contact->ConfirmEmail; ?>" 
+                        value="<?php echo esc_attr($contact->ConfirmEmail); ?>"
                         placeholder="<?php _e('Confirm Your Email Address','cleanandsimple');?>"
                     />
                 </div>
@@ -101,7 +98,7 @@
                         data-rule-required="true"
                         data-msg-required="<?php _e('Please give a message.','cleanandsimple');?>"
                         id="cscf_message" name="cscf[message]" rows="10" 
-                        placeholder="<?php _e('Your Message','cleanandsimple');?>"><?php echo $contact->Message; ?></textarea>
+                        placeholder="<?php _e('Your Message','cleanandsimple');?>"><?php echo esc_textarea($contact->Message); ?></textarea>
                 </div>
                 <span for="cscf_message" class="help-inline help-block error" style="display:<?php echo isset($contact->Errors['message']) ? 'block' : 'none'; ?>;">
                     <?php if (isset($contact->Errors['message'])) echo $contact->Errors['message']; ?>
