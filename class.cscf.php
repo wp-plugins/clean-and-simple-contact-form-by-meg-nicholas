@@ -197,7 +197,7 @@ class cscf
 
 
         //If it is spam then log as a comment
-        if ( $commentData['akismet_result'] === 'true' ) {
+        if ( isset( $commentData['akismet_result'] ) && $commentData['akismet_result'] === 'true' ) {
             $commentData['comment_approved'] = 'spam';
             wp_insert_comment($commentData);
             $contact->IsSpam = true;
