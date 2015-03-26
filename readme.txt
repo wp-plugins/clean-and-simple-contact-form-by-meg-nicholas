@@ -203,6 +203,7 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
+= 4.4.4 =
 * Added Serbian translation thanks to [Borisa Djuraskovic](http://www.webhostinghub.com "Borisa Djuraskovic")
 * Added Slovenian translation thanks to Bekim Lutolli
 * Fixed some 'notice' errors
@@ -329,6 +330,8 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.4.4 =
+Added languages, css fix for twenty fifteen theme, remove 'notice' errors, remove empty divs
 = 4.4.3 =
 Tested up to 4.1
 = 4.4.2 =
