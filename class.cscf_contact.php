@@ -90,9 +90,12 @@ class cscf_Contact
         //check recaptcha but only if we have keys
 
         if ($this->RecaptchaPublicKey <> '' && $this->RecaptchaPrivateKey <> '') {
-            $resp = cscf_recaptcha_check_answer($this->RecaptchaPrivateKey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
+	        $resp = csf_RecaptchaV2::VerifyResponse($_SERVER["REMOTE_ADDR"],$this->RecaptchaPrivateKey,$_POST["g-recaptcha-response"] );
 
-            if (!$resp->is_valid) $this->Errors['recaptcha'] = __('Sorry the code wasn\'t entered correctly please try again.', 'cleanandsimple');
+            if (!$resp->success) {
+//	            $this->Errors['recaptcha'] = __('Sorry the code wasn\'t entered correctly please try again.', 'cleanandsimple');
+	            $this->Errors['recaptcha'] = __('Please solve the recaptcha to continue.', 'cleanandsimple');
+            }
         }
 
         return count($this->Errors) == 0;

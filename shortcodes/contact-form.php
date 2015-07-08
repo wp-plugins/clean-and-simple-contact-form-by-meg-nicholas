@@ -23,6 +23,11 @@ function cscf_ContactForm()
         
         return $view->Render();
     }
+
+	//load google recaptcha script if required
+	if ( $contact->RecaptchaPublicKey <> '' && $contact->RecaptchaPrivateKey <> '' ) {
+		wp_enqueue_script('csf-recaptcha2');
+	}
   
     //here we need some jquery scripts and styles, so load them here
     if ( cscf_PluginSettings::UseClientValidation() == true) {

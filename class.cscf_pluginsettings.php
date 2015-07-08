@@ -17,7 +17,7 @@ class cscf_PluginSettings
     {
         $options = get_option(CSCF_OPTIONS_KEY);
 
-        return isset($options['theme']) ? $options['theme'] : 'red';
+        return isset($options['theme']) ? $options['theme'] : 'light';
     }
 
 	static
