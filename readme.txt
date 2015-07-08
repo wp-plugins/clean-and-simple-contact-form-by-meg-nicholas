@@ -5,8 +5,8 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: simple, contact, form, contact button, contact form, contact form plugin, akismet, contacts, contacts form plugin, contact me, feedback form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
-Tested up to: 4.1
-Stable tag: 4.4.3
+Tested up to: 4.1.1
+Stable tag: 4.4.4
 
 A clean and simple AJAX contact form with Google reCAPTCHA, Twitter Bootstrap markup and Akismet spam filtering.
 
@@ -203,6 +203,21 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
+= 4.5.1 =
+* Updated Polish translations thanks to Kacper
+* Updated French translation
+= 4.5.0 =
+* Added support for google recaptcha2. Replaces recaptcha version 1
+* Update to Italian translation thanks to Silvano
+* Added back the DIV to the contact form view as this introduced a display issue
+* Updated German translation thanks to schasoli
+* Polish translation update thanks to Kacper Rucinski
+= 4.4.4 =
+* Added Serbian translation thanks to [Borisa Djuraskovic](http://www.webhostinghub.com "Borisa Djuraskovic")
+* Added Slovenian translation thanks to Bekim Lutolli
+* Fixed some 'notice' errors
+* Recaptcha styling workaround for twenty fifteen theme
+* Remove empty divs from view
 = 4.4.3 =
 * Remove branding
 = 4.4.2 =
@@ -324,6 +339,12 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.5.1 =
+Translation updates
+= 4.5.0 =
+Added support for Google Recaptcha2. Updated translation. Fixed layout bug.
+= 4.4.4 =
+Added languages, css fix for twenty fifteen theme, remove 'notice' errors, remove empty divs
 = 4.4.3 =
 Tested up to 4.1
 = 4.4.2 =

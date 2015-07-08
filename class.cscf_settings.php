@@ -281,7 +281,7 @@ class cscf_settings
     function print_section_info_recaptcha()
     {
         print __('Enter your reCAPTCHA settings below :', 'cleanandsimple');
-        print "<p>" . __('To use reCAPTCHA you must get an API key from', 'cleanandsimple') . " <a target='_blank' href='" . cscf_recaptcha_get_signup_url($_SERVER['SERVER_NAME']) . "'>Google reCAPTCHA</a></p>";
+        print "<p>" . __('To use reCAPTCHA you must get an API key from', 'cleanandsimple') . " <a target='_blank' href='" . csf_RecaptchaV2::$signUpUrl . "'>Google reCAPTCHA</a></p>";
     }
 
     public
@@ -388,14 +388,10 @@ class cscf_settings
                 $disabled = cscf_PluginSettings::UseRecaptcha() == false ? "disabled" : "";
                 ?>
                 <select <?php echo $disabled; ?> id="theme" name="<?php echo CSCF_OPTIONS_KEY; ?>[theme]">
-                    <option <?php echo $theme == "red" ? "selected" : ""; ?>
-                        value="red"><?php _e('Red', 'cleanandsimple'); ?></option>
-                    <option <?php echo $theme == "white" ? "selected" : ""; ?>
-                        value="white"><?php _e('White', 'cleanandsimple'); ?></option>
-                    <option <?php echo $theme == "blackglass" ? "selected" : ""; ?>
-                        value="blackglass"><?php _e('Blackglass', 'cleanandsimple'); ?></option>
-                    <option <?php echo $theme == "clean" ? "selected" : ""; ?>
-                        value="clean"><?php _e('Clean', 'cleanandsimple'); ?></option>
+                    <option <?php echo $theme == "light" ? "selected" : ""; ?>
+                        value="light"><?php _e('Light', 'cleanandsimple'); ?></option>
+                    <option <?php echo $theme == "dark" ? "selected" : ""; ?>
+                        value="dark"><?php _e('Dark', 'cleanandsimple'); ?></option>
                 </select>
                 <?php
                 break;

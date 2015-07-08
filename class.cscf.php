@@ -60,7 +60,13 @@ class cscf
 
         wp_register_style('cscf-bootstrap', CSCF_PLUGIN_URL . '/css/bootstrap-forms.min.css', 
             null, CSCF_VERSION_NUM);
-        
+
+//	    wp_register_script( 'csf-recaptcha2',
+//		    'https://www.google.com/recaptcha/api.js?onload=onLoadRecaptcha2&render=explicit&hl=' . get_locale(), null, null, true );
+
+	    wp_register_script( 'csf-recaptcha2',
+		    'https://www.google.com/recaptcha/api.js?hl=' . get_locale(), null, null, true );
+
     }
     
     function RegisterAdminScripts($hook)
@@ -197,7 +203,7 @@ class cscf
 
 
         //If it is spam then log as a comment
-        if ( $commentData['akismet_result'] === 'true' ) {
+        if ( isset( $commentData['akismet_result'] ) && $commentData['akismet_result'] === 'true' ) {
             $commentData['comment_approved'] = 'spam';
             wp_insert_comment($commentData);
             $contact->IsSpam = true;

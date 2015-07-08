@@ -17,24 +17,24 @@ class cscf_PluginSettings
     {
         $options = get_option(CSCF_OPTIONS_KEY);
 
-        return isset($options['theme']) ? $options['theme'] : 'red';
+        return isset($options['theme']) ? $options['theme'] : 'light';
     }
 
-    static
-    function PublicKey()
-    {
-        $options = get_option(CSCF_OPTIONS_KEY);
+	static
+	function PublicKey() {
+		$options = get_option( CSCF_OPTIONS_KEY );
 
-        return $options['recaptcha_public_key'];
-    }
+		return isset( $options['recaptcha_public_key'] ) ? $options['recaptcha_public_key'] : null;
 
-    static
-    function PrivateKey()
-    {
-        $options = get_option(CSCF_OPTIONS_KEY);
+	}
 
-        return $options['recaptcha_private_key'];
-    }
+	static
+	function PrivateKey() {
+		$options = get_option( CSCF_OPTIONS_KEY );
+
+		return isset( $options['recaptcha_private_key'] ) ? $options['recaptcha_private_key'] : null;
+
+	}
 
     static
     function SentMessageHeading()
@@ -76,14 +76,15 @@ class cscf_PluginSettings
         return isset($options['use_client_validation']) ? true : false;
     }
 
-    static
-    function RecipientEmails()
-    {
-        $options = get_option(CSCF_OPTIONS_KEY);
-        if (count($options['recipient_emails']) == 0)
-            unset($options['recipient_emails']);
-        return isset($options['recipient_emails']) ? $options['recipient_emails'] : array(get_bloginfo('admin_email'));
-    }
+	static
+	function RecipientEmails() {
+		$options = get_option( CSCF_OPTIONS_KEY );
+		if ( isset( $options['recipient_emails'] ) && count( $options['recipient_emails'] ) == 0 ) {
+			unset( $options['recipient_emails'] );
+		}
+
+		return isset( $options['recipient_emails'] ) ? $options['recipient_emails'] : array( get_bloginfo( 'admin_email' ) );
+	}
 
     static
     function Subject()
