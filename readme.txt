@@ -203,6 +203,9 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
+= 4.5.1 =
+* Updated Polish translations thanks to Kacper
+* Updated French translation
 = 4.5.0 =
 * Added support for google recaptcha2. Replaces recaptcha version 1
 * Update to Italian translation thanks to Silvano
@@ -336,6 +339,8 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.5.1 =
+Translation updates
 = 4.5.0 =
 Added support for Google Recaptcha2. Updated translation. Fixed layout bug.
 = 4.4.4 =
